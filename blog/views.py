@@ -1,5 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
 
-def say_hello(request):
-    return HttpResponse("Hello from Blog app!")
+def get_post_list(request):
+    return render(request, 'blog/post_list.html')
