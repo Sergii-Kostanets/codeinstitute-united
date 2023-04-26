@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from blog.views import get_post_list
 from connect.views import get_game_list
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', get_game_list, name='game_list'),
     path('blog/', get_post_list, name='post_list'),
+    # path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.ico'))),
 ]
