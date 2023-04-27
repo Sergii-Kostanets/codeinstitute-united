@@ -17,8 +17,6 @@ from django.contrib import admin
 from django.urls import path
 from blog.views import get_post_list
 from connect.views import get_game_list
-from django.contrib.staticfiles.storage import staticfiles_storage
-from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
