@@ -1,0 +1,34 @@
+.brand {
+    /* font-family: Lato, sans-serif; */
+    /* font-size: 1.4rem; */
+    font-weight: 700;
+    color: #a6a600;
+}
+
+.red {
+    color: #E84610;
+}
+
+.thin {
+    font-weight: 300;
+}
+
+.btn-signup {
+    background-color: #23BBBB;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.allauth-form>p>label {
+    display: block;
+}
+
+label[for="id_remember"] {
+    display: inline-block!important;
+}
+
+.errorlist {
+    list-style-type: none;
+    padding-left: 0;
+    color: red;
+}
