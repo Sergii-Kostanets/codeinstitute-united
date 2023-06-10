@@ -16,13 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# from blog.views import get_post_list
-from connect.views import get_game_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('', get_game_list, name='game_list'),
+    path('', include('connect.urls'), name='connect_urls'),
     path('blog/', include('blog.urls'), name='blog_urls'),
     path('accounts/', include('allauth.urls')),
 ]
