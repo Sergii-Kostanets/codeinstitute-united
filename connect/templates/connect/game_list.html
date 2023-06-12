@@ -5,44 +5,61 @@
 <h1 class="text-center text-dark m-3">Connect with new friends</h1>
 
 <div class="container-fluid">
-
     <div class="row">
-        
-        <div class="col-12 mt-3 left">
-            <div class="row">
-            {% for game in game_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in game.featured_image.url %}
-                                <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Card image cap">
-                                {% else %}
-                                <img class="card-img-top" src="{{ game.featured_image.url }}" alt="Card image cap">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ game.author }}</p>
-                                </div>
-                            </div>
-                                <a href="#" class="post-link"></a>
-                                <h2 class="card-title">{{game.title}}</h2>
-                                <p class="card-text">{{game.excerpt}}</p>
-                            </a>
-                            <hr>
-                            <p class="card-text text-muted h6">{{game.created_on}} <i class="far fa-heart"></i> 
-                            </p>
+        <div class="accordion col-12 mb-4" id="accordionExample">
+            <div class="card">
+                {% for game in game_list %}
+                <div class="card-header btn text-left bg-dark text-light border-light" id="heading-{{game.slug}}" data-toggle="collapse" data-target="#collapse-{{game.slug}}" aria-expanded="true" aria-controls="collapse-{{game.slug}}" onclick="scrollToTop('{{game.slug}}')">
+                    <div class="row align-items-center m-0 pl-0">
+                        <div class="col-md-8 m-0 pl-0 pr-3">
+                            <h3 class="card-title text-center">{{game.title}}</h3>
+                            <p class="author text-center"><small>with {{ game.author }}</small></p>
+                            <p class="card-text text-justify mb-3 mb-md-0">{{game.excerpt}}</p>
+                        </div>
+                        <div class="col-md-4 m-0 p-0 image-container">
+                            {% if "placeholder" in game.featured_image.url %}
+                            <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Card image cap">
+                            {% else %}
+                            <img class="card-img-top" src="{{ game.featured_image.url }}" alt="Card image cap">
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-            {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-            {% endif %}
-            
-            {% endfor %}
+                <div id="collapse-{{game.slug}}" class="collapse" aria-labelledby="heading-{{game.slug}}" data-parent="#accordionExample">
+                    <div class="card-body text-justify">
+                        {{ game.content | safe }}
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row justify-content-center">
+                            {% if user.is_authenticated %}
+                                {% if game.author == user %}
+                                <form action="{% url 'game_edit' game.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" name="game_slug" value="{{ game.slug }}" class="btn btn-warning col-3 ml-1 mr-1 mb-3">
+                                        Edit
+                                    </button>
+                                </form>
+                                <button type="button" class="btn btn-danger col-3 ml-1 mr-1 mb-3">
+                                    Delete
+                                </button>
+                                {% else %}
+                                <button type="button" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">
+                                    Connect
+                                </button>
+                                {% endif %}
+                            {% else %}
+                                <button type="button" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">
+                                    Connect
+                                </button>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
-
     </div>
 
     {% if is_paginated %}
@@ -69,5 +86,12 @@
     {% endif %}
 
 </div>
+
+<script>
+    function scrollToTop(slug) {
+        const element = document.getElementById('heading-' + slug);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+</script>
 
 {%endblock%}
