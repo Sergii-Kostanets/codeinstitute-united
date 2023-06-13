@@ -5,13 +5,16 @@
 <h1 class="text-center text-dark m-3">Create Game</h1>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 justify-content-center">
-            <form method="post" enctype="multipart/form-data">
+    <div class="row mb-4">
+        <div class="col-12">
+            <form id="game-form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Create</button>
-                <a href="{% url 'game_list' %}">Cancel</a>
+                    <div id="game-form-buttons">
+                        <button class="btn btn-success" type="submit">Create</button>
+                        <a class="btn btn-warning" href="{% url 'game_list' %}">Cancel</a>
+                        <a class="btn btn-danger" href="#">Delete</a>
+                    </div>
             </form>
         </div>
     </div>
