@@ -1,0 +1,115 @@
+{% extends "connect/base.html" %}
+
+{% block content %}
+
+<h1 class="text-center text-dark m-3">Publish Draft Connects</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        {% if user.is_authenticated and user.is_staff %}
+        {% if game_list %}
+        <div class="accordion col-12 mb-4" id="accordionExample">
+            <div class="card">
+                {% for game in game_list %}
+                <div class="card-header btn text-left bg-dark text-light border-light" id="heading-{{game.slug}}" data-toggle="collapse" data-target="#collapse-{{game.slug}}" aria-expanded="true" aria-controls="collapse-{{game.slug}}" onclick="scrollToTop('{{game.slug}}')">
+                    <div class="row align-items-center m-0 pl-0">
+                        <div class="col-md-8 m-0 pl-0 pr-3">
+                            <h3 class="card-title text-center">{{game.title}}</h3>
+                            <p class="author text-center"><small>with {{ game.author }}</small></p>
+                            <p class="card-text text-justify mb-3 mb-md-0">{{game.excerpt}}</p>
+                        </div>
+                        <div class="col-md-4 m-0 p-0 image-container">
+                            {% if "placeholder" in game.featured_image.url %}
+                            <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Card image cap">
+                            {% else %}
+                            <img class="card-img-top" src="{{ game.featured_image.url }}" alt="Card image cap">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div id="collapse-{{game.slug}}" class="collapse" aria-labelledby="heading-{{game.slug}}" data-parent="#accordionExample">
+                    <div class="card-body text-justify">
+                        {{ game.content | safe }}
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row justify-content-center d-flex">
+                                {% if game.author == user %}
+                                <form method="get" action="{% url 'game_edit' game.slug %}" id="game-list-publish-button">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-warning col-3 ml-1 mr-1 mb-3">
+                                        Edit
+                                    </button>
+                                </form>      
+                                <form method="get" action="{% url 'game_delete' game.slug %}" id="game-list-delete-button">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger col-3 ml-1 mr-1 mb-3">
+                                        Delete
+                                    </button>
+                                </form>
+                                {% else %}
+                                <form method="get" action="{% url 'game_publish' game.pk %}" id="game-list-publish-button">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary col-3 ml-1 mr-1 mb-3">
+                                        Publish
+                                    </button>
+                                </form>
+                                <form method="get" action="{% url 'game_delete' game.slug %}" id="game-list-delete-button">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger col-3 ml-1 mr-1 mb-3">
+                                        Delete
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <p class="text-center">There are no draft games available.</p>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="col-12">
+            <p class="text-center">You are not authorized to publish game connects</p>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{page_obj.previous_page_number}}" class="page-link">
+                    <!-- <span aria-hidden="true">&laquo;</span> PREV -->
+                    &laquo; PREV
+                </a>
+            </li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{page_obj.next_page_number}}" class="page-link">
+                    <!-- NEXT <span aria-hidden="true">&raquo;</span> -->
+                    NEXT &raquo;
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+
+</div>
+
+<script>
+    function scrollToTop(slug) {
+        const element = document.getElementById('heading-' + slug);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+</script>
+
+{%endblock%}

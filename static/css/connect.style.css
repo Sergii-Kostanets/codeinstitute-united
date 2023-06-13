@@ -20,6 +20,14 @@
     justify-content: space-around;
 }
 
+#game-list-publish-button,
+#game-list-delete-button {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 #game-form {
     display: flex;
     flex-direction: column;

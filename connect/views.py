@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .forms import GameForm
@@ -50,3 +50,33 @@ class GameDelete(LoginRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Your game connect has been deleted successfully')
         return super().delete(request, *args, **kwargs)
+
+
+class GamePublishList(generic.ListView):
+    model = Game
+    template_name = 'connect/game_publish_list.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        if self.request.user.is_staff:
+            return Game.objects.filter(status=0).order_by('-created_on')
+        else:
+            return Game.objects.none()  # Empty queryset for non-staff users
+
+
+
+class GamePublish(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Game
+    form_class = GameForm
+    template_name = 'connect/game_publish.html'
+    success_url = reverse_lazy('game_list')
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def form_valid(self, form):
+        game = form.save(commit=False)
+        game.status = 1  # Set the status to 1 (publish)
+        game.save()
+        messages.success(self.request, 'New game connect has been published successfully.')
+        return super().form_valid(form)

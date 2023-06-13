@@ -1,0 +1,24 @@
+{% extends "connect/base.html" %}
+
+{% block content %}
+
+<h1 class="text-center text-dark m-3">Publish Game Connect</h1>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <p class="text-center">Are you sure you want to publish this game connect?</p>
+            <form id="game-form" method="POST" action="{% url 'game_publish' game.pk %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div id="game-form-buttons">
+                    <button class="btn btn-primary" type="submit">Publish</button>
+                    <a class="btn btn-warning" href="{% url 'game_publish_list' %}">Cancel</a>
+                    <a class="btn btn-danger" href="{% url 'game_delete' game.slug %}">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

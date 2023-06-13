@@ -34,6 +34,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'game_create' %}">Add game</a></li>
+                            {% if request.user.is_staff %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'game_publish_list' %}">Publish games</a>
+                            </li>
+                            {% endif %}
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign out</a></li>
                         </ul>
