@@ -6,6 +6,7 @@
 
 <div class="container-fluid">
     <div class="row">
+        {% if game_list %}
         <div class="accordion col-12 mb-4" id="accordionExample">
             <div class="card">
                 {% for game in game_list %}
@@ -57,6 +58,11 @@
                 {% endfor %}
             </div>
         </div>
+        {% else %}
+        <div class="col-12">
+            <p class="text-center">There are no published games available</p>
+        </div>
+        {% endif %}
     </div>
 
     {% if is_paginated %}
