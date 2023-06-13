@@ -31,7 +31,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = True # DELETE
+# DEBUG = development
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -39,7 +40,6 @@ if development:
     ALLOWED_HOSTS = ['127.0.0.1']
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
-# ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), '127.0.0.1']
 
 # Application definition
 
@@ -118,16 +118,11 @@ if development:
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
-        # 'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-# }
 
 
 # Password validation
