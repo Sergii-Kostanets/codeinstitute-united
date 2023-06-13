@@ -1,0 +1,20 @@
+{% extends "connect/base.html" %}
+
+{% block content %}
+
+<h1 class="text-center text-dark m-3">Create Game</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 justify-content-center">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Create</button>
+                <a href="{% url 'game_list' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
