@@ -1,0 +1,24 @@
+{% extends "connect/base.html" %}
+
+{% block content %}
+
+<h1 class="text-center text-dark m-3">Delete Game Connect</h1>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <p class="text-center">Are you sure you want to delete this game connect?</p>
+            <p class="text-center">This action cannot be undone!</p>
+            <form id="game-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                    <div id="game-form-buttons">
+                        <a class="btn btn-success" href="{% url 'game_list' %}" tabindex="1">Cancel deletition</a>
+                        <button class="btn btn-danger" type="submit" tabindex="2">Delete</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

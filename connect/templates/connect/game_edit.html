@@ -13,7 +13,7 @@
                     <div id="game-form-buttons">
                         <button class="btn btn-success" type="submit">Save</button>
                         <a class="btn btn-warning" href="{% url 'game_list' %}">Cancel</a>
-                        <a class="btn btn-danger" href="#">Delete</a>
+                        <a class="btn btn-danger" href="{% url 'game_delete' game.slug %}">Delete</a>
                     </div>
             </form>
         </div>
