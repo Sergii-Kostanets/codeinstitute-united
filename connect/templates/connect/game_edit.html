@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="text-center text-dark m-3">Create Game Connect</h1>
+<h1 class="text-center text-dark m-3">Edit Game Connect</h1>
 
 <div class="container-fluid">
     <div class="row mb-4">
@@ -11,8 +11,9 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                     <div id="game-form-buttons">
-                        <button class="btn btn-success" type="submit">Create</button>
+                        <button class="btn btn-success" type="submit">Save</button>
                         <a class="btn btn-warning" href="{% url 'game_list' %}">Cancel</a>
+                        <a class="btn btn-danger" href="#">Delete</a>
                     </div>
             </form>
         </div>

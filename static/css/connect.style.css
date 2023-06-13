@@ -13,6 +13,13 @@
     font-weight: 300;
 }
 
+#game-list-edit-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 #game-form {
     display: flex;
     flex-direction: column;
