@@ -33,7 +33,7 @@
                             {{user.username}}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'game_create' %}">Add game</a></li>
+                            <li><a class="dropdown-item" href="{% url 'game_create' %}">Add new game</a></li>
                             {% if request.user.is_staff %}
                             <li>
                                 <a class="dropdown-item" href="{% url 'game_publish_list' %}">Publish games</a>
