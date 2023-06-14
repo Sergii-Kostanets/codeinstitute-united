@@ -1,0 +1,85 @@
+{% extends "connect/base.html" %}
+
+{% block content %}
+
+<h1 class="text-center text-dark m-3">Connect with {{game.author}}</h1>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+            {% if game.author.email %}
+            <h3 class="contact-heading uppercase text-center mt-3">Got the same goal?</h3>
+            <h5 class="uppercase text-center mb-4">Let's play together!</h5>
+            <div class="center-form">
+                <form id="game-connect-form" onsubmit="return sendMail(this);">
+                    {% csrf_token %}
+                    <input type="hidden" name="game" id="game" value="{{game.title}}">
+                    <input type="hidden" name="author" id="author" value="{{game.author}}">
+                    <input type="hidden" name="email" id="email" value="{{game.author.email}}">
+                    
+                    <input type="text" name="name" id="fullname" class="form-control mb-3" placeholder="Name" value="{{user.username}}" tabindex="1" required>
+                    <input type="text" name="emailaddress" id="emailaddress" class="form-control mb-3" placeholder="Email" value="{{user.email}}" tabindex="2" required>
+                    <textarea name="message" id="message" rows="5" maxlength="500" class="form-control mb-3" placeholder="Your message to {{game.author}} about {{game.title}}" tabindex="3" required></textarea>
+                    <div class="form-row text-center">
+                        <div class="col">
+                            <button type="submit" class="btn btn-secondary mb-3" tabindex="4">Send Connect Request</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+            <h3 class="text-center mt-3">This user didn't provide an email.</h3>
+            <h5 class="text-center mb-4">Try to find the contact details in the game description.</h5>
+            <div id="game-form-buttons">
+                <a href="{% url 'game_list' %}" class="btn btn-primary mb-3" tabindex="1">Back to Games</a>
+                <a href="{% url 'game_create' %}" class="btn btn-success mb-3" tabindex="2">Create a Connect</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const inputField = document.getElementById("fullname");
+        inputField.focus();
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+    (function(){
+        emailjs.init("JT3IGhfdnQWMJY9y8");
+    })();
+</script>
+
+<script>
+    function sendMail(contactForm){
+        emailjs.send("service_8h6blrb", "template_4c6eawq", {
+            "from_name": contactForm.name.value,
+            "from_email": contactForm.emailaddress.value,
+            "message": contactForm.message.value,
+            "game": contactForm.game.value,
+            "to_name": contactForm.author.value,
+            "to_email": contactForm.email.value,
+        })
+        .then(
+            function(response){
+                console.log("SUCCESS", response);
+                document.getElementsByTagName("h1")[0].innerText = "Thank you for your message!";
+                document.getElementsByTagName("h3")[0].innerText = "Now just wait for the reply.";
+                document.getElementsByClassName("center-form")[0].innerHTML = "<div id=\"game-form-buttons\"><a href=\"{% url 'game_list' %}\" class=\"btn btn-primary mb-3\" tabindex=\"1\">Back to Games</a><a href=\"{% url 'game_create' %}\" class=\"btn btn-success mb-3\" tabindex=\"2\">Create a Connect</a></div>";
+            },
+            function(error){
+                console.log("FAILED", error);
+                document.getElementsByTagName("h1")[0].innerText = "Oops! Something went wrong."
+                document.getElementsByTagName("h3")[0].innerText = "Please try again later.";
+                document.getElementsByClassName("center-form")[0].innerHTML = "<div id=\"game-form-buttons\"><a href=\"{% url 'game_list' %}\" class=\"btn btn-primary mb-3\" tabindex=\"1\">Back to Games</a><a href=\"{% url 'game_create' %}\" class=\"btn btn-success mb-3\" tabindex=\"2\">Create a Connect</a></div>";
+            },
+        );
+        return false;
+    }
+</script>
+
+{%endblock%}

@@ -8,5 +8,5 @@ urlpatterns = [
     path('game_delete/<slug:slug>/', views.GameDelete.as_view(), name='game_delete'),
     path('game_publish_list', views.GamePublishList.as_view(), name='game_publish_list'),
     path('game_publish/<int:pk>/', views.GamePublish.as_view(), name='game_publish'),
-
+    path('game_connect/<slug:slug>/', views.GameConnect.as_view(), name='game_connect'),
 ]

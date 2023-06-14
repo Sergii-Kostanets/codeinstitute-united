@@ -19,4 +19,17 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var titleInput = document.getElementById('id_title');
+        var slugInput = document.getElementById('id_slug');
+    
+        titleInput.addEventListener('input', function() {
+            var title = titleInput.value;
+            var slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            slugInput.value = slug;
+        });
+    });
+</script>
+
 {%endblock%}

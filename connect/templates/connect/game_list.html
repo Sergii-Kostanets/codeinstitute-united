@@ -10,7 +10,7 @@
         <div class="accordion col-12 mb-4" id="accordionExample">
             <div class="card">
                 {% for game in game_list %}
-                <div class="card-header btn text-left bg-dark text-light border-light" id="heading-{{game.slug}}" data-toggle="collapse" data-target="#collapse-{{game.slug}}" aria-expanded="true" aria-controls="collapse-{{game.slug}}" onclick="scrollToTop('{{game.slug}}')">
+                <div class="card-header btn text-left bg-dark text-light border-light rounded" id="heading-{{game.slug}}" data-toggle="collapse" data-target="#collapse-{{game.slug}}" aria-expanded="true" aria-controls="collapse-{{game.slug}}" onclick="scrollToTop('{{game.slug}}')">
                     <div class="row align-items-center m-0 pl-0">
                         <div class="col-md-8 m-0 pl-0 pr-0 pr-md-3">
                             <h3 class="card-title text-center">{{game.title}}</h3>
@@ -19,9 +19,9 @@
                         </div>
                         <div class="col-md-4 m-0 p-0 image-container">
                             {% if "placeholder" in game.featured_image.url %}
-                            <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Card image cap">
+                            <img class="card-img-top rounded" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Card image cap">
                             {% else %}
-                            <img class="card-img-top" src="{{ game.featured_image.url }}" alt="Card image cap">
+                            <img class="card-img-top rounded" src="{{ game.featured_image.url }}" alt="Card image cap">
                             {% endif %}
                         </div>
                     </div>
@@ -42,9 +42,7 @@
                                     </button>
                                 </form>                                
                                 {% else %}
-                                <button type="button" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">
-                                    Connect
-                                </button>
+                                <a href="{% url 'game_connect' game.slug %}" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">Connect</a>
                                 {% endif %}
                             {% else %}
                                 <button type="button" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">
@@ -72,7 +70,6 @@
             <li>
                 <a href="?page={{page_obj.previous_page_number}}" class="page-link text-muted border-0 rounded">
                     <span aria-hidden="true">&laquo;</span> NEW
-                    <!-- &laquo; PREV -->
                 </a>
             </li>
             {% endif %}
@@ -80,7 +77,6 @@
             <li>
                 <a href="?page={{page_obj.next_page_number}}" class="page-link text-muted border-0 rounded">
                     OLD <span aria-hidden="true">&raquo;</span>
-                    <!-- NEXT &raquo; -->
                 </a>
             </li>
             {% endif %}

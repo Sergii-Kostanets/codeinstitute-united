@@ -84,3 +84,14 @@
 .summernote-div {
     margin-top: -16px;
 }
+
+.errorlist {
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-align: center;
+}
+
+.errorlist li {
+    color: red;
+    list-style-type: none;
+}

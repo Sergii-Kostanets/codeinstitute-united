@@ -1,11 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .forms import GameForm
-
 from .models import Game
 
 
@@ -80,3 +79,14 @@ class GamePublish(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         game.save()
         messages.success(self.request, 'New game connect has been published successfully.')
         return super().form_valid(form)
+
+
+class GameConnect(View):
+    template_name = 'connect/game_connect.html'
+    success_message = 'Thank you for your message!'
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Game.objects.filter(status=1)
+        game = get_object_or_404(queryset, slug=slug)
+        context = {'game': game}
+        return render(request, self.template_name, context)
