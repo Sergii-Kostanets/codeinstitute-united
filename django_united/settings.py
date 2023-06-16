@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
+from django.conf import settings
 import dj_database_url
 if os.path.exists('env.py'):
     import env
@@ -53,6 +54,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
@@ -64,8 +67,13 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+SITES_ENABLED = "django.contrib.sites" in settings.INSTALLED_APPS
+SOCIALACCOUNT_ENABLED = "allauth.socialaccount" in settings.INSTALLED_APPS
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+USER_MODEL = getattr(settings, "AUTH_USER_MODEL", "auth.User")
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-primary',
@@ -87,6 +95,30 @@ SUMMERNOTE_CONFIG = {
         'width': '100%',
         'height': '280',
     }
+}
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.environ.get('GOOGLE_CLIENT_ID'),
+            'secret': os.environ.get('GOOGLE_CLIENT_SECRET'),
+            'key': ''
+        },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+    },
+    'github': {
+        'APP': {
+            'client_id': os.environ.get('GITHUB_CLIENT_ID'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET'),
+            'key': ''
+        },
+        'SCOPE': ['user:email'],
+        'FIELDS': ['username', 'email'],
+        'VERIFIED_EMAIL': True,
+    },
 }
 
 MIDDLEWARE = [
@@ -192,3 +224,8 @@ CLOUDINARY_STORAGE = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_UNIQUE_EMAIL = True

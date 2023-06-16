@@ -95,3 +95,11 @@
     color: red;
     list-style-type: none;
 }
+
+.draft {
+    color: burlywood;
+}
+
+.published {
+    color:rgb(81, 81, 177);
+}

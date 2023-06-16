@@ -63,7 +63,6 @@ class GamePublishList(generic.ListView):
             return Game.objects.none()  # Empty queryset for non-staff users
 
 
-
 class GamePublish(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Game
     form_class = GameForm
@@ -90,3 +89,12 @@ class GameConnect(View):
         game = get_object_or_404(queryset, slug=slug)
         context = {'game': game}
         return render(request, self.template_name, context)
+
+
+class GamesOfUser(LoginRequiredMixin, generic.ListView):
+    template_name = 'connect/game_list_of_user.html'
+    context_object_name = 'game_list'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Game.objects.filter(author=self.request.user).order_by('-created_on')

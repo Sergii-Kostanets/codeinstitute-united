@@ -1,22 +1,43 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n %}{% load account socialaccount %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
 <h1 class="text-center text-dark mt-3">{% trans "Sign In" %}</h1>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
-            <p class="text-center">
+
+                {% get_providers as socialaccount_providers %}
+                {% if socialaccount_providers %}
+                
+                <p class="text-center">
+                    {% blocktrans with site.name as site_name %} Please sign in with one of your existing third party accounts. Or, <a href="{{ signup_url }}"><strong>sign up</strong></a> for a {{ site_name }} account and sign in below:{% endblocktrans %}
+                </p>
+                <div class="socialaccount_ballot">
+                <ul class="socialaccount_providers list-group socialaccount_providers-custom">
+                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                </ul>
+                <div class="login-or text-center">{% trans 'or' %}</div>
+                </div>
+                {% include "socialaccount/snippets/login_extra.html" %}
+                
+                {% else %}
+                
                 {% blocktrans %}
+                <p class="text-center">
                 Welcome to United! To leave a request, comment or like a post, please log in. <br>
                 If you have not created an account yet, then please
-                <a href="{{ signup_url }}">sign up</a> 
+                <a href="{{ signup_url }}"><strong>sign up</strong></a> 
                 first.
                 {% endblocktrans %}
-            </p>
+                </p>
+
+                {% endif %}
+
         </div>
     </div>
     <div class="row">
@@ -27,7 +48,10 @@
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-                <button class="btn btn-signup" type="submit">{% trans "Sign In" %}</button>
+                <button class="btn btn-success" type="submit">{% trans "Sign In" %}</button>
+                <p class="mt-3">
+                    <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> -->
+                </p>
             </form>
         </div>
     </div>

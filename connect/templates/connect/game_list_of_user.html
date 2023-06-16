@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="text-center text-dark m-3">Connect with new friends</h1>
+<h1 class="text-center text-dark m-3">My Games</h1>
 
 <div class="container-fluid">
     <div class="row">
@@ -14,7 +14,14 @@
                     <div class="row align-items-center m-0 pl-0">
                         <div class="col-md-8 m-0 pl-0 pr-0 pr-md-3">
                             <h3 class="card-title text-center">{{game.title}}</h3>
-                            <p class="author text-center"><small>with {{ game.author }}</small></p>
+                            <p class="author text-center">
+                                <small>with {{ game.author }}</small>
+                                {% if game.status == 0 %}
+                                <small class="draft">Waiting for approval</small>
+                                {% elif game.status == 1 %}
+                                <small class="published">Published</small>
+                                {% endif %}
+                            </p>
                             <p class="card-text text-justify mb-3 mb-md-0">{{game.excerpt}}</p>
                         </div>
                         <div class="col-md-4 m-0 p-0 image-container">
@@ -45,20 +52,25 @@
                                 <a href="{% url 'game_connect' game.slug %}" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">Connect</a>
                                 {% endif %}
                             {% else %}
-                                <a href="{% url 'account_login' %}" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">
-                                    Sign In to Connect or to Create a Connect
-                                </a>
+                                <button type="button" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">
+                                    Connect
+                                </button>
                             {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
+                {% empty %}
+                <p>No games found.</p>
                 {% endfor %}
             </div>
         </div>
         {% else %}
         <div class="col-12">
-            <p class="text-center">There are no published games available</p>
+            <p class="text-center">You haven't add any game yet.</p>
+            <p class="text-center">
+                <a href="{% url 'game_create' %}" class="btn btn-success mb-3" tabindex="1">Let's create Connect now!</a>
+            </p>
         </div>
         {% endif %}
     </div>
