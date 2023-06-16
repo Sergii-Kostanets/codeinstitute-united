@@ -24,5 +24,5 @@ urlpatterns = [
     path('', include('connect.urls'), name='connect_urls'),
     path('blog/', include('blog.urls'), name='blog_urls'),
     path('accounts/', include('allauth.urls')),
-    path('verification-file.html', TemplateView.as_view(template_name='googleee4e9b2810051589.html')),
+    path('googleee4e9b2810051589.html', TemplateView.as_view(template_name='googleee4e9b2810051589.html')),
 ]
