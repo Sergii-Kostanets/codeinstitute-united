@@ -49,3 +49,13 @@ label[for="id_remember"] {
 .socialaccount_providers-custom li {
     margin: 0 10px;
 }
+
+@media screen and (max-width: 400px) {
+    .socialaccount_providers-custom {
+        flex-direction: column;
+    }
+    
+    .socialaccount_providers-custom li {
+        margin: 0 10px 10px;
+    }
+}

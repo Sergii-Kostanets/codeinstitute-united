@@ -103,3 +103,17 @@
 .published {
     color:rgb(81, 81, 177);
 }
+
+.card-button-action {
+    width: 80px;
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        padding: 1px;
+    }
+    
+    .container-fluid {
+        padding: 1px;
+    }
+}

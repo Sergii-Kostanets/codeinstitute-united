@@ -44,15 +44,15 @@
                                 {% if game.author == user %}
                                 <form method="get" action="{% url 'game_edit' game.slug %}" id="game-list-edit-button">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-warning col-3 ml-1 mr-1 mb-3">
+                                    <button type="submit" class="btn btn-warning col-3 col-md-2 ml-1 mr-1 mb-3">
                                         Edit
                                     </button>
                                 </form>                                
                                 {% else %}
-                                <a href="{% url 'game_connect' game.slug %}" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">Connect</a>
+                                <a href="{% url 'game_connect' game.slug %}" class="btn btn-secondary col-4 col-md-2 ml-1 mr-1 mb-3">Connect</a>
                                 {% endif %}
                             {% else %}
-                                <button type="button" class="btn btn-secondary col-3 ml-1 mr-1 mb-3">
+                                <button type="button" class="btn btn-secondary col-4 col-md-2 ml-1 mr-1 mb-3">
                                     Connect
                                 </button>
                             {% endif %}

@@ -37,26 +37,26 @@
                                 {% if game.author == user %}
                                 <form method="get" action="{% url 'game_edit' game.slug %}" id="game-list-publish-button">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-warning col-3 ml-1 mr-1 mb-3">
+                                    <button type="submit" class="btn btn-warning card-button-action ml-1 mr-1 mb-3">
                                         Edit
                                     </button>
                                 </form>      
                                 <form method="get" action="{% url 'game_delete' game.slug %}" id="game-list-delete-button">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger col-3 ml-1 mr-1 mb-3">
+                                    <button type="submit" class="btn btn-danger card-button-action ml-1 mr-1 mb-3">
                                         Delete
                                     </button>
                                 </form>
                                 {% else %}
                                 <form method="get" action="{% url 'game_publish' game.pk %}" id="game-list-publish-button">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary col-3 ml-1 mr-1 mb-3">
+                                    <button type="submit" class="btn btn-primary card-button-action ml-1 mr-1 mb-3">
                                         Publish
                                     </button>
                                 </form>
                                 <form method="get" action="{% url 'game_delete' game.slug %}" id="game-list-delete-button">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger col-3 ml-1 mr-1 mb-3">
+                                    <button type="submit" class="btn btn-danger card-button-action ml-1 mr-1 mb-3">
                                         Delete
                                     </button>
                                 </form>
