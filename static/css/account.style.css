@@ -50,6 +50,18 @@ label[for="id_remember"] {
     margin: 0 10px;
 }
 
+.account-settings-form {
+    text-align: center;
+}
+
+.account-settings-form input {
+    margin-bottom: 15px;
+}
+
+.account-settings-form button {
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 400px) {
     .socialaccount_providers-custom {
         flex-direction: column;

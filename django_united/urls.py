@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from .views import account_settings
 
 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
     path('blog/', include('blog.urls'), name='blog_urls'),
     path('accounts/', include('allauth.urls')),
     path('googleee4e9b2810051589.html', TemplateView.as_view(template_name='googleee4e9b2810051589.html')),
+    path('account/settings/', account_settings, name='account_settings'),
 ]
