@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="text-center text-dark m-3">Delete Game Connect</h1>
+<h1 class="text-center text-dark m-3">Delete {{ game.title }}</h1>
 
 <div class="container-fluid">
     <div class="row mb-4">
@@ -22,6 +22,7 @@
 </div>
 
 <script>
+    document.getElementsByTagName('title')[0].innerText = 'United | Delete {{ game.title }}';
     document.getElementById('nav-item-connect').classList.remove('active');
 </script>
 

@@ -51,10 +51,6 @@
                                 {% else %}
                                 <a href="{% url 'game_connect' game.slug %}" class="btn btn-secondary col-4 col-md-2 ml-1 mr-1 mb-3">Connect</a>
                                 {% endif %}
-                            {% else %}
-                                <button type="button" class="btn btn-secondary col-4 col-md-2 ml-1 mr-1 mb-3">
-                                    Connect
-                                </button>
                             {% endif %}
                             </div>
                         </div>
@@ -99,6 +95,7 @@
 </div>
 
 <script>
+    document.getElementsByTagName('title')[0].innerText = 'United | My Games';
     document.getElementById('nav-item-connect').classList.remove('active');
     document.getElementById('nav-item-my-games').classList.add('font-weight-light');
 </script>

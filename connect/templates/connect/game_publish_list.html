@@ -86,7 +86,6 @@
             {% if page_obj.has_previous %}
             <li>
                 <a href="?page={{page_obj.previous_page_number}}" class="page-link">
-                    <!-- <span aria-hidden="true">&laquo;</span> PREV -->
                     &laquo; PREV
                 </a>
             </li>
@@ -94,7 +93,6 @@
             {% if page_obj.has_next %}
             <li>
                 <a href="?page={{page_obj.next_page_number}}" class="page-link">
-                    <!-- NEXT <span aria-hidden="true">&raquo;</span> -->
                     NEXT &raquo;
                 </a>
             </li>
@@ -106,6 +104,7 @@
 </div>
 
 <script>
+    document.getElementsByTagName('title')[0].innerText = 'United | Publish games';
     document.getElementById('nav-item-connect').classList.remove('active');
     document.getElementById('nav-item-publish-games').classList.add('font-weight-light');
 </script>
