@@ -8,4 +8,4 @@ class GameForm(forms.ModelForm):
     
     class Meta:
         model = Game
-        fields = ('title', 'slug', 'excerpt', 'content', 'featured_image')
+        fields = ('title', 'slug', 'platform', 'excerpt', 'content', 'featured_image')

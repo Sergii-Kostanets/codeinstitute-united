@@ -4,6 +4,21 @@ from cloudinary.models import CloudinaryField
 
 STATUS = (0, "Draft"), (1, "Publish")
 
+PLATFORM = [
+    ('All platforms', 'All platforms'),
+    ('PC', 'PC'),
+    ('Xbox', 'Xbox'),
+    ('Xbox 360', 'Xbox 360'),
+    ('Xbox One', 'Xbox One'),
+    ('Xbox Series', 'Xbox Series'),
+    ('PlayStation', 'PlayStation'),
+    ('PlayStation 2', 'PlayStation 2'),
+    ('PlayStation 3', 'PlayStation 3'),
+    ('PlayStation 4', 'PlayStation 4'),
+    ('PlayStation 5', 'PlayStation 5'),
+    ('Nintendo Switch', 'Nintendo Switch'),
+    ('Nintendo Wii', 'Nintendo Wii'),
+]
 
 class Game(models.Model):
 
@@ -18,6 +33,7 @@ class Game(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    platform = models.CharField(max_length=20, choices=PLATFORM, default='All platforms')
 
     class Meta:
         ordering = ['-created_on']

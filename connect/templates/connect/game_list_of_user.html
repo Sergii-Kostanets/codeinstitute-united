@@ -15,9 +15,9 @@
                         <div class="col-md-8 m-0 pl-0 pr-0 pr-md-3">
                             <h3 class="card-title text-center">{{game.title}}</h3>
                             <p class="author text-center">
-                                <small>with {{ game.author }}</small>
+                                <small>with {{ game.author }} on {{ game.platform }}</small>
                                 {% if game.status == 0 %}
-                                <small class="draft">Waiting for approval</small>
+                                <small class="draft">Awaiting approval</small>
                                 {% elif game.status == 1 %}
                                 <small class="published">Published</small>
                                 {% endif %}

@@ -49,7 +49,8 @@
     width: 70px;
 }
 
-#game-form p input {
+#game-form p input,
+#game-form p select {
     display: block;
     width: 100%;
     min-height: 30px;
