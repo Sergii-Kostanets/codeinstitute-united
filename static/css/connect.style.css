@@ -108,6 +108,10 @@
     width: 80px;
 }
 
+.accordion>.card>.card-header {
+    margin-bottom: 0px;
+}
+
 @media screen and (max-width: 414px) {
     .container-fluid {
         padding: 1px;
