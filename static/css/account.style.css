@@ -62,7 +62,7 @@ label[for="id_remember"] {
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
     .socialaccount_providers-custom {
         flex-direction: column;
     }
