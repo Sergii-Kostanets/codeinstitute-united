@@ -40,7 +40,7 @@
 </div>
 
 <script>
-    document.getElementsByTagName('title')[0].innerText = 'United | Text {{game.author}}';
+    document.getElementsByTagName('title')[0].innerText = 'United | Email {{game.author}}';
     document.getElementById('nav-item-connect').classList.remove('active');
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -59,6 +59,10 @@
 
 <script>
     function sendMail(contactForm){
+        document.getElementsByTagName("h1")[0].inner = "Sending...";
+        document.getElementsByTagName("h3")[0].innerText = "Please wait";
+        document.getElementsByTagName("h5")[0].innerHTML = "<i class=\"fas fa-circle-notch fa-spin\"></i>";
+        document.getElementsByClassName("center-form")[0].innerHTML = "";
         emailjs.send("service_8h6blrb", "template_4c6eawq", {
             "from_name": contactForm.name.value,
             "from_email": contactForm.emailaddress.value,
@@ -72,12 +76,14 @@
                 console.log("SUCCESS", response);
                 document.getElementsByTagName("h1")[0].innerText = "Thank you for your message!";
                 document.getElementsByTagName("h3")[0].innerText = "Now just wait for the reply.";
+                document.getElementsByTagName("h5")[0].innerText = "Meanwhile, you can check out other great games or create your oun connect:";
                 document.getElementsByClassName("center-form")[0].innerHTML = "<div id=\"game-form-buttons\"><a href=\"{% url 'game_list' %}\" class=\"btn btn-primary mb-3\" tabindex=\"1\">Back to Games</a><a href=\"{% url 'game_create' %}\" class=\"btn btn-success mb-3\" tabindex=\"2\">Create a Connect</a></div>";
             },
             function(error){
                 console.log("FAILED", error);
                 document.getElementsByTagName("h1")[0].innerText = "Oops! Something went wrong."
                 document.getElementsByTagName("h3")[0].innerText = "Please try again later.";
+                document.getElementsByTagName("h5")[0].innerText = "Meanwhile, you can check out other games or create your oun connect.";
                 document.getElementsByClassName("center-form")[0].innerHTML = "<div id=\"game-form-buttons\"><a href=\"{% url 'game_list' %}\" class=\"btn btn-primary mb-3\" tabindex=\"1\">Back to Games</a><a href=\"{% url 'game_create' %}\" class=\"btn btn-success mb-3\" tabindex=\"2\">Create a Connect</a></div>";
             },
         );
