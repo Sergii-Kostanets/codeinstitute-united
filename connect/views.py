@@ -9,6 +9,10 @@ from .models import Game
 from django.http import JsonResponse
 from django.db.models import Q
 
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from django.views.generic import ListView
+from django.db.models import Q
 
 class GameList(generic.ListView):
     model = Game
@@ -78,16 +82,35 @@ class GameDelete(LoginRequiredMixin, DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-class GamePublishList(generic.ListView):
+class GamePublishList(ListView):
     model = Game
     template_name = 'connect/game_publish_list.html'
     paginate_by = 5
 
     def get_queryset(self):
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get('search')
+
         if self.request.user.is_staff:
-            return Game.objects.filter(status=0).order_by('-created_on')
+            queryset = queryset.filter(status=0)
+
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(platform__icontains=search_query) |
+                Q(excerpt__icontains=search_query) |
+                Q(author__username__icontains=search_query) |
+                Q(content__icontains=search_query)
+            )
+
+        return queryset
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.is_ajax():
+            game_list_html = render_to_string('connect/game_publish_list_ajax.html', context, request=self.request)
+            return JsonResponse({'game_list_html': game_list_html})
         else:
-            return Game.objects.none()  # Empty queryset for non-staff users
+            return super().render_to_response(context, **response_kwargs)
 
 
 class GamePublish(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
