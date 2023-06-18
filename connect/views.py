@@ -14,13 +14,15 @@ from django.views.generic import ListView
 
 class GameList(generic.ListView):
     model = Game
-    queryset = Game.objects.filter(status=1).order_by('-created_on')
     template_name = 'connect/game_list.html'
     paginate_by = 5
 
     def get_queryset(self):
         queryset = super().get_queryset()
         search_query = self.request.GET.get('search')
+
+        # Filter the queryset to exclude drafts (status=0)
+        queryset = queryset.filter(status=1)
 
         if search_query:
             # Filter the queryset based on the search query
@@ -110,6 +112,7 @@ class GamePublishList(ListView):
             game_list_html = render_to_string('connect/game_publish_list.html', context, request=self.request)
             return JsonResponse({'game_list_html': game_list_html})
         else:
+            context['game_list'] = context['object_list']
             return super().render_to_response(context, **response_kwargs)
 
 
@@ -117,7 +120,7 @@ class GamePublish(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Game
     form_class = GameForm
     template_name = 'connect/game_publish.html'
-    success_url = reverse_lazy('game_list')
+    success_url = reverse_lazy('game_publish_list')
 
     def test_func(self):
         return self.request.user.is_staff

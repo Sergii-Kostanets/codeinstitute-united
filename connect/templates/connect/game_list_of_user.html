@@ -73,10 +73,14 @@
         </div>
         {% else %}
         <div class="col-12">
-            <p class="text-center">You haven't add any game yet.</p>
+            {% if request.GET.search %}
+            <p class="text-center">No games found</p>
+            {% else %}
+            <p class="text-center">You haven't add any game yet</p>
             <p class="text-center">
                 <a href="{% url 'game_create' %}" class="btn btn-success mb-3" tabindex="1">Let's create Connect now!</a>
             </p>
+            {% endif %}
         </div>
         {% endif %}
     </div>

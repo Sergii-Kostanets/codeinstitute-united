@@ -76,11 +76,17 @@
                     </div>
                 </div>
             </div>
+            {% empty %}
+            <p>No draft games available</p>
             {% endfor %}
         </div>
         {% else %}
         <div class="col-12">
-            <p class="text-center">There are no draft games available</p>
+            {% if request.GET.search %}
+                <p class="text-center">No results found</p>
+            {% else %}
+                <p class="text-center">There are no draft games available</p>
+            {% endif %}
         </div>
         {% endif %}
         {% else %}
@@ -118,13 +124,6 @@
     document.getElementById('nav-item-connect').classList.remove('active');
     document.getElementById('nav-item-publish-games').classList.add('font-weight-light');
 </script>
-
-<!-- <script>
-    function scrollToTop(slug) {
-        const element = document.getElementById('heading-' + slug);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-</script> -->
 
 <script>
     // Wait for the DOM to be loaded

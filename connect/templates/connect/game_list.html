@@ -68,7 +68,11 @@
         </div>
         {% else %}
         <div class="col-12">
+            {% if request.GET.search %}
+            <p class="text-center">No games found</p>
+            {% else %}
             <p class="text-center">There are no published games available</p>
+            {% endif %}
         </div>
         {% endif %}
     </div>
