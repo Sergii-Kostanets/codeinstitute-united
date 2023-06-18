@@ -7,12 +7,34 @@ from django.urls import reverse_lazy
 from .forms import GameForm
 from .models import Game
 
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+
 
 class GameList(generic.ListView):
     model = Game
     queryset = Game.objects.filter(status=1).order_by('-created_on')
     template_name = 'connect/game_list.html'
     paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get('search')
+
+        if search_query:
+            # Filter the queryset based on the search query
+            queryset = queryset.filter(title__icontains=search_query)
+
+        return queryset
+
+    def render_to_response(self, context, **response_kwargs):
+        # Check if the request is an AJAX request
+        if self.request.is_ajax():
+            # Return an empty JSON response for AJAX requests
+            return JsonResponse({})
+        else:
+            # Render the game list template as usual
+            return super().render_to_response(context, **response_kwargs)
 
 
 class GameCreate(LoginRequiredMixin, CreateView):
