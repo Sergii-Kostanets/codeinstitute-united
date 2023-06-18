@@ -85,14 +85,14 @@
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{page_obj.previous_page_number}}" class="page-link">
+                <a href="?page={{page_obj.previous_page_number}}" class="page-link text-muted border-0 rounded">
                     &laquo; PREV
                 </a>
             </li>
             {% endif %}
             {% if page_obj.has_next %}
             <li>
-                <a href="?page={{page_obj.next_page_number}}" class="page-link">
+                <a href="?page={{page_obj.next_page_number}}" class="page-link text-muted border-0 rounded">
                     NEXT &raquo;
                 </a>
             </li>
