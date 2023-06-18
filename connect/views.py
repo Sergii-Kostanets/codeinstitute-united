@@ -8,7 +8,8 @@ from .forms import GameForm
 from .models import Game
 
 from django.http import JsonResponse
-from django.template.loader import render_to_string
+
+from django.db.models import Q
 
 
 class GameList(generic.ListView):
@@ -23,7 +24,13 @@ class GameList(generic.ListView):
 
         if search_query:
             # Filter the queryset based on the search query
-            queryset = queryset.filter(title__icontains=search_query)
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(platform__icontains=search_query) |
+                Q(excerpt__icontains=search_query) |
+                Q(author__username__icontains=search_query) |
+                Q(content__icontains=search_query)
+            )
 
         return queryset
 
