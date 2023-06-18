@@ -50,7 +50,7 @@ class GameCreate(LoginRequiredMixin, CreateView):
     model = Game
     form_class = GameForm
     template_name = 'connect/game_create.html'
-    success_url = reverse_lazy('game_list')
+    success_url = reverse_lazy('game_list_of_user')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -62,7 +62,7 @@ class GameUpdate(LoginRequiredMixin, UpdateView):
     model = Game
     form_class = GameForm
     template_name = 'connect/game_edit.html'
-    success_url = reverse_lazy('game_list')
+    success_url = reverse_lazy('game_list_of_user')
 
     def form_valid(self, form):
         game = form.save(commit=False)

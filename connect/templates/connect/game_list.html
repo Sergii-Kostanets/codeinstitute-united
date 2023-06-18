@@ -76,28 +76,37 @@
         </div>
         {% endif %}
     </div>
-
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{page_obj.previous_page_number}}" class="page-link text-muted border-0 rounded">
-                    <span aria-hidden="true">&laquo;</span> NEW
+                <a href="?search={{ request.GET.search }}&page={{ page_obj.previous_page_number }}" class="page-link text-muted border-0 rounded">
+                    &laquo; NEW
                 </a>
             </li>
             {% endif %}
+            {% for page in paginator.page_range %}
+                {% if page_obj.number == page %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ page }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a href="?search={{ request.GET.search }}&page={{ page }}" class="page-link text-muted border-0 rounded">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
             {% if page_obj.has_next %}
             <li>
-                <a href="?page={{page_obj.next_page_number}}" class="page-link text-muted border-0 rounded">
-                    OLD <span aria-hidden="true">&raquo;</span>
+                <a href="?search={{ request.GET.search }}&page={{ page_obj.next_page_number }}" class="page-link text-muted border-0 rounded">
+                    OLD &raquo;
                 </a>
             </li>
             {% endif %}
         </ul>
     </nav>
     {% endif %}
-
 </div>
 
 <!-- <script>
