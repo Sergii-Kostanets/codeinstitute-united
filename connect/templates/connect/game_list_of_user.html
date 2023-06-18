@@ -4,7 +4,17 @@
 
 <h1 class="text-center text-dark m-3">My Games</h1>
 
-<div class="container-fluid">
+<div class="row">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-0 mb-3">
+        <form id="search-form" method="GET">
+            <div class="input-group">
+                <input type="text" id="search-input" class="form-control" name="search" placeholder="Search games" tabindex="1">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid" id="game-list-container">
     <div class="row">
         {% if game_list %}
         <div class="accordion col-12 mb-4" id="accordionExample">
@@ -106,5 +116,56 @@
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 </script> -->
+
+<script>
+    // Wait for the DOM to be loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the search form and input elements
+        var searchForm = document.getElementById('search-form');
+        var searchInput = document.getElementById('search-input');
+        var gameListContainer = document.getElementById('game-list-container');
+
+        // Function to update the game list with filtered results
+        function updateGameList(query) {
+            // Perform AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '{% url "game_list_of_user" %}?search=' + encodeURIComponent(query), true);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Parse the response as an HTML document
+                    var parser = new DOMParser();
+                    var responseDoc = parser.parseFromString(xhr.responseText, 'text/html');
+
+                    // Get the game list container from the parsed document
+                    var parsedGameListContainer = responseDoc.getElementById('game-list-container');
+
+                    // Update the game list with the filtered results
+                    gameListContainer.innerHTML = parsedGameListContainer.innerHTML;
+                }
+            };
+
+            xhr.onerror = function() {
+                console.error('An error occurred while performing the search.');
+            };
+
+            xhr.send();
+        }
+
+        // Handle input event
+        searchInput.addEventListener('input', function() {
+            // Get the search query from the input field
+            var query = searchInput.value.trim();
+
+            // Update the game list with the filtered results
+            updateGameList(query);
+        });
+
+        // Prevent form submission
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    });
+</script>
 
 {%endblock%}
