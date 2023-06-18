@@ -18,8 +18,8 @@
     <div class="row">
         {% if game_list %}
         <div class="accordion col-12 mb-4" id="accordionExample">
+            {% for game in game_list %}
             <div class="card">
-                {% for game in game_list %}
                 <div class="card-header btn text-left bg-dark text-light border-light rounded" id="heading-{{game.slug}}" data-toggle="collapse" data-target="#collapse-{{game.slug}}" aria-expanded="true" aria-controls="collapse-{{game.slug}}" onclick="scrollToTop('{{game.slug}}')">
                     <div class="row align-items-center m-0 pl-0">
                         <div class="col-md-8 m-0 pl-0 pr-0 pr-md-3">
@@ -66,10 +66,10 @@
                         </div>
                     </div>
                 </div>
-                {% empty %}
-                <p>No games found.</p>
-                {% endfor %}
             </div>
+            {% empty %}
+            <p>No games found.</p>
+            {% endfor %}
         </div>
         {% else %}
         <div class="col-12">
