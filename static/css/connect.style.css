@@ -157,9 +157,36 @@
 }
 
 .page-item.active .page-link {
-    background-color: #343a40;
+    background-color: #343a4047;
     border-color: #343a40;
     border-radius: 3px;
+    border: 0;
+}
+
+.page-item {
+    margin: 0 1px;
+}
+
+.page-link:focus {
+    box-shadow: none;
+    background-color: #343a4011;
+}
+
+.page-item.active .page-link:focus {
+    background-color: #343a4011!important;
+}
+
+.page-item.active .page-link:hover {
+    background-color: #343a4033;
+}
+
+.pagination li:first-child a,
+.pagination li:last-child a {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.disabled span {
     border: 0;
 }
 
@@ -175,5 +202,15 @@ footer p a:hover {
 @media screen and (max-width: 414px) {
     .container-fluid {
         padding: 1px;
+    }
+    
+    .pagination li a,
+    .pagination li span {
+        padding: 10px 5px;
+    }
+
+    .pagination li:first-child a,
+    .pagination li:last-child a {
+        padding: 10px 15px;
     }
 }
