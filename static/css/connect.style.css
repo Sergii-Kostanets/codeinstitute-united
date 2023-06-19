@@ -163,6 +163,15 @@
     border: 0;
 }
 
+footer p a:focus {
+    outline: none;
+    color: rgba(255,255,255,.5)!important;
+}
+
+footer p a:hover {
+    color: rgba(255,255,255,.5)!important;
+}
+
 @media screen and (max-width: 414px) {
     .container-fluid {
         padding: 1px;

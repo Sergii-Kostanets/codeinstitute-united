@@ -162,3 +162,12 @@ a:hover {
     background: transparent;
     border: none;
 }
+
+footer p a:focus {
+    outline: none;
+    color: rgba(255,255,255,.5)!important;
+}
+
+footer p a:hover {
+    color: rgba(255,255,255,.5)!important;
+}
