@@ -20,6 +20,17 @@
 </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var titleInput = document.getElementById('id_title');
+        var slugInput = document.getElementById('id_slug');
+    
+        titleInput.addEventListener('input', function() {
+            var title = titleInput.value;
+            var slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            slugInput.value = slug;
+        });
+    });
+    
     document.getElementsByTagName('title')[0].innerText = 'United | Add game';
     document.getElementById('nav-item-connect').classList.remove('active');
     document.getElementById('nav-item-add-game').classList.add('active');
@@ -33,17 +44,6 @@
     document.querySelector('#game-form button[type="submit"]').tabIndex = 7;
     document.querySelector('#game-form .btn-warning').tabIndex = 8;
     document.querySelector('#game-form .btn-danger').tabIndex = 9;
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var titleInput = document.getElementById('id_title');
-        var slugInput = document.getElementById('id_slug');
-    
-        titleInput.addEventListener('input', function() {
-            var title = titleInput.value;
-            var slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            slugInput.value = slug;
-        });
-    });
 </script>
 
 {%endblock%}
