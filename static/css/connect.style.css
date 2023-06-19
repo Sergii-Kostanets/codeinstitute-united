@@ -11,6 +11,21 @@
     font-weight: 300;
 }
 
+.navbar-brand:focus {
+    outline: none;
+    background-color: #ffffff0d;
+    border-radius: 7px;
+}
+
+.navbar-brand span:focus {
+    color: #fff;
+    background-color: #ffffff0d;
+}
+
+.navbar-nav li a:focus {
+    outline: none;
+}
+
 #game-list-edit-button {
     width: 100%;
     display: flex;

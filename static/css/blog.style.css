@@ -7,8 +7,6 @@ a:hover {
 }
 
 .brand {
-    /* font-family: Lato, sans-serif; */
-    /* font-size: 1.4rem; */
     font-weight: 700;
     color: #a6a600;
 }
@@ -19,6 +17,21 @@ a:hover {
 
 .thin {
     font-weight: 300;
+}
+
+.navbar-brand:focus {
+    outline: none;
+    background-color: #ffffff0d;
+    border-radius: 7px;
+}
+
+.navbar-brand span:focus {
+    color: #fff;
+    background-color: #ffffff0d;
+}
+
+.navbar-nav li a:focus {
+    outline: none;
 }
 
 .light-bg {
