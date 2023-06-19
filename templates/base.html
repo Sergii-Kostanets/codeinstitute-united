@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>United | Account</title>
-    <link rel="icon"href="{% static 'account/favicon.ico' %}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'account/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'account/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'account/favicon-16x16.png' %}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -22,7 +25,9 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{% url 'account_settings' %}">
-                <span class="brand">United</span> <i class="fas fa-circle-notch fa-spin"></i> <span class="red">Account</span>
+                <span class="brand">United</span>
+                <img src="{% static 'account/united.png' %}" alt="United brand logo" class="navbar-brand-logo">
+                <span class="red">Account</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

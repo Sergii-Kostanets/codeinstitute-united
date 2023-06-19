@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>United | Connect</title>
-    <link rel="icon"href="{% static 'connect/favicon.ico' %}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'connect/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'connect/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'connect/favicon-16x16.png' %}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -20,7 +23,9 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/">
-                <span class="brand">United</span> <i class="fas fa-circle-notch fa-spin"></i> <span class="red">Connect</span>
+                <span class="brand">United</span>
+                <img src="{% static 'connect/united.png' %}" alt="United brand logo" class="navbar-brand-logo">
+                <span class="red">Connect</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

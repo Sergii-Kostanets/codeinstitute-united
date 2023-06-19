@@ -36,7 +36,11 @@
 {% endif %}
 
 <script>
-    document.getElementById("nav-item-my-account").classList.add("font-weight-light")
+    document.getElementById("nav-item-my-account").classList.add("font-weight-light");
+    
+    document.querySelector(".account-settings-form input[name='username']").tabIndex = 1;
+    document.querySelector(".account-settings-form input[name='email']").tabIndex = 2;
+    document.querySelector(".account-settings-form button[type='submit']").tabIndex = 3;
 </script>
 
 {% endblock %}

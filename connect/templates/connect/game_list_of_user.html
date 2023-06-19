@@ -1,6 +1,6 @@
 {% extends "connect/base.html" %}
 
-{% block content %}
+{% block content %}{% load static %}
 
 <h1 class="text-center text-dark m-3">My Games</h1>
 
@@ -36,9 +36,9 @@
                         </div>
                         <div class="col-md-4 m-0 p-0 image-container">
                             {% if "placeholder" in game.featured_image.url %}
-                            <img class="card-img-top rounded" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Card image cap">
+                            <img class="card-img-top rounded" src="{% static 'connect/united.jpeg' %}" alt="{{game.title}} poster placeholder">
                             {% else %}
-                            <img class="card-img-top rounded" src="{{ game.featured_image.url }}" alt="Card image cap">
+                            <img class="card-img-top rounded" src="{{ game.featured_image.url }}" alt="{{game.title}} poster">
                             {% endif %}
                         </div>
                     </div>
