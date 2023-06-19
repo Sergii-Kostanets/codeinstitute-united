@@ -21,8 +21,19 @@
     </div>
 </div>
 
+
 <script>
     document.getElementById('nav-item-connect').classList.remove('active');
+    document.querySelector('#game-form input[name="title"]').tabIndex = 1;
+    document.querySelector('#game-form input[name="slug"]').tabIndex = 2;
+    document.querySelector('#game-form select[name="platform"]').tabIndex = 3;
+    document.querySelector('#game-form textarea[name="excerpt"]').tabIndex = 4;
+    document.querySelector('#game-form #id_content_iframe').tabIndex = 5;
+    document.querySelector('#game-form a').tabIndex = 6;
+    document.querySelector('#game-form input[name="featured_image"]').tabIndex = 7;
+    document.querySelector('#game-form button[type="submit"]').tabIndex = 8;
+    document.querySelector('#game-form .btn-warning').tabIndex = 9;
+    document.querySelector('#game-form .btn-danger').tabIndex = 10;
 </script>
 
 {%endblock%}

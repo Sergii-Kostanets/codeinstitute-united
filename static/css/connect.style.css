@@ -1,6 +1,4 @@
 .brand {
-    /* font-family: Lato, sans-serif; */
-    /* font-size: 1.4rem; */
     font-weight: 700;
     color: #a6a600;
 }
@@ -67,6 +65,36 @@
     padding: 5px 3px;
     border: 1px solid #00000032;
     border-radius: 0.25rem;
+}
+
+#game-form p:nth-last-child(2) a {
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #00000032;
+    border-radius: 0.25rem;
+    padding: 0 0 0 2px;
+    background-color: #00000032;
+}
+
+#game-form p:nth-last-child(2) a:hover {
+    background-color: transparent;
+}
+
+#game-form p:nth-last-child(2) a:focus {
+    background-color: #f1f1f1;
+}
+
+#game-form:nth-last-child(1) input[type="file"] {
+    background-color: #00000032;
+    cursor: pointer;
+}
+
+#game-form:nth-last-child(1) input[type="file"]:hover {
+    background-color: transparent;
+}
+
+#game-form:nth-last-child(1) input[type="file"]:focus {
+    background-color: #f1f1f1;
 }
 
 #id_featured_image {
