@@ -30,6 +30,10 @@
     outline: none;
 }
 
+.card {
+    margin: 0px;
+}
+
 #game-list-edit-button {
     width: 100%;
     display: flex;
