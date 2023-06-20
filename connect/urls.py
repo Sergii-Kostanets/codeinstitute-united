@@ -11,3 +11,5 @@ urlpatterns = [
     path('game-connect/<slug:slug>/', views.GameConnect.as_view(), name='game_connect'),
     path('my-games/', views.GamesOfUser.as_view(), name='game_list_of_user'),
 ]
+
+handler404 = "connect.views.page_not_found_view"
