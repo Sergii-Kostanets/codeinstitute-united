@@ -28,3 +28,5 @@ urlpatterns = [
     path('googleee4e9b2810051589.html', TemplateView.as_view(template_name='googleee4e9b2810051589.html')),
     path('account/settings/', account_settings, name='account_settings'),
 ]
+
+handler404 = "django_united.views.page_not_found_view"
