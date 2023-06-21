@@ -126,7 +126,6 @@
     padding: 2px;
 }
 
-#connect-404-buttons,
 #game-form-buttons {
     display: flex;
     flex-direction: row;
@@ -221,9 +220,5 @@ footer p a:hover {
     .pagination li:first-child a,
     .pagination li:last-child a {
         padding: 10px 15px;
-    }
-    
-    #connect-404-buttons {
-        flex-direction: column;
     }
 }
