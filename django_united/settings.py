@@ -40,7 +40,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 if development:
     ALLOWED_HOSTS = ['127.0.0.1']
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN')]
 
 # Application definition
 
