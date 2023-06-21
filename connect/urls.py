@@ -3,6 +3,8 @@ from django.urls import path
 from django.conf.urls import handler400, handler403, handler404, handler500
 from django.conf import settings
 
+handler404 = 'connect.views.page_not_found'
+
 urlpatterns = [
     path('', views.GameList.as_view(), name='game_list'),
     path('game-create', views.GameCreate.as_view(), name='game_create'),
@@ -16,10 +18,5 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += [
-        path('404', views.page_not_found, name='404'),
+        path('404', views.page_not_found_local_test, name='404'),
     ]
-
-handler400 = 'connect.views.page_not_found'
-handler403 = 'connect.views.page_not_found'
-handler404 = 'connect.views.page_not_found'
-handler500 = 'connect.views.page_not_found'
