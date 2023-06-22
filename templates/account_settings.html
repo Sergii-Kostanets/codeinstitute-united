@@ -19,7 +19,8 @@
                         {{ form.email.label_tag }}
                         {{ form.email }}
                         {{ form.email.errors }}
-
+                        
+                        <a href="{% url 'socialaccount_connections' %}" class="d-block mb-4 pt-3" tabindex="3">Connect or remove Social Account</a>
                         <button type="submit" class="btn btn-success">Save</button>
 
             </form>
@@ -40,7 +41,7 @@
     
     document.querySelector(".account-settings-form input[name='username']").tabIndex = 1;
     document.querySelector(".account-settings-form input[name='email']").tabIndex = 2;
-    document.querySelector(".account-settings-form button[type='submit']").tabIndex = 3;
+    document.querySelector(".account-settings-form button[type='submit']").tabIndex = 4;
 </script>
 
 {% endblock %}

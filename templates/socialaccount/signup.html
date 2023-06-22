@@ -22,15 +22,6 @@
             {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-
-                {% if form.errors %}
-                <ul class="errorlist text-center">
-                    <li>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}
-                    NOTE: If you already have a {{site_name}} account and want to link your {{provider_name}} account please click {% endblocktrans %}
-                    <a href="{% url 'socialaccount_connections' %}">{% trans " Here" %}</a> to log in first.</li>
-                </ul>
-                {% endif %}
-
                 <button type="submit" class="btn btn-success">{% trans "Sign Up" %} &raquo;</button>
                 <p class="text-center mt-3 mb-1">
                     <strong>{% trans "Menu:" %}</strong>
