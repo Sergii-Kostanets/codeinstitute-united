@@ -11,37 +11,35 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
 
-                {% get_providers as socialaccount_providers %}
-                {% if socialaccount_providers %}
-                
-                {% blocktrans %}
-                <p class="text-center">
-                    Welcome to United! To leave a request, comment or like a post, please log in. <br>
-                    If you have not created an account yet, then please
-                    <a href="{{ signup_url }}">sign up</a> 
-                    first.
-                </p>
-                {% endblocktrans %}
-                <div class="socialaccount_ballot">
-                    <ul class="socialaccount_providers list-group socialaccount_providers-custom">
-                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                    </ul>
-                    <div class="login-or text-center">{% trans 'or' %}</div>
-                </div>
-                {% include "socialaccount/snippets/login_extra.html" %}
-                
-                {% else %}
-                
-                {% blocktrans %}
-                <p class="text-center">
-                    Welcome to United! To leave a request, comment or like a post, please log in. <br>
-                    If you have not created an account yet, then please
-                    <a href="{{ signup_url }}"><strong>sign up</strong></a> 
-                    first.
-                </p>
-                {% endblocktrans %}
-                
-                {% endif %}
+            {% get_providers as socialaccount_providers %}
+            {% if socialaccount_providers %}
+            
+            {% blocktrans %}
+            <p class="text-center">
+                Welcome to United! To leave a request, comment or like a post, please log in. <br>
+                If you have not created an account yet, then please
+                <a href="{{ signup_url }}">sign up</a> first.
+            </p>
+            {% endblocktrans %}
+            <div class="socialaccount_ballot">
+                <ul class="socialaccount_providers list-group socialaccount_providers-custom">
+                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                </ul>
+                <div class="login-or text-center">{% trans 'or' %}</div>
+            </div>
+            {% include "socialaccount/snippets/login_extra.html" %}
+            
+            {% else %}
+            
+            {% blocktrans %}
+            <p class="text-center">
+                Welcome to United! To leave a request, comment or like a post, please log in. <br>
+                If you have not created an account yet, then please
+                <a href="{{ signup_url }}"><strong>sign up</strong></a> first.
+            </p>
+            {% endblocktrans %}
+            
+            {% endif %}
 
         </div>
     </div>

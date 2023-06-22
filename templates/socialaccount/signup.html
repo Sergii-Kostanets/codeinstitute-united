@@ -10,8 +10,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
-            <p class="text-center">{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to 
-{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+            <p class="text-center">
+                {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to {{site_name}}.
+                <br>
+                As a final step, please complete the following form:{% endblocktrans %}
+            </p>
 
             <form class="signup text-center mb-4" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
             {% csrf_token %}
@@ -19,6 +22,15 @@
             {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
+
+                {% if form.errors %}
+                <ul class="errorlist text-center">
+                    <li>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}
+                    NOTE: If you already have a {{site_name}} account and want to link your {{provider_name}} account please click {% endblocktrans %}
+                    <a href="{% url 'socialaccount_connections' %}">{% trans " Here" %}</a> to log in first.</li>
+                </ul>
+                {% endif %}
+
                 <button type="submit" class="btn btn-success">{% trans "Sign Up" %} &raquo;</button>
                 <p class="text-center mt-3 mb-1">
                     <strong>{% trans "Menu:" %}</strong>

@@ -1,21 +1,46 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n %}{% load account socialaccount %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
 <h1 class="text-center text-dark mt-3">{% trans "Sign Up" %}</h1>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
+
+            {% get_providers as socialaccount_providers %}
+            {% if socialaccount_providers %}
+                
+            {% blocktrans %}
             <p class="text-center">
-                {% blocktrans %}
                 Already have an account? <br>
                 Then please
                 <a href="{{ login_url }}">sign in</a>.
-                {% endblocktrans %}
             </p>
+            {% endblocktrans %}
+            <div class="socialaccount_ballot">
+                <ul class="socialaccount_providers list-group socialaccount_providers-custom">
+                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                </ul>
+                <div class="login-or text-center">{% trans 'or' %}</div>
+            </div>
+            {% include "socialaccount/snippets/login_extra.html" %}
+            
+            {% else %}
+                
+            {% blocktrans %}
+            <p class="text-center">
+                Already have an account? <br>
+                Then please
+                <a href="{{ login_url }}">sign in</a>.
+            </p>
+            {% endblocktrans %}
+                
+            {% endif %}
+            
         </div>
     </div>
     <div class="row">
