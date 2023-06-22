@@ -119,6 +119,16 @@ SOCIALACCOUNT_PROVIDERS = {
         'FIELDS': ['username', 'email'],
         'VERIFIED_EMAIL': True,
     },
+    'github_domain': {
+        'APP': {
+            'client_id': os.environ.get('GITHUB_CLIENT_ID_DOMAIN'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET_DOMAIN'),
+            'key': ''
+        },
+        'SCOPE': ['user:email'],
+        'FIELDS': ['username', 'email'],
+        'VERIFIED_EMAIL': True,
+    },
 }
 
 MIDDLEWARE = [
