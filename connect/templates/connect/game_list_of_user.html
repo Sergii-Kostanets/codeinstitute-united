@@ -15,10 +15,9 @@
 </div>
 
 <div class="container-fluid" id="game-list-container">
-    <div class="row">
-        {% if game_list %}
-        <div class="accordion col-12 mb-4" id="accordionExample">
-            {% for game in game_list %}
+    <div class="row mb-4">
+        {% for game in game_list %}
+        <div class="accordion col-12" id="accordion-{{game.slug}}">
             <div class="card border-0">
                 <div class="card-header btn text-left bg-dark text-light border-light rounded" id="heading-{{game.slug}}" data-toggle="collapse" data-target="#collapse-{{game.slug}}" aria-expanded="true" aria-controls="collapse-{{game.slug}}" onclick="scrollToTop('{{game.slug}}')">
                     <div class="row align-items-center m-0 pl-0">
@@ -43,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="collapse-{{game.slug}}" class="collapse" aria-labelledby="heading-{{game.slug}}" data-parent="#accordionExample">
+                <div id="collapse-{{game.slug}}" class="collapse" aria-labelledby="heading-{{game.slug}}" data-parent="#accordion-{{game.slug}}">
                     <div class="card-body text-justify">
                         {{ game.content | safe }}
                     </div>
@@ -67,11 +66,8 @@
                     </div>
                 </div>
             </div>
-            {% empty %}
-            <p>No games found.</p>
-            {% endfor %}
         </div>
-        {% else %}
+        {% empty %}
         <div class="col-12">
             {% if request.GET.search %}
             <p class="text-center">No games found</p>
@@ -82,7 +78,7 @@
             </p>
             {% endif %}
         </div>
-        {% endif %}
+        {% endfor %}
     </div>
     {% if is_paginated %}
     <nav aria-label="Page navigation">
@@ -144,19 +140,6 @@
 </div>
 
 <script>
-    document.getElementsByTagName('title')[0].innerText = 'United | My Games';
-    document.getElementById('nav-item-connect').classList.remove('active');
-    document.getElementById('nav-item-my-games').classList.add('font-weight-light');
-</script>
-
-<!-- <script>
-    function scrollToTop(slug) {
-        const element = document.getElementById('heading-' + slug);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-</script> -->
-
-<script>
     // Wait for the DOM to be loaded
     document.addEventListener('DOMContentLoaded', function() {
         // Get the search form and input elements
@@ -205,6 +188,15 @@
             event.preventDefault();
         });
     });
+
+    function scrollToTop(slug) {
+        const element = document.getElementById('heading-' + slug);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementsByTagName('title')[0].innerText = 'United | My Games';
+    document.getElementById('nav-item-connect').classList.remove('active');
+    document.getElementById('nav-item-my-games').classList.add('font-weight-light');
 </script>
 
 {%endblock%}
