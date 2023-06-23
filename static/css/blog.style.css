@@ -122,6 +122,11 @@ a:hover {
     z-index: 100;
 }
 
+.masthead-image img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
 .post-link {
     text-decoration: none;
     color: #445261;
@@ -138,7 +143,7 @@ a:hover {
 }
 
 .post-title {
-    margin-top: 20%;
+    margin-top: 15%;
     margin-left: 5%;
 }
 
