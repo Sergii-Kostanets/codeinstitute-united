@@ -8,8 +8,6 @@ from .forms import CommentForm
 
 from django.utils.text import slugify
 
-import cloudinary.uploader
-
 
 class PostList(generic.ListView):
     model = Post
@@ -104,7 +102,8 @@ class PostCreate(View):
             post.author = request.user
             post.slug = slugify(post.title)
             post.save()
-            return redirect('post_list')  # Redirect to the post_list page
+            messages.success(self.request, 'Your post has been created and is awaiting approval')
+            return redirect('post_list')
         return render(
             request,
             'blog/post_create.html',
@@ -113,3 +112,36 @@ class PostCreate(View):
             },
         )
 
+
+class PostEdit(View):
+    def get(self, request, pk, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(instance=post)
+        return render(
+            request,
+            'blog/post_edit.html',
+            {
+                'form': form,
+                'post': post,
+            },
+        )
+
+    def post(self, request, pk, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.slug = slugify(post.title)
+            post.status = 0
+            post.save()
+            messages.success(self.request, 'Your post has been updated and is awaiting approval')
+            return redirect('post_list')
+        return render(
+            request,
+            'blog/post_edit.html',
+            {
+                'form': form,
+                'post': post,
+            },
+        )

@@ -12,6 +12,21 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ('status', 'created_on')
     summernote_fields = ('content',)
 
+    fieldsets = (
+        ('Header', {
+            'fields': ('title', 'slug', 'excerpt',)
+        }),
+        ('Main', {
+            'fields': ('content',),
+        }),
+        ('Additional', {
+            'fields': ('featured_image',),
+        }),
+        ('Publish', {
+            'fields': ('status',),
+        }),
+    )
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

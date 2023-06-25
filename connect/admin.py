@@ -11,15 +11,18 @@ class GameAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',),}
     list_filter = ('status', 'platform', 'created_on')
     summernote_fields = ('content',)
-    
+
     fieldsets = (
         ('Header', {
             'fields': ('title', 'slug', 'platform', 'excerpt',)
         }),
-        ('Main Information', {
+        ('Main', {
             'fields': ('content',),
         }),
-        ('Additional Information', {
+        ('Additional', {
             'fields': ('featured_image',),
+        }),
+        ('Publish', {
+            'fields': ('status',),
         }),
     )
