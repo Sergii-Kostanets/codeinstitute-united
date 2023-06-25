@@ -22,7 +22,7 @@ PLATFORM = [
 
 class Game(models.Model):
 
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200, unique=False)
     slug = models.SlugField(max_length=200, unique=True)
     platform = models.CharField(max_length=20, choices=PLATFORM, default='All platforms')
     author = models.ForeignKey(
