@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -7,6 +7,8 @@ from .forms import PostForm
 from .forms import CommentForm
 
 from django.utils.text import slugify
+
+import cloudinary.uploader
 
 
 class PostList(generic.ListView):
@@ -96,14 +98,13 @@ class PostCreate(View):
         )
 
     def post(self, request, *args, **kwargs):
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = slugify(post.title)  # Generate the slug from the title
+            post.slug = slugify(post.title)
             post.save()
-            # return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
-            return HttpResponseRedirect(reverse('post_list',))
+            return redirect('post_list')  # Redirect to the post_list page
         return render(
             request,
             'blog/post_create.html',
@@ -111,3 +112,4 @@ class PostCreate(View):
                 'form': form,
             },
         )
+

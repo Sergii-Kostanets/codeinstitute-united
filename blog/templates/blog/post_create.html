@@ -4,7 +4,7 @@
 
 <h1 class="text-center text-dark mt-3">Create a New Post</h1>
 
-<form id="post-form" method="post">
+<form id="post-form" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form.as_p }}
     <div id="post-form-buttons">
