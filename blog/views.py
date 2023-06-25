@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Post
+from .forms import PostForm
 from .forms import CommentForm
 
 
@@ -79,3 +80,25 @@ class PostLike(View):
             post.likes.add(request.user)
         
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostCreate(View):
+    def get(self, request, *args, **kwargs):
+        form = PostForm()
+        return render(
+            request,
+            'blog/post_create.html',
+            {
+                'form': form,
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
+        return render(request, 'blog/post_create.html', {'form': form})
+

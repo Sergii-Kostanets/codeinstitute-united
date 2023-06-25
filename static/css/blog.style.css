@@ -195,3 +195,111 @@ footer p a:focus {
 footer p a:hover {
     color: rgba(255,255,255,.5)!important;
 }
+
+#id_body {
+    min-height: 37px;
+    max-height: 137px;
+}
+
+
+
+
+
+#post-form {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+#post-form:nth-last-child(2) {
+    background-color: #E84610;
+}
+
+#post-form p {
+    display: flex;
+    flex-direction: column;
+}
+
+#post-form p label {
+    display: block;
+    width: 70px;
+}
+
+#post-form p input,
+#post-form p select {
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    border: 1px solid #00000032;
+    border-radius: 0.25rem;
+}
+
+#post-form p textarea {
+    display: block;
+    width: 100%;
+    height: 100px;
+    max-height: 100px;
+    min-height: 30px;
+    padding: 5px 3px;
+    border: 1px solid #00000032;
+    border-radius: 0.25rem;
+}
+
+#post-form p:nth-last-child(2) a {
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #00000032;
+    border-radius: 0.25rem;
+    padding: 0 0 0 2px;
+    background-color: #00000032;
+}
+
+#post-form p:nth-last-child(2) a:hover {
+    background-color: transparent;
+}
+
+#post-form p:nth-last-child(2) a:focus {
+    background-color: #f1f1f1;
+}
+
+#post-form:nth-last-child(1) input[type="file"] {
+    background-color: #00000032;
+    cursor: pointer;
+}
+
+#post-form:nth-last-child(1) input[type="file"]:hover {
+    background-color: transparent;
+}
+
+#post-form:nth-last-child(1) input[type="file"]:focus {
+    background-color: #f1f1f1;
+}
+
+#id_featured_image {
+    border: 1px solid #00000032;
+    border-radius: 0.25rem;
+    padding: 2px;
+}
+
+#post-form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.summernote-div {
+    margin-top: -16px;
+}
+
+.errorlist {
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-align: center;
+}
+
+.errorlist li {
+    color: red;
+    list-style-type: none;
+}
