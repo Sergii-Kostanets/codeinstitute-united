@@ -6,6 +6,8 @@ from .models import Post
 from .forms import PostForm
 from .forms import CommentForm
 
+from django.utils.text import slugify
+
 
 class PostList(generic.ListView):
     model = Post
@@ -98,7 +100,14 @@ class PostCreate(View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.slug = slugify(post.title)  # Generate the slug from the title
             post.save()
-            return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
-        return render(request, 'blog/post_create.html', {'form': form})
-
+            # return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
+            return HttpResponseRedirect(reverse('post_list',))
+        return render(
+            request,
+            'blog/post_create.html',
+            {
+                'form': form,
+            },
+        )
