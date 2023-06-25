@@ -56,10 +56,6 @@
     line-height: 18px;
 }
 
-#game-form:nth-last-child(2) {
-    background-color: #E84610;
-}
-
 #game-form p {
     display: flex;
     flex-direction: column;

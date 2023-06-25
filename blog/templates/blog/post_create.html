@@ -12,5 +12,18 @@
         <a class="btn btn-warning" href="{% url 'post_list' %}">Cancel</a>
     </div>
 </form>
+
+<script>
+    document.getElementsByTagName('title')[0].innerText = 'United | Add game';
+    document.getElementById('nav-item-blog').classList.remove('active');
+    document.getElementById('nav-item-add-post').classList.add('active');
+
+    document.querySelector('#post-form input[name="title"]').tabIndex = 1;
+    document.querySelector('#post-form textarea[name="excerpt"]').tabIndex = 2;
+    document.querySelector('#post-form #id_content_iframe').tabIndex = 3;
+    document.querySelector('#post-form input[name="featured_image"]').tabIndex = 4;
+    document.querySelector('#post-form button[type="submit"]').tabIndex = 5;
+    document.querySelector('#post-form .btn-warning').tabIndex = 6;
+</script>
   
 {% endblock %}

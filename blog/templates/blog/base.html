@@ -54,7 +54,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-item-add-game" aria-current="page" href="{% url 'post_create' %}">Add post</a>
+                        <a class="nav-link" id="nav-item-add-post" aria-current="page" href="{% url 'post_create' %}">Add post</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -62,7 +62,7 @@
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'post_list' %}">Blog</a>
+                        <a class="nav-link active" id="nav-item-blog" aria-current="page" href="{% url 'post_list' %}">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-connect" aria-current="page" href="/">Connect</a>

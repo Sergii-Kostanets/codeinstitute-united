@@ -200,19 +200,11 @@ footer p a:hover {
     max-height: 137px;
 }
 
-
-
-
-
 #post-form {
     display: flex;
     flex-direction: column;
     font-size: 16px;
     line-height: 18px;
-}
-
-#post-form:nth-last-child(2) {
-    background-color: #E84610;
 }
 
 #post-form p {
