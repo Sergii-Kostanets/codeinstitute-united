@@ -8,6 +8,7 @@ from .forms import CommentForm
 
 from django.utils.text import slugify
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 
 
 class PostList(generic.ListView):
@@ -18,10 +19,19 @@ class PostList(generic.ListView):
 
 
 class PostDetail(View):
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_staff:
+            post = get_object_or_404(Post, slug=kwargs['slug'], status=1)
+        else:
+            post = get_object_or_404(Post, slug=kwargs['slug'])
+
+        self.post = post
+        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
+        post = self.post
+
         comments = post.comments.filter(approved=True).order_by('created_on')
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
@@ -155,7 +165,10 @@ class PostDelete(LoginRequiredMixin, View):
         # Check if the post belongs to the current user
         if post.author == request.user:
             post.delete()
-            messages.success(request, 'Post deleted successfully.')
+            messages.success(request, 'Post deleted successfully')
+        elif request.user.is_staff:
+            post.delete()
+            messages.success(request, 'Post deleted successfully')
         else:
             messages.error(request, 'You do not have permission to delete this post')
 
@@ -167,3 +180,36 @@ class PostPublishList(LoginRequiredMixin, generic.ListView):
     queryset = Post.objects.filter(status=0).order_by('-created_on')
     template_name = 'blog/post_publish_list.html'
     paginate_by = 6
+
+
+class PostPublish(View):
+    def get(self, request, pk, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(instance=post)
+        return render(
+            request,
+            'blog/post_publish.html',
+            {
+                'form': form,
+                'post': post,
+            },
+        )
+
+    def post(self, request, pk, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.slug = slugify(post.title)
+            post.status = 1
+            post.save()
+            messages.success(self.request, 'The post has been published successfully')
+            return redirect('post_list')
+        return render(
+            request,
+            'blog/post_publish.html',
+            {
+                'form': form,
+                'post': post,
+            },
+        )

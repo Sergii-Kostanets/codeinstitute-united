@@ -19,6 +19,20 @@ class PostForm(forms.ModelForm):
             if not stripped_content.strip():
                 raise forms.ValidationError("Content field is required")
         return content
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        title = cleaned_data.get('title')
+        if title:
+            # Convert the title to lowercase
+            title = title.lower()
+            # Check if there are any other posts with the same lowercase title
+            existing_posts = Post.objects.filter(title__iexact=title)
+            if self.instance:
+                existing_posts = existing_posts.exclude(pk=self.instance.pk)
+            if existing_posts.exists():
+                self.add_error('title', 'A post with this title already exists')
+        return cleaned_data
 
 
 class CommentForm(forms.ModelForm):
