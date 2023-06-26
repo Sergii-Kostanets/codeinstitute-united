@@ -294,3 +294,11 @@ footer p a:hover {
     color: red;
     list-style-type: none;
 }
+
+.confirmation-dialog {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

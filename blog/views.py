@@ -7,6 +7,7 @@ from .forms import PostForm
 from .forms import CommentForm
 
 from django.utils.text import slugify
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class PostList(generic.ListView):
@@ -145,3 +146,18 @@ class PostEdit(View):
                 'post': post,
             },
         )
+
+
+class PostDelete(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+
+        # Check if the post belongs to the current user
+        if post.author == request.user:
+            post.delete()
+            messages.success(request, 'Post deleted successfully.')
+        else:
+            messages.error(request, 'You do not have permission to delete this post')
+
+        return redirect('post_list')
+
