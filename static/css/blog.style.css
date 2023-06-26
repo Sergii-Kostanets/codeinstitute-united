@@ -136,8 +136,9 @@ a:hover {
     color: #E84610;
 }
 
-.page-link {
-    background-color: #F9FAFC;
+.page-link,
+.page-item.disabled {
+    background-color: #F9FAFC!important;
 }
 
 .post-link:focus-visible {

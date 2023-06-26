@@ -41,6 +41,9 @@
     function showDeleteConfirmation() {
       $('#deleteConfirmationModal').modal('show');
     }
+    
+    document.getElementById('nav-item-blog').classList.remove('active');
+    document.getElementsByTagName('title')[0].innerHTML = "United | Publish {{ post.title }}";
 </script>  
   
 {% endblock %}
