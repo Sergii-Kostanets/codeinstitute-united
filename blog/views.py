@@ -5,10 +5,11 @@ from django.contrib import messages
 from .models import Post
 from .forms import PostForm
 from .forms import CommentForm
-
 from django.utils.text import slugify
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import Http404
+from django.http import JsonResponse
+from django.db.models import Q
+from django.template.loader import render_to_string
 
 
 class PostList(generic.ListView):
@@ -196,9 +197,35 @@ class PostDelete(LoginRequiredMixin, View):
 
 class PostPublishList(LoginRequiredMixin, generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=0).order_by('-created_on')
     template_name = 'blog/post_publish_list.html'
     paginate_by = 12
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get('search')
+
+        if self.request.user.is_staff:
+            queryset = queryset.filter(status=0).order_by('-created_on')
+
+            if search_query:
+                queryset = queryset.filter(
+                    Q(title__icontains=search_query) |
+                    Q(excerpt__icontains=search_query) |
+                    Q(content__icontains=search_query)
+                )
+
+        else:
+            queryset = queryset.none()
+
+        return queryset
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.is_ajax():
+            post_list_html = render_to_string('blog/post_publish_list.html', context, request=self.request)
+            return JsonResponse({'post_list_html': post_list_html})
+        else:
+            context['post_list'] = context['object_list']
+            return super().render_to_response(context, **response_kwargs)
 
 
 class PostPublish(View):
