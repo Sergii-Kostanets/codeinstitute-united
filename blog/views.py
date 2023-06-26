@@ -17,6 +17,25 @@ class PostList(generic.ListView):
     template_name = 'blog/post_list.html'
     paginate_by = 12
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get('search')
+        queryset = queryset.filter(status=1)
+        if search_query:
+            queryset = queryset.filter(
+                title__icontains=search_query
+            ) | queryset.filter(
+                excerpt__icontains=search_query
+            ) | queryset.filter(
+                content__icontains=search_query
+            )
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_query'] = self.request.GET.get('search', '')
+        return context
+
 
 class PostDetail(View):
     
