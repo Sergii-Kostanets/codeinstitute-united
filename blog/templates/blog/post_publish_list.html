@@ -37,7 +37,7 @@
                                 <p class="card-text" tabindex="-1">{{post.excerpt}}</p>
                             </a>
                             <hr>
-                            <p class="card-text text-muted additional-info">{{post.created_on}} <i class="far fa-heart"></i> {{post.number_of_likes}}</p>
+                            <p class="card-text text-muted additional-info">{{post.created_on|date:"M d, Y"}} <i class="far fa-heart"></i> {{post.number_of_likes}}</p>
                         </div>
                     </div>
                 </div>
