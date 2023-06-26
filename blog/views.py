@@ -15,7 +15,7 @@ class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog/post_list.html'
-    paginate_by = 6
+    paginate_by = 12
 
 
 class PostDetail(View):
@@ -179,7 +179,7 @@ class PostPublishList(LoginRequiredMixin, generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=0).order_by('-created_on')
     template_name = 'blog/post_publish_list.html'
-    paginate_by = 6
+    paginate_by = 12
 
 
 class PostPublish(View):
@@ -213,3 +213,13 @@ class PostPublish(View):
                 'post': post,
             },
         )
+
+
+class PostListUser(LoginRequiredMixin, generic.ListView):
+    model = Post
+    template_name = 'blog/post_list_user.html'
+    context_object_name = 'posts'
+    paginate_by = 12
+
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.user).order_by('-created_on')

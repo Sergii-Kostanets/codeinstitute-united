@@ -136,6 +136,10 @@ a:hover {
     color: #E84610;
 }
 
+.page-link {
+    background-color: #F9FAFC;
+}
+
 .post-link:focus-visible {
     outline: none;
     color: #E84610;
