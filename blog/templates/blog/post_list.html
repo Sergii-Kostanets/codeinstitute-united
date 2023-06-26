@@ -38,6 +38,15 @@
             <div class="row">
             {% endif %}
             
+            {% empty %}
+            <div class="col-12">
+                {% if request.GET.search %}
+                    <p class="text-center">No results found</p>
+                {% else %}
+                    <p class="text-center">No published posts available</p>
+                {% endif %}
+            </div>
+            
             {% endfor %}
             </div>
         </div>
@@ -50,7 +59,6 @@
             {% if page_obj.has_previous %}
             <li>
                 <a href="?page={{page_obj.previous_page_number}}" class="page-link">
-                    <!-- <span aria-hidden="true">&laquo;</span> PREV -->
                     &laquo; PREV
                 </a>
             </li>
@@ -58,7 +66,6 @@
             {% if page_obj.has_next %}
             <li>
                 <a href="?page={{page_obj.next_page_number}}" class="page-link">
-                    <!-- NEXT <span aria-hidden="true">&raquo;</span> -->
                     NEXT &raquo;
                 </a>
             </li>

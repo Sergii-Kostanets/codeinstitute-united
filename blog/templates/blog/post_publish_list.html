@@ -2,7 +2,7 @@
 
 {% block content %}{% load static %}
 
-<h1 class="text-center text-dark mt-3">Blog your experience</h1>
+<h1 class="text-center text-dark mt-3">Publish posts</h1>
 
 <div class="container-fluid">
 
@@ -38,6 +38,15 @@
             <div class="row">
             {% endif %}
             
+            {% empty %}
+            <div class="col-12">
+                {% if request.GET.search %}
+                    <p class="text-center">No results found</p>
+                {% else %}
+                    <p class="text-center">No draft posts available</p>
+                {% endif %}
+            </div>
+            
             {% endfor %}
             </div>
         </div>
@@ -68,5 +77,11 @@
     {% endif %}
 
 </div>
+
+<script>
+    document.getElementsByTagName('title')[0].innerText = 'United | Publish posts';
+    document.getElementById('nav-item-blog').classList.remove('active');
+    document.getElementById('nav-item-publish-posts').classList.add('font-weight-light');
+</script>
 
 {%endblock%}

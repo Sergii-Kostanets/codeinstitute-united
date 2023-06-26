@@ -52,9 +52,6 @@
                             <li><a class="dropdown-item" id="nav-item-sign-out" href="{% url 'account_logout' %}">Sign out</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'game_create' %}">Add game</a>
-                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
