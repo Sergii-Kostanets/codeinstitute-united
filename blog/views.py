@@ -161,3 +161,9 @@ class PostDelete(LoginRequiredMixin, View):
 
         return redirect('post_list')
 
+
+class PostPublishList(LoginRequiredMixin, generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=0).order_by('-created_on')
+    template_name = 'blog/post_publish_list.html'
+    paginate_by = 6
