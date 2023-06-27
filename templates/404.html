@@ -15,11 +15,11 @@
                 <a href="{% url 'post_list' %}" class="btn btn-info" tabindex="2">Read Blog</a>
             </div>
             <div class="page-404-buttons">
-                <a href="{% url 'game_list_of_user' %}" class="btn btn-warning" tabindex="3">Check your Games</a>
-                <a href="{% url 'game_create' %}" class="btn btn-success" tabindex="4">Create a Connect</a>
+                <a href="{% url 'game_create' %}" class="btn btn-warning" tabindex="3">Create a Connect</a>
+                <a href="{% url 'post_create' %}" class="btn btn-success" tabindex="4">Create a Post</a>
                 {% else %}
                 <a href="{% url 'game_list' %}" class="btn btn-primary" tabindex="1">Connect</a>
-                <a href="{% url 'game_list' %}" class="btn btn-info" tabindex="2">Blog</a>
+                <a href="{% url 'post_list' %}" class="btn btn-info" tabindex="2">Blog</a>
             </div>
             <div class="page-404-buttons">
                 <a href="{% url 'account_login' %}" class="btn btn-warning" tabindex="3">Sign In</a>
