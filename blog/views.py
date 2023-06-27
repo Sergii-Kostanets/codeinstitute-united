@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.core.exceptions import PermissionDenied
+from django.urls import reverse
 
 
 class PostList(generic.ListView):
@@ -90,17 +91,18 @@ class PostDetail(View):
         else:
             comment_form = CommentForm()
 
-        return render(
-            request,
-            "blog/post_detail.html",
-            {
-                "post": post,
-                "comments": comments,
-                "commented": True,
-                "liked": liked,
-                "comment_form": comment_form,
-            },
-        )
+        # return render(
+        #     request,
+        #     "blog/post_detail.html",
+        #     {
+        #         "post": post,
+        #         "comments": comments,
+        #         "commented": True,
+        #         "liked": liked,
+        #         "comment_form": comment_form,
+        #     },
+        # )
+        return redirect(reverse('post_detail', kwargs={'slug': slug}))
 
 
 class PostLike(View):
