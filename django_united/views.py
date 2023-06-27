@@ -16,3 +16,7 @@ def account_settings(request):
             messages.error(request, 'Error updating account.')
 
     return render(request, 'account_settings.html', {'form': form})
+
+
+def page_not_found_local(request, *args, **kwargs):
+    return render(request, '404.html', status=404)

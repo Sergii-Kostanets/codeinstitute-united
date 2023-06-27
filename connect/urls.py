@@ -1,9 +1,6 @@
 from . import views
 from django.urls import path
-from django.conf.urls import handler404
-from django.conf import settings
 
-handler404 = 'connect.views.page_not_found_local'
 
 urlpatterns = [
     path('', views.GameList.as_view(), name='game_list'),
@@ -15,8 +12,3 @@ urlpatterns = [
     path('game-connect/<slug:slug>/', views.GameConnect.as_view(), name='game_connect'),
     path('my-games/', views.GamesOfUser.as_view(), name='game_list_of_user'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += [
-        path('404', views.page_not_found_local, name='404'),
-    ]

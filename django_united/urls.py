@@ -17,6 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from .views import account_settings
+from django.conf.urls import handler404, handler403
+from django.conf import settings
+from .views import page_not_found_local
+
+handler404 = 'django_united.urls.page_not_found_local'
+handler403 = 'django_united.urls.page_not_found_local'
 
 
 urlpatterns = [
@@ -28,3 +34,8 @@ urlpatterns = [
     path('googleee4e9b2810051589.html', TemplateView.as_view(template_name='googleee4e9b2810051589.html')),
     path('account/settings/', account_settings, name='account_settings'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        path('404', page_not_found_local, name='404'),
+    ]

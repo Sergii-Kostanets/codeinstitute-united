@@ -162,8 +162,3 @@ class GamesOfUser(LoginRequiredMixin, generic.ListView):
             )
 
         return queryset
-
-
-def page_not_found_local(request, *args, **kwargs):
-    return render(request, '404.html', status=404)
-
