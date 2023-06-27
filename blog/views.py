@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.db.models import Q
 from django.template.loader import render_to_string
+from django.core.exceptions import PermissionDenied
 
 
 class PostList(generic.ListView):
@@ -41,10 +42,11 @@ class PostList(generic.ListView):
 class PostDetail(View):
     
     def dispatch(self, request, *args, **kwargs):
-        if not self.request.user.is_staff:
-            post = get_object_or_404(Post, slug=kwargs['slug'], status=1)
-        else:
-            post = get_object_or_404(Post, slug=kwargs['slug'])
+        post = get_object_or_404(Post, slug=kwargs['slug'])
+
+        if not request.user.is_staff:
+            if post.status == 0 and post.author != request.user:
+                raise PermissionDenied
 
         self.post = post
         return super().dispatch(request, *args, **kwargs)

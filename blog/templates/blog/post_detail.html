@@ -12,6 +12,15 @@
                 <p class="post-subtitle">{{ post.author }} | {{post.created_on|date:"M d, Y"}}</p>
                 {% if user.is_authenticated %}
                 {% if post.author == user %}
+                {% if post.status == 0 %}
+                <div class="post-status-draft">
+                    <p>Awaiting approval</p>
+                </div>
+                {% elif post.status == 1 %}
+                <div class="post-status-published">
+                    <p>Published</p>
+                </div>
+                {% endif %}
                 <div class="d-flex">
                     <a class="btn btn-warning ml-4 mb-2" href="{% url 'post_edit' post.pk %}">Edit</a>
                     <a class="btn btn-danger ml-4 mb-2" onclick="showDeleteConfirmation();">Delete</a>

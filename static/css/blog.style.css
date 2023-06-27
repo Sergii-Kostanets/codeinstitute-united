@@ -68,12 +68,17 @@ a:hover {
     position: relative;
 }
 
-.image-flash {
+.image-flash,
+.image-flash-draft {
     position: absolute;
     bottom: 5%;
     min-width: 30%;
     left: -2px;
     background-color: #23BBBB;
+}
+
+.image-flash-draft {
+    background-color: burlywood;
 }
 
 .author {
@@ -124,6 +129,21 @@ a:hover {
 .masthead-image img {
     aspect-ratio: 16/9;
     object-fit: cover;
+}
+
+.post-status-draft,
+.post-status-published {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+}
+
+.post-status-draft {
+    color: burlywood;
+}
+
+.post-status-published {
+    color: #23BBBB;
 }
 
 .post-link {
@@ -191,15 +211,6 @@ a:hover {
     border: none;
 }
 
-footer p a:focus {
-    outline: none;
-    color: rgba(255,255,255,.5)!important;
-}
-
-footer p a:hover {
-    color: rgba(255,255,255,.5)!important;
-}
-
 #id_body {
     min-height: 37px;
     max-height: 137px;
@@ -259,16 +270,16 @@ footer p a:hover {
     background-color: #f1f1f1;
 }
 
-#post-form:nth-last-child(1) input[type="file"] {
+#post-form input[type="file"] {
     background-color: #00000032;
     cursor: pointer;
 }
 
-#post-form:nth-last-child(1) input[type="file"]:hover {
+#post-form input[type="file"]:hover {
     background-color: transparent;
 }
 
-#post-form:nth-last-child(1) input[type="file"]:focus {
+#post-form input[type="file"]:focus {
     background-color: #f1f1f1;
 }
 
@@ -349,6 +360,15 @@ hr {
 
 .disabled span {
     border: 0;
+}
+
+footer p a:focus {
+    outline: none;
+    color: rgba(255,255,255,.5)!important;
+}
+
+footer p a:hover {
+    color: rgba(255,255,255,.5)!important;
 }
 
 @media screen and (max-width: 414px) {

@@ -2,9 +2,19 @@
 
 {% block content %}{% load static %}
 
-<h1 class="text-center text-dark mt-3">My Posts</h1>
+<h1 class="text-center text-dark m-3">My Posts</h1>
 
-<div class="container-fluid">
+<div class="row">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-0 mb-3">
+        <form id="search-form" method="GET">
+            <div class="input-group">
+                <input type="text" id="search-input" class="form-control" name="search" placeholder="Search posts" tabindex="1">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid" id="post-list-container">
     <div class="row">
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -19,13 +29,15 @@
                                     {% else %}
                                     <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{post.title}} - post" tabindex="-1">
                                     {% endif %}
-                                    <div class="image-flash">
-                                        {% if post.status == 0 %}
+                                    {% if post.status == 0 %}
+                                    <div class="image-flash-draft">
                                         <p class="author">Awaiting approval</p>
-                                        {% elif post.status == 1 %}
-                                        <p class="author text-center">Published</p>
-                                        {% endif %}
                                     </div>
+                                    {% elif post.status == 1 %}
+                                    <div class="image-flash">
+                                        <p class="author text-center">Published</p>
+                                    </div>
+                                    {% endif %}
                                 </div>
                                 <h2 class="card-title" tabindex="-1">{{post.title}}</h2>
                                 <p class="card-text" tabindex="-1">{{post.excerpt}}</p>
