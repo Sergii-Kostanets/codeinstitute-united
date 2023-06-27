@@ -270,4 +270,28 @@ class PostListUser(LoginRequiredMixin, generic.ListView):
     paginate_by = 12
 
     def get_queryset(self):
-        return Post.objects.filter(author=self.request.user).order_by('-created_on')
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get('search')
+
+        if self.request.user.is_authenticated:
+            queryset = queryset.filter(author=self.request.user).order_by('-created_on')
+        
+            if search_query:
+                queryset = queryset.filter(
+                    Q(title__icontains=search_query) |
+                    Q(excerpt__icontains=search_query) |
+                    Q(content__icontains=search_query)
+                )
+
+        else:
+            queryset = queryset.none()
+        
+        return queryset
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.is_ajax():
+            post_list_html = render_to_string('blog/post_list_user.html', context, request=self.request)
+            return JsonResponse({'post_list_html': post_list_html})
+        else:
+            context['post_list'] = context['object_list']
+            return super().render_to_response(context, **response_kwargs)

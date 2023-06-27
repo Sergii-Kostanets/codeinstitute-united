@@ -126,6 +126,55 @@
 </div>
 
 <script>
+    // Wait for the DOM to be loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the search form and input elements
+        var searchForm = document.getElementById('search-form');
+        var searchInput = document.getElementById('search-input');
+        var postListContainer = document.getElementById('post-list-container');
+
+        // Function to update the game list with filtered results
+        function updatePostList(query) {
+            // Perform AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '{% url "post_list_user" %}?search=' + encodeURIComponent(query), true);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Parse the response as an HTML document
+                    var parser = new DOMParser();
+                    var responseDoc = parser.parseFromString(xhr.responseText, 'text/html');
+
+                    // Get the game list container from the parsed document
+                    var parsedPostListContainer = responseDoc.getElementById('post-list-container');
+
+                    // Update the game list with the filtered results
+                    postListContainer.innerHTML = parsedPostListContainer.innerHTML;
+                }
+            };
+
+            xhr.onerror = function() {
+                console.error('An error occurred while performing the search.');
+            };
+
+            xhr.send();
+        }
+
+        // Handle input event
+        searchInput.addEventListener('input', function() {
+            // Get the search query from the input field
+            var query = searchInput.value.trim();
+
+            // Update the game list with the filtered results
+            updatePostList(query);
+        });
+
+        // Prevent form submission
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    });
+
     document.getElementsByTagName('title')[0].innerText = 'United | My Posts';
     document.getElementById('nav-item-blog').classList.remove('active');
     document.getElementById('nav-item-my-posts').classList.add('font-weight-light');
