@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.core.exceptions import PermissionDenied
+from django.urls import reverse
 
 
 class PostList(generic.ListView):
@@ -48,15 +49,15 @@ class PostDetail(View):
             if post.status == 0 and post.author != request.user:
                 raise PermissionDenied
 
-        self.post = post
+        self.blog_post = post
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, slug, *args, **kwargs):
-        post = self.post
+        post = self.blog_post
 
         comments = post.comments.filter(approved=True).order_by('created_on')
         liked = False
-        if post.likes.filter(id=self.request.user.id).exists():
+        if post.likes.filter(id=request.user.id).exists():
             liked = True
 
         return render(
@@ -72,11 +73,10 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
+        post = self.blog_post
         comments = post.comments.filter(approved=True).order_by('created_on')
         liked = False
-        if post.likes.filter(id=self.request.user.id).exists():
+        if post.likes.filter(id=request.user.id).exists():
             liked = True
         
         comment_form = CommentForm(data=request.POST)
@@ -91,17 +91,18 @@ class PostDetail(View):
         else:
             comment_form = CommentForm()
 
-        return render(
-            request,
-            "blog/post_detail.html",
-            {
-                "post": post,
-                "comments": comments,
-                "commented": True,
-                "liked": liked,
-                "comment_form": CommentForm(),
-            },
-        )
+        # return render(
+        #     request,
+        #     "blog/post_detail.html",
+        #     {
+        #         "post": post,
+        #         "comments": comments,
+        #         "commented": True,
+        #         "liked": liked,
+        #         "comment_form": comment_form,
+        #     },
+        # )
+        return redirect(reverse('post_detail', kwargs={'slug': slug}))
 
 
 class PostLike(View):
