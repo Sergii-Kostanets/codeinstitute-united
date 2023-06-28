@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from .views import account_settings
-from django.conf.urls import handler404, handler403
+from django.conf.urls import handler404, handler403, handler500
 from django.conf import settings
-from .views import page_not_found_local
+from .views import page_not_found_local, server_error
 
 handler404 = 'django_united.urls.page_not_found_local'
 handler403 = 'django_united.urls.page_not_found_local'
+handler500 = 'django_united.urls.server_error'
 
 
 urlpatterns = [
@@ -38,4 +39,5 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += [
         path('404', page_not_found_local, name='404'),
+        path('500', server_error, name='500'),
     ]
