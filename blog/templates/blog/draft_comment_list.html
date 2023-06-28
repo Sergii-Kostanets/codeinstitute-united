@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+{% if draft_comments %}
+<h1 class="text-center text-dark m-3">Draft Comments to Approve</h1>
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+        {% for comment in draft_comments %}
+            <div class="row mb-2 border border-dark">
+                <div class="col-12 text-center border-bottom">{{ comment.created_on }}</div>
+                <div class="col-12 text-center border-bottom">{{ comment.name }}</div>
+                <div class="col-12 text-center border-bottom">{{ comment.email }}</div>
+                <div class="col-12 text-center border-bottom">
+                    Post:
+                    <a href="{% url 'post_detail' slug=comment.post.slug %}" target="_blank">
+                        {{ comment.post }}
+                    </a>
+                </div>
+                <div class="col-12 text-center border-bottom">
+                    <strong>{{ comment.body }}</strong>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="{% url 'approve_comment' comment_id=comment.id %}">Approve</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<h1 class="text-center text-dark m-3"> No Draft Comments to Approve!</h1>
+{% endif %}
+
+{% endblock %}

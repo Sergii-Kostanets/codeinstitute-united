@@ -43,6 +43,9 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% if request.user.is_staff %}
                             <li>
+                                <a class="dropdown-item" id="nav-item-publish-posts" href="{% url 'draft_comment_list' %}">Publish comments</a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item" id="nav-item-publish-posts" href="{% url 'post_publish_list' %}">Publish posts</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>

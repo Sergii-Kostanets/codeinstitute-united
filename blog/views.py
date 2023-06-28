@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm
 from .forms import CommentForm
 from django.utils.text import slugify
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import JsonResponse
 from django.db.models import Q
 from django.template.loader import render_to_string
@@ -296,3 +296,26 @@ class PostListUser(LoginRequiredMixin, generic.ListView):
         else:
             context['post_list'] = context['object_list']
             return super().render_to_response(context, **response_kwargs)
+
+
+class DraftCommentList(UserPassesTestMixin, View):
+    template_name = 'blog/draft_comment_list.html'
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def get(self, request):
+        draft_comments = Comment.objects.filter(approved=False).order_by('-created_on')
+        return render(request, self.template_name, {'draft_comments': draft_comments})
+
+
+class ApproveComment(View):
+    def get(self, request, comment_id):
+        if not request.user.is_staff:
+            raise PermissionDenied
+
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment.approved = True
+        comment.save()
+
+        return redirect('draft_comment_list')
