@@ -26,11 +26,10 @@ class PostList(generic.ListView):
         queryset = queryset.filter(status=1)
         if search_query:
             queryset = queryset.filter(
-                title__icontains=search_query
-            ) | queryset.filter(
-                excerpt__icontains=search_query
-            ) | queryset.filter(
-                content__icontains=search_query
+                Q(title__icontains=search_query) |
+                Q(excerpt__icontains=search_query) |
+                Q(content__icontains=search_query) |
+                Q(author__username__icontains=search_query)
             )
         return queryset
 
@@ -214,7 +213,8 @@ class PostPublishList(LoginRequiredMixin, generic.ListView):
                 queryset = queryset.filter(
                     Q(title__icontains=search_query) |
                     Q(excerpt__icontains=search_query) |
-                    Q(content__icontains=search_query)
+                    Q(content__icontains=search_query) |
+                    Q(author__username__icontains=search_query)
                 )
 
         else:
