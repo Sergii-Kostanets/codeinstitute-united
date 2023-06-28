@@ -12,6 +12,7 @@ from django.db.models import Q
 from django.template.loader import render_to_string
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 
 class PostList(generic.ListView):
@@ -55,6 +56,12 @@ class PostDetail(View):
         post = self.blog_post
 
         comments = post.comments.filter(approved=True).order_by('created_on')
+
+        # Paginate the comments
+        paginator = Paginator(comments, 30)  # Set the number of comments per page
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         liked = False
         if post.likes.filter(id=request.user.id).exists():
             liked = True
@@ -64,7 +71,7 @@ class PostDetail(View):
             "blog/post_detail.html",
             {
                 "post": post,
-                "comments": comments,
+                "comments": page_obj,
                 "commented": False,
                 "liked": liked,
                 "comment_form": CommentForm(),
@@ -89,18 +96,8 @@ class PostDetail(View):
             messages.add_message(request, messages.SUCCESS, 'Your comment has been added and is awaiting approval')
         else:
             comment_form = CommentForm()
+            messages.add_message(request, messages.ERROR, 'Your comment could not be added')
 
-        # return render(
-        #     request,
-        #     "blog/post_detail.html",
-        #     {
-        #         "post": post,
-        #         "comments": comments,
-        #         "commented": True,
-        #         "liked": liked,
-        #         "comment_form": comment_form,
-        #     },
-        # )
         return redirect(reverse('post_detail', kwargs={'slug': slug}))
 
 

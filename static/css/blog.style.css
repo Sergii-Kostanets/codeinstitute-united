@@ -1,7 +1,3 @@
-body {
-    background-color: #F9FAFC;
-}
-
 a:hover {
     text-decoration: none!important;
 }
@@ -44,10 +40,6 @@ a:hover {
 
 .dark-bg {
     background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
 }
 
 .card {
@@ -102,7 +94,7 @@ a:hover {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #343a40;
     color: white;
     position: relative;
 }
@@ -119,7 +111,7 @@ a:hover {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #343a40;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -154,11 +146,6 @@ a:hover {
 .post-link:hover,
 .page-link {
     color: #E84610;
-}
-
-.page-link,
-.page-item.disabled {
-    background-color: #F9FAFC!important;
 }
 
 .post-link:focus-visible {

@@ -6,9 +6,7 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
-                <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle">{{ post.author }} | {{post.created_on|date:"M d, Y"}}</p>
                 {% if user.is_authenticated %}
                 {% if post.author == user %}
@@ -35,7 +33,6 @@
                 {% endif %}
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="{% static 'blog/united.jpeg' %}" width="100%">
                 {% else %}
@@ -54,7 +51,7 @@
                     {{ post.content | safe }}
                 </p>
                 <div class="row pt-4">
-                    <div class="col-2">
+                    <div class="col-6 col-md-2">
                         <strong>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
@@ -71,12 +68,10 @@
                             <span class="text-secondary">{{ post.number_of_likes }}</span>
                         </strong>
                     </div>
-                    <div class="col-2">
-                        {% with comments.count as total_comments %}
+                    <div class="col-6 col-md-2">
                         <strong class="text-secondary"><i class="far fa-comments"></i>
-                            {{ total_comments }}
+                            {{ post.number_of_published_comments }}
                         </strong>
-                        {% endwith %}
                     </div>
                 </div>
             </div>
@@ -91,27 +86,80 @@
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Comments:</h3>
             <div class="card-body">
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ comment.name }}
                         <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
-                    <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
+
+                {% if comments.has_other_pages %}
+                <nav aria-label="Comments pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if comments.has_previous %}
+                        <li>
+                            <a href="?page={{ comments.previous_page_number }}" class="page-link text-muted border-0 rounded">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if comments.number != 1 %}
+                        <li class="page-item">
+                            <a href="?page=1" class="page-link text-muted border-0 rounded">
+                                OLD
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if comments.number >= 3 %}
+                        <li class="page-item disabled">
+                            <span class="page-link text-muted">&hellip;</span>
+                        </li>
+                        {% endif %}
+                        {% for page in comments.paginator.page_range %}
+                            {% if page > comments.number|add:'1' and page < comments.paginator.num_pages %}
+                            {% if page > 3 and page < comments.number %}
+                            <li class="page-item">
+                                <a href="?page={{ page }}" class="page-link text-muted border-0 rounded">{{ page }}</a>
+                            </li>
+                            {% endif %}
+                        {% elif page >= comments.number|add:'-1' and page <= comments.number|add:'1' %}
+                            <li class="page-item {% if comments.number == page %}active{% endif %}">
+                                <a href="?page={{ page }}" class="page-link text-muted border-0 rounded">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if comments.number < comments.paginator.num_pages|add:'-1' %}
+                        <li class="page-item disabled">
+                            <span class="page-link text-muted">&hellip;</span>
+                        </li>
+                        {% endif %}
+                        {% if comments.number != comments.paginator.num_pages %}
+                        <li class="page-item {% if comments.paginator.num_pages == comments.number %}active{% endif %}">
+                            <a href="?page={{ comments.paginator.num_pages }}" class="page-link text-muted border-0 rounded">
+                                NEW
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if comments.has_next %}
+                        <li>
+                            <a href="?page={{ comments.next_page_number }}" class="page-link text-muted border-0 rounded">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+
             </div>
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
