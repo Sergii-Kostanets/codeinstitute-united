@@ -36,11 +36,11 @@ DEBUG = development
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# if development:
-#     ALLOWED_HOSTS = ['127.0.0.1']
-# else:
-#     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN')]
-ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN'), '127.0.0.1']
+if development:
+    ALLOWED_HOSTS = ['127.0.0.1', os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN')]
+else:
+    ALLOWED_HOSTS = ['127.0.0.1', os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN')]
+
 
 # Application definition
 
@@ -131,16 +131,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# if development:
-#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
-#     SECURE_SSL_REDIRECT = False
-# else:
-#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#     SECURE_SSL_REDIRECT = True
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
-# SECURE_SSL_REDIRECT = False
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+if development:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
+    SECURE_SSL_REDIRECT = False
+else:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
 
 ROOT_URLCONF = 'django_united.urls'
 
@@ -166,17 +162,6 @@ WSGI_APPLICATION = 'django_united.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# if development:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-#     }
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
