@@ -69,7 +69,10 @@
             {% if request.GET.search %}
             <p class="text-center">No games found</p>
             {% else %}
-            <p class="text-center">There are no published games available</p>
+            <p class="text-center">No published games available</p>
+                <p class="text-center">
+                    <a href="{% url 'game_create' %}" class="btn btn-success mb-3" tabindex="2">Let's create a game now!</a>
+                </p>
             {% endif %}
         </div>
         {% endfor %}

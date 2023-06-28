@@ -91,7 +91,7 @@
                     <p class="font-weight-bold">
                         {{ comment.name }}
                         <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on }}
+                            {{ comment.created_on|date:"M d, Y" }}
                         </span> wrote:
                     </p>
                     {{ comment.body | linebreaks }}
