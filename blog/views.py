@@ -13,6 +13,7 @@ from django.template.loader import render_to_string
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 from django.core.paginator import Paginator
+from django.forms import ValidationError
 
 
 class PostList(generic.ListView):
@@ -130,7 +131,19 @@ class PostCreate(View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = slugify(post.title)
+            if not post.slug:
+                post.slug = slugify(post.title)
+            try:
+                post.full_clean()  # Validate the post model, including the slug field
+            except ValidationError as e:
+                form.errors['__all__'] = e.messages  # Add the validation error to the form
+                return render(
+                    request,
+                    'blog/post_create.html',
+                    {
+                        'form': form,
+                    },
+                )
             post.save()
             messages.success(self.request, 'Your post has been created and is awaiting approval')
             return redirect('post_list')
