@@ -15,6 +15,9 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
     * [Site Owners Goal](<#site-owners-goal>)
     * [Project Management](<#project-management>)
 
+* [**User Experience (UX)**](<#user-experience-ux>)
+    * [User Stories](<#user-stories>)
+
 # **Project**
 
 ## Objective
@@ -39,6 +42,32 @@ I've been using the project board in GitHub to keep my project together. It help
 </details><br/>
 
 [Back to top](<#contents>)
+
+### Database Schema
+I've used a modelling tool called [Graph Models](https://django-extensions.readthedocs.io/en/latest/graph_models.html) to create the database schema. It shows the relationships between the different models in the database connected to the application. Graph Models exports a *.png file which visualize models.
+
+Models used (besides standard user model) in this project are:
+
+* **Post** - Handles all the posts in the blog application.
+* **Comment** - Handles all the comments for posts in the blog application.
+* **Game** - Handles all the games in the connect application.
+
+<details><summary><b>Database Schema Small</b></summary>
+
+![Database Schema](readme/images/database_schema_small.png)
+</details><br/>
+
+<details><summary><b>Database Schema Full</b></summary>
+
+![Database Schema](readme/images/database_schema_full.png)
+</details><br/>
+
+# **User Experience (UX)**
+
+## User Stories
+Below the user stories for the project are listed to clarify why particular feature matters. These will then be tested and confirmed in the [Testing](<#testing>) section.
+
+### Site User
 
 ```
 source env/bin/activate

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'django_extensions',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -238,3 +239,9 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_UNIQUE_EMAIL = True
+
+GRAPH_MODELS = { 
+  'all_applications': True, # set to True if you want all models included 
+  'group_models': True, # if you want to group models with a box around each group 
+  'app_labels': ["blog", "connect", "auth"], # add here the apps you want in the graph 
+} 
