@@ -315,7 +315,7 @@ class DraftCommentList(UserPassesTestMixin, View):
         return self.request.user.is_staff
 
     def get(self, request):
-        draft_comments = Comment.objects.filter(approved=False).order_by('-created_on')
+        draft_comments = Comment.objects.filter(approved=False).order_by('created_on')
         return render(request, self.template_name, {'draft_comments': draft_comments})
 
 
@@ -327,5 +327,16 @@ class ApproveComment(View):
         comment = get_object_or_404(Comment, id=comment_id)
         comment.approved = True
         comment.save()
+
+        return redirect('draft_comment_list')
+
+
+class DeleteComment(View):
+    def get(self, request, comment_id):
+        if not request.user.is_staff:
+            raise PermissionDenied
+
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment.delete()
 
         return redirect('draft_comment_list')

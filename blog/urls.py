@@ -13,4 +13,5 @@ urlpatterns = [
     path('my-posts/', views.PostListUser.as_view(), name='post_list_user'),
     path('comments/draft/', views.DraftCommentList.as_view(), name='draft_comment_list'),
     path('comment/approve/<int:comment_id>/', views.ApproveComment.as_view(), name='approve_comment'),
+    path('comment/delete/<int:comment_id>/', views.DeleteComment.as_view(), name='delete_comment'),
 ]

@@ -22,7 +22,8 @@
                     <strong>{{ comment.body }}</strong>
                 </div>
                 <div class="col-12 text-center">
-                    <a href="{% url 'approve_comment' comment_id=comment.id %}">Approve</a>
+                    <a class="btn btn-success m-1" href="{% url 'approve_comment' comment_id=comment.id %}">Approve</a>
+                    <a class="btn btn-danger m-1" href="{% url 'delete_comment' comment_id=comment.id %}">Delete</a>
                 </div>
             </div>
         {% endfor %}
