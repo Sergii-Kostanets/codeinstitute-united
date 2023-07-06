@@ -17,6 +17,7 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
 * [**User Experience (UX)**](<#user-experience-ux>)
     * [User Stories](<#user-stories>)
+    * [Site Structure](<#site-structure>)
 
 # **Project**
 
@@ -68,6 +69,55 @@ Models used (besides standard user model) in this project are:
 Below the user stories for the project are listed to clarify why particular feature matters. These will then be tested and confirmed in the [Testing](<#testing>) section.
 
 ### Site User
+|  | | |
+|:-------:|:--------|:--------|
+| As a Site User | I can view a list of posts so that I can select one to read | &check; |
+| As a Site User | I can click on a post so that I can read the full text | &check; |
+| As a Site User | I can view a paginated list of posts so that easily select a post to view | &check; |
+| As a Site User | I can register an account so that I can comment and like | &check; |
+| As a Site User | I can like or unlike a post so that I can interact with the content | &check; |
+| As a Site User | I can view comments on an individual post so that I can read the conversation | &check; |
+| As a Site User | I can leave comments on a post so that I can be involved in the conversation | &check; |
+| As a Site User | I can view the number of likes on each post so that I can see which is the most popular or viral | &check; |
+| As a Site User | I can add draft posts for the website UI so that staff member can approve it | &check; |
+| As a Site User | I can see all my posts so that I knew which of them is published | &check; |
+| As a Site User | I can search for posts so that I can filter posts that match my interests | &check; |
+| As a Site User | I can view a list of connects so that I can select one to read | &check; |
+| As a Site User | I can click on a connect so that I can read the full text | &check; |
+| As a Site User | I can view a paginated list of connects so that easily select a connect to view | &check; |
+| As a Site User | I can add draft connects for the website UI so that staff member can approve it | &check; |
+| As a Site User | I can see all my connects so that I knew which of them is published | &check; |
+| As a Site User | I can search for connects so that I can filter connects that match my interests | &check; |
+| As a Site User | I can sign out from the site so that I can be safe that nobody can access my information | &check; |
+| As a Site User | I can edit my login and email so that I can update up-to-date information about me | &check; |
+| As a Site User | I can sign in / sign up with social account so that I can get access to all advantages of authenticated user faster | &check; |
+
+### Staff Member
+
+|  | | |
+|:-------:|:--------|:--------|
+| As a Staff Member | I can view list of draft posts so that I can choose which post to publish | &check; |
+| As a Staff Member | I can view list of draft connects so that I can choose which connect to publish | &check; |
+| As a Staff Member | I can view list of draft comments so that I can choose which comment to publish | &check; |
+| As a Staff Member | I can view/edit/delete/publish draft post so that I can secure high quality of the post content for the Site Users | &check; |
+| As a Staff Member | I can view/edit/delete/publish draft connect so that I can secure high quality of the connect content for the Site Users | &check; |
+| As a Staff Member | I can delete/publish draft comment so that I can secure a safe environment for the Site Users | &check; |
+| As a Site User | I can connect social account to my account so that I can login easily | &check; |
+
+### Site Admin
+
+|  | | |
+|:-------:|:--------|:--------|
+| As a Site Admin | I can approve or disapprove post comments so that I can filter out objectionable comments | &check; |
+| As a Site Admin | I can create, read, update and delete posts so that I can manage my blog content | &check; |
+| As a Site Admin | I can create, read, update and delete connects so that I can manage my connect content | &check; |
+| As a Site Admin | I can create draft posts so that I can finish writing the content later | &check; |
+| As a Site Admin | I can create draft connects so that I can finish writing the content later | &check; |
+| As a Site Admin | I can access an admin area so that I can get a general understanding of logged in users, number of likes and number of posts | &check; |
+
+[Back to top](<#contents>)
+
+## Site Structure
 
 ```
 source env/bin/activate
