@@ -22,10 +22,60 @@
                     <strong>{{ comment.body }}</strong>
                 </div>
                 <div class="col-12 text-center">
-                    <a class="btn btn-success m-1" href="{% url 'approve_comment' comment_id=comment.id %}">Approve</a>
-                    <a class="btn btn-danger m-1" href="{% url 'delete_comment' comment_id=comment.id %}">Delete</a>
+                    <a class="btn btn-success m-1" onclick="showApproveConfirmation();">Approve</a>
+                    <a class="btn btn-danger m-1" onclick="showDeleteConfirmation();">Delete</a>
                 </div>
             </div>
+
+            <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmation</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure you want to delete this comment?</p>
+                      <p>
+                        <strong>
+                            {{ comment.body }}
+                        </strong>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                      <a class="btn btn-danger" href="{% url 'delete_comment' comment_id=comment.id %}">Delete</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="approveConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="approveConfirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="approveConfirmationModalLabel">Confirmation</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure you want to approve this comment?</p>
+                      <p>
+                        <strong>
+                            {{ comment.body }}
+                        </strong>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                      <a class="btn btn-success" href="{% url 'approve_comment' comment_id=comment.id %}">Approve</a>
+                    </div>
+                  </div>
+                </div>
+            </div>  
         {% endfor %}
         </div>
     </div>
@@ -35,6 +85,14 @@
 {% endif %}
 
 <script>
+    function showDeleteConfirmation() {
+      $('#deleteConfirmationModal').modal('show');
+    }
+    
+    function showApproveConfirmation() {
+      $('#approveConfirmationModal').modal('show');
+    }
+
     document.getElementById('nav-item-blog').classList.remove('active');
     document.getElementById('nav-item-publish-comments').classList.add('font-weight-light');
 </script>
