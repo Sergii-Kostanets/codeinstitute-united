@@ -40,7 +40,7 @@ else:
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 if development:
-    ALLOWED_HOSTS = ['127.0.0.1', os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN')]
+    ALLOWED_HOSTS = ['127.0.0.1']
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN')]
 
@@ -168,7 +168,10 @@ WSGI_APPLICATION = 'django_united.wsgi.application'
 
 if development:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
 else:
     DATABASES = {
