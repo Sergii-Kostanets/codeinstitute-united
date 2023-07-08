@@ -1,6 +1,8 @@
 # **United**
 United is a project for searching a partner for co-op game, earn tropyes and have fun finding a new friends! The site is divided into two blocks, *United | Blog* with posts and *United | Connect* with games, and offers a convenient search for finding games of interest to contact the author or an interesting post for discussion in the comments. All visitors can create their own user to start creating posts and game connects, comment on other authors posts, connect with other authors of game connects. All game connects, posts, and comments need approval by *United* staff members so everyone can feel safe from abuse, inappropriate language, etc. The approvals are being made from website UI pages that only is accessed by staff members. From a visual point of view the site has a clean look that makes navigation easy, and the freedom to design the posts and connections themselves remains with the user.
 
+
+
 This website was created for Portfolio Project #4 - Diploma in Full Stack Software Development Diploma at the [Code Institute](https://www.codeinstitute.net).
 
 [View live website here](https://www.uniteds.games/)
@@ -11,13 +13,28 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
 * [**Project**](<#project>)
     * [Objective](<#objective>)
+    
     * [Site Users Goal](<#site-users-goal>)
+    
     * [Site Owners Goal](<#site-owners-goal>)
+    
     * [Project Management](<#project-management>)
 
 * [**User Experience (UX)**](<#user-experience-ux>)
+
     * [User Stories](<#user-stories>)
+
     * [Site Structure](<#site-structure>)
+
+    * [Design Choices](<#design-choices>)
+
+* [**Existing Features**](<#existing-features>)
+
+    * [Navigation](<#navigation>)
+    
+    * [Blog](<#blog>)
+    
+    * [Connect](<#connect>)
 
 # **Project**
 
@@ -37,7 +54,7 @@ The goal of the site owner is to deliver a site that the owner himself will use,
 ### Github Board
 I've been using the project board in GitHub to keep my project together. It helped me structure up my work. GitHub was used to plan and organize my user stories.
 
-<details><summary><b>Github Board</b></summary>
+<details><summary><b>User Stories</b></summary>
 
 ![User Stories](readme/images/user_stories.png)
 </details><br/>
@@ -55,12 +72,12 @@ Models used (besides standard user model) in this project are:
 
 <details><summary><b>Database Schema Small</b></summary>
 
-![Database Schema](readme/images/database_schema_small.png)
+![Database Schema Small](readme/images/database_schema_small.png)
 </details><br/>
 
 <details><summary><b>Database Schema Full</b></summary>
 
-![Database Schema](readme/images/database_schema_full.png)
+![Database Schema Full](readme/images/database_schema_full.png)
 </details><br/>
 
 # **User Experience (UX)**
@@ -91,6 +108,7 @@ Below the user stories for the project are listed to clarify why particular feat
 | As a Site User | I can sign out from the site so that I can be safe that nobody can access my information | &check; |
 | As a Site User | I can edit my login and email so that I can update up-to-date information about me | &check; |
 | As a Site User | I can sign in / sign up with social account so that I can get access to all advantages of authenticated user faster | &check; |
+| As a Site User | I can connect social account to my account so that I can login easily | &check; |
 
 ### Staff Member
 
@@ -102,7 +120,6 @@ Below the user stories for the project are listed to clarify why particular feat
 | As a Staff Member | I can view/edit/delete/publish draft post so that I can secure high quality of the post content for the Site Users | &check; |
 | As a Staff Member | I can view/edit/delete/publish draft connect so that I can secure high quality of the connect content for the Site Users | &check; |
 | As a Staff Member | I can delete/publish draft comment so that I can secure a safe environment for the Site Users | &check; |
-| As a Site User | I can connect social account to my account so that I can login easily | &check; |
 
 ### Site Admin
 
@@ -119,27 +136,153 @@ Below the user stories for the project are listed to clarify why particular feat
 
 ## Site Structure
 
-```
-source env/bin/activate
-```
-```
-python3 manage.py runserver
-```
-```
-python3 manage.py makemigrations --dry-run
-```
-```
-python3 manage.py showmigrations
-```
-```
-python3 manage.py makemigrations
-```
-```
-python3 manage.py migrate --plan
-```
-```
-python3 manage.py migrate
-```
-```
-python3 manage.py collectstatic --no-input
-```
+The 'United' site is split up in two parts: **Blog** for **posts** and **Connect** for **game connects**.
+
+The functionality is alo different **when the user is logged out** and **when the user is logged in**. Depending on login status different pages is available for the user. When the user is logged out the pages: *Sign In*, *Blog*, and *Connect* are avaliable. When the user is logged in: dropdown menu with username (*My account*, *My games* or/and *My posts*, *Sign Out*), *Add game* or *Add post*, *Blog*, and *Connect* are available. If you are logged in as an administrator or staff member an *admin area* is available: *Publish connects* or *Publish comments* with *Publish posts*. The site has an minimalistic, clean and intuitive design that makes the site easy to navigate for the user.
+
+Read more about the different choices in the [Features](<#features>) section.
+
+[Back to top](<#contents>)
+
+## Design Choices
+
+* ### Color Scheme
+
+The color scheme chosen for the 'United' site is based on the Bootstrap 4.6 default colours. The colors are chosen in such a way that the background contrasts with the elements with which you can interact, the color of the buttons reflects their purpose, and the use of the functionality is as intuitive as possible. All colors are very clean and they create a professional look together and offers a good readability and contrast as well. I used the online service [Coolors](https://coolors.co/) to choose the color scheme.
+
+![Color Palette image](readme/images/main_colors.png)
+
+* ### Typography
+The fonts used for the site are the most popular fonts, depends on the operating system. Fallback font for all of them is sans-serif.
+
+* "BlinkMacSystemFont": This is a system font specific to Apple devices, used by the Blink rendering engine on macOS.
+* "Segoe UI": This is a font commonly used on Microsoft Windows systems.
+* Roboto: This is a popular font developed by Google and commonly used in material design.
+* "Helvetica Neue": This is a widely used font that is similar to Helvetica but introduced by Apple.
+* Arial: This is a widely available font that is commonly used on both Windows and macOS.
+* "Noto Sans": This is a font developed by Google that supports a wide range of scripts and languages.
+* "Liberation Sans": This is a font designed to replace Arial on Linux systems.
+* sans-serif: This is a generic font family that refers to a sans-serif font available on the system.
+
+[Back to top](<#contents>)
+
+# **Features**
+The features of the site are listed below.
+
+## **Existing Features**
+
+### **Navigation**
+The navigation bar is very clean and straight forward. Depending if you are logged in or not different menus are visible for the site user. An extra menu item is visible if you are logged in as an administrator / staff member.
+
+*Links that are visible to logged out users*
+
+* Sign In - Gives the user the opportunity to sign in or sign up if not ready a registered user at United.
+* Blog - Lists all posts.
+* Connect - Lists all game connects.
+
+<details><summary><b>Navigation Desktop - User Signed Out</b></summary>
+
+![Navigation Desktop - User Signed Out](readme/images/navbar_desktop_signed_out.png)
+</details><br/>
+
+<details><summary><b>Navigation Mobile - User Signed Out</b></summary>
+
+![Navigation Mobile - User Signed Out](readme/images/navbar_mobile_signed_out.png)
+</details><br/>
+
+*Links that are visible to logged in users*
+
+* Username dropdown list:
+    * My account - Shows logged in users profile page.
+    * My posts / My games - Lists all posts or game connects created by the logged in user depending on which section of the site the user is in.
+    * Sign out - Logs out the user.
+* Add post / Add game - Lets the user create a new post or game connect depending on which section of the site the user is in.
+* Blog - Lists all posts.
+* Connect - Lists all game connects.
+
+<details><summary><b>Navigation Desktop Blog - User Signed In</b></summary>
+
+![Navigation Desktop Blog - User Signed In](readme/images/navbar_desktop_blog_signed_in.png)
+</details><br/>
+
+<details><summary><b>Navigation Desktop Connect - User Signed In</b></summary>
+
+![Navigation Desktop Connect - User Signed In](readme/images/navbar_desktop_connect_signed_in.png)
+</details><br/>
+
+<details><summary><b>Navigation Mobile Blog - User Signed In</b></summary>
+
+![Navigation Mobile Blog - User Signed In](readme/images/navbar_mobile_blog_signed_in.png)
+</details><br/>
+
+<details><summary><b>Navigation Mobile Connect - User Signed In</b></summary>
+
+![Navigation Mobile Connect - User Signed In](readme/images/navbar_mobile_connect_signed_in.png)
+</details><br/>
+
+*Link that is visible if user is administrator / staff member*
+
+All of the links above plus the ones below.
+
+* Blog section:
+    * Publish comments - Lists all draft post comments to approve.
+    * Publish posts - Lists all draft posts to approve.
+* Connect section:
+    * Publish games - Lists all draft g ame connects to approve.
+
+<details><summary><b>Navigation Desktop Blog - Admin / Staff Logged In</b></summary>
+
+![Navigation Desktop Blog - Admin / Staff Logged In](readme/images/navbar_desktop_blog_admin_signed_in.png)
+</details><br/>
+
+<details><summary><b>Navigation Desktop Connect - Admin / Staff Logged In</b></summary>
+
+![Navigation Desktop Connect - Admin / Staff Logged In](readme/images/navbar_desktop_connect_admin_signed_in.png)
+</details><br/>
+
+<details><summary><b>Navigation Mobile Blog - Admin / Staff Logged In</b></summary>
+
+![Navigation Mobile Blog - Admin / Staff Logged In](readme/images/navbar_mobile_blog_admin_signed_in.png)
+</details><br/>
+
+<details><summary><b>Navigation Mobile Connect - Admin / Staff Logged In</b></summary>
+
+![Navigation Mobile Connect - Admin / Staff Logged In](readme/images/navbar_mobile_connect_admin_signed_in.png)
+</details><br/>
+
+### **Blog**
+This page lists all the posts that has been made at United | Blog. For signed in and not signed in users this page looks the same. The page shows 12 cards before a pagination mechanism kicks in.
+
+<details><summary><b>Blog</b></summary>
+
+![Blog](readme/images/blog.png)
+</details><br/>
+
+### **Connect**
+This page lists all the game connects that has been made at United | Connect.
+
+<details><summary><b>Connect</b></summary>
+
+![Connect](readme/images/connect.png)
+</details><br/>
+
+If the user is not signed in there is a sign in button in each open accordeon card view with the text: "Sign In to Connect or to Create a Connect".
+
+<details><summary><b>Connect - User Signed Out</b></summary>
+
+![Connect - User Signed Out](readme/images/connect_user_signed_out.png)
+</details><br/>
+
+If the user is logged in a *Connect* option gets visible on the game connect open accordeon card view.
+
+<details><summary><b>Connect - User Signed In</b></summary>
+
+![Connect - User Signed In](readme/images/connect_user_signed_in.png)
+</details><br/>
+
+If the user is logged in is a author of the game connect: an *Edit* option gets visible at open accordeon card view.
+
+<details><summary><b>Connect - Author Signed In</b></summary>
+
+![Connect - Author Signed In](readme/images/connect_author_signed_in.png)
+</details><br/>
