@@ -35,6 +35,52 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
     * [Blog](<#blog>)
     
     * [Connect](<#connect>)
+    
+    * [Account](<#account>)
+    
+    * [Social Account](<#social-account>)
+    
+    * [My Posts](<#my-posts>)
+    
+    * [My Games](<#my-games>)
+    
+    * [Post Detail View](<#post-detail-view>)
+    
+    * [Create Post](<#create-post>)
+    
+    * [Create Game Connect](<#create-game-connect>)
+    
+    * [Edit Post](<#edit-post>)
+    
+    * [Edit Game Connect](<#edit-game-connect>)
+    
+    * [Publish Posts](<#publish-posts>)
+    
+    * [Publish Connects](<#publish-connects>)
+    
+    * [Draft Post Detail View](<#draft-post-detail-view>)
+    
+    * [Draft Game Connect Detail View](<#draft-game-connect-detail-view>)
+    
+    * [Publish Post Confirmation](<#publish-post-confirmation>)
+    
+    * [Publish Game Connect Confirmation](<#publish-game-connect-confirmation>)
+    
+    * [Publish Comments](<#publish-comments>)
+    
+    * [Admin Page](<#admin-page>)
+    
+    * [Sign Up](<#sign-up>)
+    
+    * [Sign In](<#sign-in>)
+
+    * [Sign Out](<#sign-out>)
+
+    * [Footer](<#footer>)
+
+    * [Flash Messages](<#flash-messages>)
+
+* [**Features Left To Implement**](<#features-left-to-implement>)
 
 # **Project**
 
@@ -250,6 +296,14 @@ All of the links above plus the ones below.
 ![Navigation Mobile Connect - Admin / Staff Logged In](readme/images/navbar_mobile_connect_admin_signed_in.png)
 </details><br/>
 
+### **Search**
+The heart of this project is the search. This is a convenient way to search for game connects and posts of interest. It's available on the pages showing the list of games and posts (*Blog*, *My posts*, *Connect*, *My games* - for all users, and additionally *Publish posts* and *Publish games* - for administrator and staff member). The search does not require submission and refreshes output after each character input or deletion.
+
+<details><summary><b>Search</b></summary>
+
+![Search](readme/images/search.png)
+</details><br/>
+
 ### **Blog**
 This page lists all the posts that has been made at United | Blog. For signed in and not signed in users this page looks the same. The page shows 12 cards before a pagination mechanism kicks in.
 
@@ -286,3 +340,218 @@ If the user is logged in is a author of the game connect: an *Edit* option gets 
 
 ![Connect - Author Signed In](readme/images/connect_author_signed_in.png)
 </details><br/>
+
+### **Account**
+On this page the user can view and update their own username and email.
+
+<details><summary><b>Account</b></summary>
+
+![Account](readme/images/account.png)
+</details><br/>
+
+### **Social Account**
+On this page the user can add or remove 3rd party accounts (Google and GitHub).
+
+<details><summary><b>Social Account</b></summary>
+
+![Social Account](readme/images/social_account.png)
+</details><br/>
+
+### **My Posts**
+This page lists all the posts that has been made at United by signed in user. If the user is not logged in this page is forbidden. Here the user can see which of the posts have already been published and which are still avaiting approval.
+
+<details><summary><b>My Posts</b></summary>
+
+![My Posts](readme/images/my_posts.png)
+</details><br/>
+
+### **My Games**
+This page lists all the game connects that has been made at United by signed in user. If the user is not logged in this page is forbidden. Here the user can see which of the game connects have already been published and which are still avaiting approval.
+
+<details><summary><b>My Games</b></summary>
+
+![My Games](readme/images/my_games.png)
+</details><br/>
+
+### **Post Detail View**
+The post detail shows the details about the post that the user has chosen in the blog view. Depending on if the user is signed in and if the user is a post author the view looks a little bit different. If the user is logged in they get the possibility to like the post and also can see if it published and edit or delete it if they have written it. A signed in user can also leave a comment.
+
+<details><summary><b>Post Detail View - User Logged Out</b></summary>
+
+![Post Detail View - User Logged Out](readme/images/post_detail_logged_out.png)
+![Post Detail View Comment - User Logged Out](readme/images/post_detail_comment_logged_out.png)
+</details><br/>
+
+<details><summary><b>Post Detail View - User Logged In</b></summary>
+
+![Post Detail View - User Logged In](readme/images/post_detail_logged_in.png)
+![Post Detail View Comment - User Logged In](readme/images/post_detail_comment_logged_in.png)
+</details><br/>
+
+<details><summary><b>Post Detail View - Author Logged In</b></summary>
+
+![Post Detail View - Author Logged In](readme/images/post_detail_author_logged_in.png)
+![Post Detail View Comment - Author Logged In](readme/images/post_detail_author_comment_logged_in.png)
+</details><br/>
+
+### **Create Post**
+On this page the registered and signed in user can create their own post. When they have created it in 'United' needs to approve it, until it's approved it will not be visible for the public.
+
+<details><summary><b>Create Post</b></summary>
+
+![Create Post](readme/images/create_post.png)
+</details><br/>
+
+### **Create Game Connect**
+On this page the registered and signed in user can create their own game connect. When they have created it in 'United' needs to approve it, until it's approved it will not be visible for the public.
+
+<details><summary><b>Create Game Connect</b></summary>
+
+![Create Game Connect](readme/images/create_game_connect.png)
+</details><br/>
+
+### **Edit Post**
+On this page the registered and logged in user can edit their own post. When they have updated it in 'United' needs to re-approve it, until it's re-approved it will not be visible for the public.
+
+<details><summary><b>Edit Post</b></summary>
+
+![Edit Post](readme/images/edit_post.png)
+</details><br/>
+
+### **Edit Game Connect**
+On this page the registered and logged in user can edit their own game connect. When they have updated it in 'United' needs to re-approve it, until it's re-approved it will not be visible for the public.
+
+<details><summary><b>Edit Game Connect</b></summary>
+
+![Edit Game Connect](readme/images/edit_game_connect.png)
+</details><br/>
+
+### **Publish Posts**
+This page lists all the draft posts avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not logged in this page is forbidden. Here the admin / staff member can choose the post to approve or delete.
+
+<details><summary><b>Publish Posts</b></summary>
+
+![Publish Posts](readme/images/publish_posts.png)
+</details><br/>
+
+### **Publish Connects**
+This page lists all the draft game connects avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not logged in this page is forbidden. Here the admin / staff member can choose the g ame connect to approve or delete.
+
+<details><summary><b>Publish Connects</b></summary>
+
+![Publish Connects](readme/images/publish_connects.png)
+</details><br/>
+
+### **Draft Post Detail View**
+The draft post detail shows the details about the draft post that the administrator / staff member has chosen in the publish posts view. Depending on if the administrator / staff member is a post author the view looks a little bit different. If the author of the post is a signed in admin / staff member, there will be no possibility to publish this post, only edit it.
+
+<details><summary><b>Draft Post Detail View</b></summary>
+
+![Draft Post Detail View](readme/images/draft_post_detail.png)
+</details><br/>
+
+<details><summary><b>Draft Post Detail View - Admin / Staff member is Author</b></summary>
+
+![Draft Post Detail View - Admin / Staff member is Author](readme/images/draft_post_detail_author.png)
+</details><br/>
+
+### **Draft Game Connect Detail View**
+The draft game connect detail shows the details about the draft game connect that the administrator / staff member has chosen in the publish connects view. Depending on if the administrator / staff member is a game connect author the view looks a little bit different. If the author of the game connect is a signed in admin / staff member, there will be no possibility to publish this game connect, only edit it.
+
+<details><summary><b>Draft Game Connect Detail View</b></summary>
+
+![Draft Game Connect Detail View](readme/images/draft_connect_detail.png)
+</details><br/>
+
+<details><summary><b>Draft Game Connect Detail View - Admin / Staff member is Author</b></summary>
+
+![Draft Game Connect Detail View - Admin / Staff member is Author](readme/images/draft_connect_detail_author.png)
+</details><br/>
+
+### **Publish Post Confirmation**
+On this page admin / staff member can edit draft post before publishing.
+
+<details><summary><b>Draft Post Publish Confirmation</b></summary>
+
+![Draft Post Publish Confirmation](readme/images/draft_post_publish_confirm.png)
+</details><br/>
+
+### **Publish Game Connect Confirmation**
+On this page admin / staff member can edit draft game connect before publishing.
+
+<details><summary><b>Draft Game Connect Publish Confirmation</b></summary>
+
+![Draft Game Connect Publish Confirmation](readme/images/draft_connect_publish_confirm.png)
+</details><br/>
+
+### **Publish Comments**
+This page lists all the draft comments avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not logged in this page is forbidden. Here the admin / staff member can approve or delete draft comments.
+
+<details><summary><b>Publish Comments</b></summary>
+
+![Publish Comments](readme/images/publish_comments.png)
+</details><br/>
+
+### **Admin Page**
+This page is available only by for superusers by url [/admin](https://www.uniteds.games/admin/). On this page the administrator (or other superuser decided by 'United') can *approve* / *delete* / *publish* / *unpublish* and *delete* posts, connects and comments. General information about *number of users*, *number of comments*, *number of posts*, *number of connects*, *unapproved comments / posts / connects* is also being showed on the page.
+
+<details><summary><b>Admin Page</b></summary>
+
+![Admin Page](readme/images/admin_page.png)
+</details><br/>
+
+### **Sign Up**
+If the site visitor has no registered user at 'United' they can sign up. They can also sign in with social account (Google or GitHub).
+
+<details><summary><b>Sign Up</b></summary>
+
+![Sign Up](readme/images/sign_up.png)
+</details><br/>
+
+### **Sign In**
+On this page the user can sign in to 'United'.
+
+<details><summary><b>Sign In</b></summary>
+
+![Sign In](readme/images/sign_in.png)
+</details><br/>
+
+### **Sign Out**
+When the user clicks sign out in the dropdown menu a confirmation page is being showed so that the user don't accidently sign out.
+
+<details><summary><b>Sign Out</b></summary>
+
+![Sign Out](readme/images/sign_out.png)
+</details><br/>
+
+### **Footer**
+The footer area includes name of the creator and links to relevant resources.
+
+<details><summary><b>Footer</b></summary>
+
+![Footer](readme/images/footer.png)
+</details><br/>
+
+### **Flash Messages**
+The sites incorporates flash messages when an action has been performed (i.e. create/update/delete actions). Examples of this in the screenshots below.
+
+<details><summary><b>Confirmation Messages</b></summary>
+
+![Comment Added](readme/images/comment_added.png)
+![Connect Deleted](readme/images/connect_deleted.png)
+![Signed In](readme/images/signed_in.png)
+![Signed Out](readme/images/signed_out.png)
+</details><br/>
+
+### Features Left to Implement
+
+* Add automated testing
+* Add comments to the game connect open accordeon view
+* Add likes to the game connects
+* Add ajax functionality to post likes
+* Add ajax functionality to post comments
+* Add likes functionality to the Blog view
+* Add more 3rd party social account providers (Facebook, Twitter, etc)
+* Add editing and deliting comments for comment authors
+
+[Back to top](<#contents>)
