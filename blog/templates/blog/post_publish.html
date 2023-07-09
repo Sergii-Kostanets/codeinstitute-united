@@ -2,17 +2,24 @@
 
 {% block content %}
 
-<h1 class="text-center text-dark mt-3">Confirm publishing:</h1>
+<h1 class="text-center text-dark mt-3">Publish Post</h1>
 
-<form id="post-form" method="post" enctype="multipart/form-data">
-{% csrf_token %}
-{{ form.as_p }}
-    <div id="post-form-buttons">
-        <button class="btn btn-primary" type="submit">Publish</button>
-        <a class="btn btn-warning" href="{% url 'post_list' %}">Cancel</a>
-        <a class="btn btn-danger" onclick="showDeleteConfirmation();">Delete</a>
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <p class="text-center">Are you sure you want to publish this post?</p>
+            <form id="post-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+                <div id="post-form-buttons">
+                    <button class="btn btn-primary" type="submit">Publish</button>
+                    <a class="btn btn-warning" href="{% url 'post_list' %}">Cancel</a>
+                    <a class="btn btn-danger" onclick="showDeleteConfirmation();">Delete</a>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>
 
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
