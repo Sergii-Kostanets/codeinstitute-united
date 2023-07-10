@@ -90,6 +90,11 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
     * [Libraries](<#libraries>)
 
+* [**Testing**](<#testing>)
+
+    * [Testing User Stories](<#testing-user-stories>)
+    
+
 # **Project**
 
 ## Objective
@@ -184,7 +189,7 @@ Below the user stories for the project are listed to clarify why particular feat
 | As a Site Admin | I can create, read, update and delete connects so that I can manage my connect content | &check; |
 | As a Site Admin | I can create draft posts so that I can finish writing the content later | &check; |
 | As a Site Admin | I can create draft connects so that I can finish writing the content later | &check; |
-| As a Site Admin | I can access an admin area so that I can get a general understanding of logged in users, number of likes and number of posts | &check; |
+| As a Site Admin | I can access an admin page so that I can get a general understanding of signed up users, number of likes and number of posts | &check; |
 
 [Back to top](<#contents>)
 
@@ -244,10 +249,10 @@ The navigation bar is very clean and straight forward. Depending if you are logg
 ![Navigation Mobile - User Signed Out](readme/images/navbar_mobile_signed_out.png)
 </details><br/>
 
-*Links that are visible to logged in users*
+*Links that are visible to signed in users*
 
 * Username dropdown list:
-    * My account - Shows logged in users profile page.
+    * My account - Shows signed in users profile page.
     * My posts / My games - Lists all posts or game connects created by the logged in user depending on which section of the site the user is in.
     * Sign out - Logs out the user.
 * Add post / Add game - Lets the user create a new post or game connect depending on which section of the site the user is in.
@@ -628,5 +633,126 @@ The libraries used in this project are located in the requirements.txt file and 
 * [sqlparse](https://pypi.org/project/sqlparse/) - sqlparse is a non-validating SQL parser for Python. It provides support for parsing, splitting and formatting SQL statements.
 * [urllib3](https://pypi.org/project/urllib3/) - Urllib3 is a powerful HTTP client library for Python. It provides a high-level interface for making HTTP requests, handling headers, cookies, redirects, and other aspects of the HTTP protocol.
 * [webencodings](https://pypi.org/project/webencodings/) - Webencodings is a Python library that provides utilities for working with character encodings commonly used in web-related tasks. It includes functions for encoding and decoding HTML entities, URL encoding, and other web encoding formats.
+
+[Back to top](<#contents>)
+
+# Testing
+
+## Testing User Stories
+
+### Site User
+
+|  |  |  |
+|:-------:|:--------|:--------|
+|  |  |  |
+| As a Site User | I can view a list of posts so that I can select one to read | &check; |
+|  | At the top of the site at the *Blog* page there is a navigation bar with a *Blog* link that lists all posts when the user clicks on it |  |
+|  |  |  |
+| As a Site User | I can click on a post so that I can read the full text | &check; |
+|  | At the main section at the *Blog* page of the site there is a list of posts with links that opens post detail view when the user clicks on it |  |
+|  |  |  |
+| As a Site User | I can view a paginated list of posts so that easily select a post to view | &check; |
+|  | On the *Blog* pages the pagination is activated when there are more than 12 posts on a page |  |
+|  |  |  |
+| As a Site User | I can register an account so that I can comment and like | &check; |
+|  | In the navigation bar the user can click the *Sign In* link to either sign in or sign up for a new account. When this is done the user can interact on the page as stated in the user story |  |
+|  |  |  |
+| As a Site User | I can like or unlike a post so that I can interact with the content | &check; |
+|  | When the user is signed in it is possible to click on a heart on the post detail page to like / unlike a post |  |
+|  |  |  |
+| As a Site User | I can view comments on an individual post so that I can read the conversation | &check; |
+|  | When the user clicks on a specific post the comment section can be viewed |  |
+|  |  |  |
+| As a Site User | I can leave comments on a post so that I can be involved in the conversation | &check; |
+|  | When the user is signed in, the comment can be submitted for review and, if everything is ok, the comment will be approved by the administrator or staff member. |  |
+|  |  |  |
+| As a Site User | I can view the number of likes on each post so that I can see which is the most popular or viral | &check; |
+|  | On the post detail page the user can see how many likes the specific post has |  |
+|  |  |  |
+| As a Site User | I can add draft posts for the website UI so that staff member can approve it | &check; |
+|  | In the navigation bar at the *Blog* page the user can click the *Add post* link when the user is signed in. The user can create a post and submit it for review |  |
+|  |  |  |
+| As a Site User | I can see all my posts so that I knew which of them is published | &check; |
+|  | In the navigation bar at the *Blog* page the user can click the *My posts* link when the user is signed in. The user will see all their posts with a sign is it published or awaiting approval |  |
+|  |  |  |
+| As a Site User | I can search for posts so that I can filter posts that match my interests | &check; |
+|  | The user can focus on search input at the top of the pages: *Blog*, *My posts*. When entering characters, posts will be filtered according to the user's request without the need to submit |  |
+|  |  |  |
+| As a Site User | I can view a list of connects so that I can select one to read | &check; |
+|  | At the top of the site at the *Connect* page there is a navigation bar with a *Connect* link that lists all game connects when the user clicks on it |  |
+|  |  |  |
+| As a Site User | I can click on a connect so that I can read the full text | &check; |
+|  | At the main section at the *Connect* page of the site there is a list of game connects as an accordeon that opens game connect full view when the user clicks on it |  |
+|  |  |  |
+| As a Site User | I can view a paginated list of connects so that easily select a connect to view | &check; |
+|  | On the *Connect* pages the pagination is activated when there are more than 10 game connects on a page |  |
+|  |  |  |
+| As a Site User | I can add draft connects for the website UI so that staff member can approve it | &check; |
+|  | In the navigation bar at the *Connect* page the user can click the *Add game* link when the user is signed in. The user can create a connect and submit it for review |  |
+|  |  |  |
+| As a Site User | I can see all my connects so that I knew which of them is published | &check; |
+|  | In the navigation bar at the *Connect* page the user can click the *My games* link when the user is signed in. The user will see all their game connects with a sign is it published or awaiting approval |  |
+|  |  |  |
+| As a Site User | I can search for connects so that I can filter connects that match my interests | &check; |
+|  | The user can focus on search input at the top of the pages: *Connect*, *My games*. When entering characters, game connects will be filtered according to the user's request without the need to submit |  |
+|  |  |  |
+| As a Site User | I can sign out from the site so that I can be safe that nobody can access my information | &check; |
+|  | When the user is signed in it is possible to choose the *Sign Out*-option in the navigation menu |  |
+|  |  |  |
+| As a Site User | I can edit my login and email so that I can update up-to-date information about me | &check; |
+|  | When the user is signed in it is possible to choose the *My account* link in the navigation menu. The user will see their account page with prepopulated inputs of login and email. The user can change it and save |  |
+|  |  |  |
+| As a Site User | I can sign in / sign up with social account so that I can get access to all advantages of authenticated user faster | &check; |
+|  | When the user is signed out it is possible to choose the 3rd party social account links 'Google' and 'GitHub' to sign at both *Sign In* and *Sign Up* pages. The user will be redirected to appropriate website to sign in |  |
+|  |  |  |
+| As a Site User | I can connect social account to my account so that I can login easily | &check; |
+|  | When the user is signed in it is possible to choose the *My account* link in the navigation menu. The user will see their account page with prepopulated inputs of login and email. The user can click at 'Connect or remove Social Account' to add /remove 3rd party social account |  |
+|  |  |  |
+
+### Staff Member
+
+|  |  |  |
+|:-------:|:--------|:--------|
+| As a Staff Member | I can view list of draft posts so that I can choose which post to publish | &check; |
+|  | At the top of the site at the *Blog* page there is a navigation bar with a *Publish posts* link in the dropdown menu that lists all draft posts when the staff member clicks on it |  |
+|  |  |  |
+| As a Staff Member | I can view list of draft connects so that I can choose which connect to publish | &check; |
+|  | At the top of the site at the *Connect* page there is a navigation bar with a *Publish games* link in the dropdown menu that lists all draft game connects when the staff member clicks on it |  |
+|  |  |  |
+| As a Staff Member | I can view list of draft comments so that I can choose which comment to publish | &check; |
+|  | At the top of the site at the *Blog* page there is a navigation bar with a *Publish comments* link in the dropdown menu that lists all draft comments when the staff member clicks on it |  |
+|  |  |  |
+| As a Staff Member | I can view/edit/delete/publish draft post so that I can secure high quality of the post content for the Site Users | &check; |
+|  | At the *Publish posts* view staff member can choose post to review, open post detail view, edit it, click *Publish* to publish this post. or *Delete* to delete this post |  |
+|  |  |  |
+| As a Staff Member | I can view/edit/delete/publish draft connect so that I can secure high quality of the connect content for the Site Users | &check; |
+|  | At the *Publish games* view staff member can choose game connect to review, open game connect edit view, edit it, click *Publish* to publish this game connect. or *Delete* to delete this game connect |  |
+|  |  |  |
+| As a Staff Member | I can delete/publish draft comment so that I can secure a safe environment for the Site Users | &check; |
+|  | At the top of the site at the *Blog* page there is a navigation bar with a *Publish comments* link in the dropdown menu that lists all draft comments when the staff member clicks on it. The staff member can then publish or delete each draft comment |  |
+|  |  |  |
+
+### Site Admin
+
+|  |  |  |
+|:-------:|:--------|:--------|
+| As a Site Admin | I can approve or disapprove post comments so that I can filter out objectionable comments | &check; |
+|  | At the top of the site at the *Blog* page there is a navigation bar with a *Publish comments* link in the dropdown menu that lists all draft comments when the admin clicks on it. The admin can then publish or delete each draft comment |  |
+|  |  |  |
+| As a Site Admin | I can create, read, update and delete posts so that I can manage my blog content | &check; |
+|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create, read, update and delete posts |  |
+|  |  |  |
+| As a Site Admin | I can create, read, update and delete connects so that I can manage my connect content | &check; |
+|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create, read, update and delete game connects |  |
+|  |  |  |
+| As a Site Admin | I can create draft posts so that I can finish writing the content later | &check; |
+|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create draft posts |  |
+|  |  |  |
+| As a Site Admin | I can create draft connects so that I can finish writing the content later | &check; |
+|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create draft game connects |  |
+|  |  |  |
+| As a Site Admin | I can access an admin page so that I can get a general understanding of signed up users, number of likes and number of posts and game connects | &check; |
+|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can get a general understanding of signed up users, number of likes and number of posts and game connects |  |
+|  |  |  |
 
 [Back to top](<#contents>)
