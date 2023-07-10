@@ -25,9 +25,9 @@
                             <a href="{% url 'post_detail' post.slug %}" class="post-link" tabindex="1">
                                 <div class="image-container mb-2">
                                     {% if "placeholder" in post.featured_image.url %}
-                                    <img class="card-img-top" src="{% static 'blog/united.jpeg' %}" alt="{{post.title}} - post" tabindex="-1">
+                                    <img class="card-img-top" src="{% static 'blog/united.jpeg' %}" alt="{{post.title}} - post">
                                     {% else %}
-                                    <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{post.title}} - post" tabindex="-1">
+                                    <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{post.title}} - post">
                                     {% endif %}
                                     {% if post.status == 0 %}
                                     <div class="image-flash-draft">
@@ -39,12 +39,12 @@
                                     </div>
                                     {% endif %}
                                 </div>
-                                <h2 class="card-title" tabindex="-1">{{post.title}}</h2>
-                                <p class="card-text" tabindex="-1">{{post.excerpt}}</p>
+                                <h2 class="card-title">{{post.title}}</h2>
+                                <p class="card-text">{{post.excerpt}}</p>
                             </a>
                             <hr>
                             <p class="card-text text-muted additional-info">
-                                <span id="utc-time">{{post.created_on|date:"M d, Y"}}</span>
+                                <span>{{post.created_on|date:"M d, Y"}}</span>
                                 <i class="far fa-heart"></i>
                                 {{post.number_of_likes}}
                                 <i class="far fa-comments"></i>

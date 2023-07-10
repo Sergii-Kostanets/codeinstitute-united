@@ -1,8 +1,6 @@
 # **United**
 United is a project for searching a partner for co-op game, earn tropyes and have fun finding a new friends! The site is divided into two blocks, *United | Blog* with posts and *United | Connect* with games, and offers a convenient search for finding games of interest to contact the author or an interesting post for discussion in the comments. All visitors can create their own user to start creating posts and game connects, comment on other authors posts, connect with other authors of game connects. All game connects, posts, and comments need approval by *United* staff members so everyone can feel safe from abuse, inappropriate language, etc. The approvals are being made from website UI pages that only is accessed by staff members. From a visual point of view the site has a clean look that makes navigation easy, and the freedom to design the posts and connections themselves remains with the user.
 
-
-
 This website was created for Portfolio Project #4 - Diploma in Full Stack Software Development Diploma at the [Code Institute](https://www.codeinstitute.net).
 
 [View live website here](https://www.uniteds.games/)
@@ -93,7 +91,8 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 * [**Testing**](<#testing>)
 
     * [Testing User Stories](<#testing-user-stories>)
-    
+
+    * [Code Validation](<#code-validation>)
 
 # **Project**
 
