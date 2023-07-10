@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 
 class PostForm(forms.ModelForm):
     content = forms.CharField(widget=SummernoteWidget())
+
     class Meta:
         model = Post
         fields = ['title', 'excerpt', 'content', 'featured_image']
@@ -15,11 +16,11 @@ class PostForm(forms.ModelForm):
         content = self.cleaned_data.get('content')
         if content:
             # Remove HTML tags and check if the resulting content is empty
-            stripped_content = ''.join(BeautifulSoup(content).findAll(text=True))
-            if not stripped_content.strip():
+            strip_content = ''.join(BeautifulSoup(content).findAll(text=True))
+            if not strip_content.strip():
                 raise forms.ValidationError("Content field is required")
         return content
-    
+
     def clean(self):
         cleaned_data = super().clean()
         title = cleaned_data.get('title')
@@ -31,7 +32,8 @@ class PostForm(forms.ModelForm):
             if self.instance:
                 existing_posts = existing_posts.exclude(pk=self.instance.pk)
             if existing_posts.exists():
-                self.add_error('title', 'A post with this title already exists')
+                self.add_error('title',
+                               'A post with this title already exists')
         return cleaned_data
 
 

@@ -42,7 +42,7 @@ class PostList(generic.ListView):
 
 
 class PostDetail(View):
-    
+
     def dispatch(self, request, *args, **kwargs):
         post = get_object_or_404(Post, slug=kwargs['slug'])
 
@@ -59,7 +59,7 @@ class PostDetail(View):
         comments = post.comments.filter(approved=True).order_by('created_on')
 
         # Paginate the comments
-        paginator = Paginator(comments, 30)  # Set the number of comments per page
+        paginator = Paginator(comments, 30)  # The number of comments per page
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
@@ -85,19 +85,21 @@ class PostDetail(View):
         liked = False
         if post.likes.filter(id=request.user.id).exists():
             liked = True
-        
+
         comment_form = CommentForm(data=request.POST)
-        
+
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Your comment has been added and is awaiting approval')
+            messages.add_message(request, messages.SUCCESS, 'Your comment \
+            has been added and is awaiting approval')
         else:
             comment_form = CommentForm()
-            messages.add_message(request, messages.ERROR, 'Your comment could not be added')
+            messages.add_message(request, messages.ERROR, 'Your comment \
+            could not be added')
 
         return redirect(reverse('post_detail', kwargs={'slug': slug}))
 
@@ -106,12 +108,12 @@ class PostLike(View):
 
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
-        
+
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
@@ -134,9 +136,9 @@ class PostCreate(View):
             if not post.slug:
                 post.slug = slugify(post.title)
             try:
-                post.full_clean()  # Validate the post model, including the slug field
+                post.full_clean()  # Validate the post model
             except ValidationError as e:
-                form.errors['__all__'] = e.messages  # Add the validation error to the form
+                form.errors['__all__'] = e.messages  # Add the validation error
                 return render(
                     request,
                     'blog/post_create.html',
@@ -145,7 +147,8 @@ class PostCreate(View):
                     },
                 )
             post.save()
-            messages.success(self.request, 'Your post has been created and is awaiting approval')
+            messages.success(self.request, 'Your post has been created and is \
+            awaiting approval')
             return redirect('post_list')
         return render(
             request,
@@ -178,7 +181,8 @@ class PostEdit(View):
             post.slug = slugify(post.title)
             post.status = 0
             post.save()
-            messages.success(self.request, 'Your post has been updated and is awaiting approval')
+            messages.success(self.request, 'Your post has been updated and is \
+            awaiting approval')
             return redirect('post_list')
         return render(
             request,
@@ -202,7 +206,8 @@ class PostDelete(LoginRequiredMixin, View):
             post.delete()
             messages.success(request, 'Post deleted successfully')
         else:
-            messages.error(request, 'You do not have permission to delete this post')
+            messages.error(request, 'You do not have permission to delete \
+            this post')
 
         return redirect('post_list')
 
@@ -211,7 +216,7 @@ class PostPublishList(LoginRequiredMixin, generic.ListView):
     model = Post
     template_name = 'blog/post_publish_list.html'
     paginate_by = 12
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         search_query = self.request.GET.get('search')
@@ -234,7 +239,8 @@ class PostPublishList(LoginRequiredMixin, generic.ListView):
 
     def render_to_response(self, context, **response_kwargs):
         if self.request.is_ajax():
-            post_list_html = render_to_string('blog/post_publish_list.html', context, request=self.request)
+            post_list_html = render_to_string('blog/post_publish_list.html',
+                                              context, request=self.request)
             return JsonResponse({'post_list_html': post_list_html})
         else:
             context['post_list'] = context['object_list']
@@ -262,7 +268,8 @@ class PostPublish(View):
             post.slug = slugify(post.title)
             post.status = 1
             post.save()
-            messages.success(self.request, 'The post has been published successfully')
+            messages.success(self.request, 'The post has been published \
+            successfully')
             return redirect('post_list')
         return render(
             request,
@@ -285,8 +292,11 @@ class PostListUser(LoginRequiredMixin, generic.ListView):
         search_query = self.request.GET.get('search')
 
         if self.request.user.is_authenticated:
-            queryset = queryset.filter(author=self.request.user).order_by('-created_on')
-        
+            queryset = (
+                queryset.filter(author=self.request.user)
+                .order_by('-created_on')
+            )
+
             if search_query:
                 queryset = queryset.filter(
                     Q(title__icontains=search_query) |
@@ -296,12 +306,13 @@ class PostListUser(LoginRequiredMixin, generic.ListView):
 
         else:
             queryset = queryset.none()
-        
+
         return queryset
 
     def render_to_response(self, context, **response_kwargs):
         if self.request.is_ajax():
-            post_list_html = render_to_string('blog/post_list_user.html', context, request=self.request)
+            post_list_html = render_to_string('blog/post_list_user.html',
+                                              context, request=self.request)
             return JsonResponse({'post_list_html': post_list_html})
         else:
             context['post_list'] = context['object_list']
@@ -315,8 +326,10 @@ class DraftCommentList(UserPassesTestMixin, View):
         return self.request.user.is_staff
 
     def get(self, request):
-        draft_comments = Comment.objects.filter(approved=False).order_by('created_on')
-        return render(request, self.template_name, {'draft_comments': draft_comments})
+        draft_comments = Comment.objects.filter(approved=False)\
+            .order_by('created_on')
+        return render(request, self.template_name,
+                      {'draft_comments': draft_comments})
 
 
 class ApproveComment(View):

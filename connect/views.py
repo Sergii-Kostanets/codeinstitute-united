@@ -54,7 +54,8 @@ class GameCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        messages.success(self.request, 'Your game connect has been added and is awaiting approval')
+        messages.success(self.request, 'Your game connect has been added \
+        and is awaiting approval')
         return super().form_valid(form)
 
 
@@ -68,7 +69,8 @@ class GameUpdate(LoginRequiredMixin, UpdateView):
         game = form.save(commit=False)
         game.status = 0
         game.save()
-        messages.success(self.request, 'Your game connect has been updated and is awaiting approval')
+        messages.success(self.request, 'Your game connect has been updated \
+        and is awaiting approval')
         return super().form_valid(form)
 
 
@@ -78,7 +80,8 @@ class GameDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('game_list')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, 'Your game connect has been deleted successfully')
+        messages.success(self.request, 'Your game connect has been deleted \
+        successfully')
         return super().delete(request, *args, **kwargs)
 
 
@@ -109,7 +112,8 @@ class GamePublishList(ListView):
 
     def render_to_response(self, context, **response_kwargs):
         if self.request.is_ajax():
-            game_list_html = render_to_string('connect/game_publish_list.html', context, request=self.request)
+            game_list_html = render_to_string('connect/game_publish_list.html',
+                                              context, request=self.request)
             return JsonResponse({'game_list_html': game_list_html})
         else:
             context['game_list'] = context['object_list']
@@ -129,7 +133,8 @@ class GamePublish(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         game = form.save(commit=False)
         game.status = 1  # Set the status to 1 (publish)
         game.save()
-        messages.success(self.request, 'New game connect has been published successfully.')
+        messages.success(self.request, 'New game connect has been published \
+        successfully.')
         return super().form_valid(form)
 
 
@@ -151,7 +156,8 @@ class GamesOfUser(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         search_query = self.request.GET.get('search')
-        queryset = Game.objects.filter(author=self.request.user).order_by('-created_on')
+        queryset = Game.objects.filter(author=self.request.user)\
+            .order_by('-created_on')
 
         if search_query:
             queryset = queryset.filter(

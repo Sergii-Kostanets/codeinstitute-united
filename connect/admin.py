@@ -8,7 +8,7 @@ class GameAdmin(SummernoteModelAdmin):
 
     list_display = ('title', 'slug', 'platform', 'status', 'created_on')
     search_fields = ('title', 'platform', 'content')
-    prepopulated_fields = {'slug': ('title',),}
+    prepopulated_fields = {'slug': ('title',), }
     list_filter = ('status', 'platform', 'created_on')
     summernote_fields = ('content',)
 

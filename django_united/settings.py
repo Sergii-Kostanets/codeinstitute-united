@@ -42,7 +42,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 if development:
     ALLOWED_HOSTS = ['127.0.0.1']
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), os.environ.get('NAME_DOMAIN')]
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'),
+                     os.environ.get('NAME_DOMAIN')]
 
 # Application definition
 
@@ -184,16 +185,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+        UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+        MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+        CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+        NumericPasswordValidator',
     },
 ]
 
@@ -216,7 +221,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.\
+StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -240,8 +246,8 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_UNIQUE_EMAIL = True
 
-GRAPH_MODELS = { 
-  'all_applications': True, # set to True if you want all models included 
-  'group_models': True, # if you want to group models with a box around each group 
-  'app_labels': ["blog", "connect", "auth"], # add here the apps you want in the graph 
-} 
+GRAPH_MODELS = {
+  'all_applications': True,  # set to True if you want all models included
+  'group_models': True,  # if you want to group models with a box around group
+  'app_labels': ["blog", "connect", "auth"],  # the apps you want in the graph
+}
