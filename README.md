@@ -755,3 +755,144 @@ The libraries used in this project are located in the requirements.txt file and 
 |  |  |  |
 
 [Back to top](<#contents>)
+
+## Code Validation
+The code on the 'United' site has been tested through [W3C HTML Validator](https://validator.w3.org/), [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) and [JS hint Validator](https://jshint.com/). There are an error found on the site in the W3C HTML Validation Service - see bugs section.
+
+### HTML Validation
+With a simple content no errors were returned by [W3C HTML Validator](https://validator.w3.org/) Service. With Summernote edited content - see bugs section.
+
+<details><summary><b>HTML Validation Result Blog page</b></summary>
+
+![HTML Validation Result Blog page](readme/images/html_validation_blog.png)
+</details><br/>
+
+<details><summary><b>HTML Validation Result Connect page</b></summary>
+
+![HTML Validation Result Connect page](readme/images/html_validation_connect.png)
+</details><br/>
+
+<details><summary><b>HTML Validation Result Account page</b></summary>
+
+![HTML Validation Result Account page](readme/images/html_validation_account.png)
+</details><br/>
+
+[Back to top](<#contents>)
+
+### CSS Validaton
+When validating my own code the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) reports no errors.
+
+<details><summary><b>CSS Validation Result Blog section</b></summary>
+
+![CSS Result Blog section](readme/images/css_validation_blog_section.png)
+</details><br/>
+
+<details><summary><b>CSS Validation Result Connect section</b></summary>
+
+![CSS Result Connect section](readme/images/css_validation_connect_section.png)
+</details><br/>
+
+<details><summary><b>CSS Validation Result Account section</b></summary>
+
+![CSS Result Account section](readme/images/css_validation_account_section.png)
+</details><br/>
+
+[Back to top](<#contents>)
+
+### PEP Validation
+
+Python code was validated according to PEP8 using the [CI Python Linter](https://pep8ci.herokuapp.com/). Found errors have been corrected.
+
+#### **United project**
+
+<details><summary><b>PEP Validation Result forms.py</b></summary>
+
+![PEP Validation Result forms.py](readme/images/pep_validation_forms.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result setings.py</b></summary>
+
+![PEP Validation Result setings.py](readme/images/pep_validation_setings.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result urls.py</b></summary>
+
+![PEP Validation Result urls.py](readme/images/pep_validation_urls.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result views.py</b></summary>
+
+![PEP Validation Result views.py](readme/images/pep_validation_views.png)
+</details><br/>
+
+[Back to top](<#contents>)
+
+#### **Blog app**
+
+<details><summary><b>PEP Validation Result admin.py</b></summary>
+
+![PEP Validation Result admin.py](readme/images/pep_validation_blog_admin.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result forms.py</b></summary>
+
+![PEP Validation Result forms.py](readme/images/pep_validation_blog_forms.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result models.py</b></summary>
+
+![PEP Validation Result models.py](readme/images/pep_validation_blog_models.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result urls.py</b></summary>
+
+![PEP Validation Result urls.py](readme/images/pep_validation_blog_urls.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result views.py</b></summary>
+
+![PEP Validation Result views.py](readme/images/pep_validation_blog_views.png)
+</details><br/>
+
+[Back to top](<#contents>)
+
+#### **Connect app**
+
+<details><summary><b>PEP Validation Result admin.py</b></summary>
+
+![PEP Validation Result admin.py](readme/images/pep_validation_connect_admin.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result forms.py</b></summary>
+
+![PEP Validation Result forms.py](readme/images/pep_validation_connect_forms.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result models.py</b></summary>
+
+![PEP Validation Result models.py](readme/images/pep_validation_connect_models.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result urls.py</b></summary>
+
+![PEP Validation Result urls.py](readme/images/pep_validation_connect_urls.png)
+</details><br/>
+
+<details><summary><b>PEP Validation Result views.py</b></summary>
+
+![PEP Validation Result views.py](readme/images/pep_validation_connect_views.png)
+</details><br/>
+
+[Back to top](<#contents>)
+
+### JavaScript Validation
+
+I don't have a separate java script file. I validated all scripts in the templates. The most complex logic is for search.
+The [JS hint Validator](https://jshint.com/) results can be seen below. No errors were returned when passing through JSHint.
+
+<details><summary><b>JSHint Validation Result</b></summary>
+
+![JSHint Validation](readme/images/js_hint_validation.png)
+</details><br/>
+
+[Back to top](<#contents>)

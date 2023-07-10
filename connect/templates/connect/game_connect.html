@@ -81,11 +81,11 @@
             },
             function(error){
                 console.log("FAILED", error);
-                document.getElementsByTagName("h1")[0].innerText = "Oops! Something went wrong."
+                document.getElementsByTagName("h1")[0].innerText = "Oops! Something went wrong.";
                 document.getElementsByTagName("h3")[0].innerText = "Please try again later.";
                 document.getElementsByTagName("h5")[0].innerText = "Meanwhile, you can check out other games or create your oun connect.";
                 document.getElementsByClassName("center-form")[0].innerHTML = "<div id=\"game-form-buttons\"><a href=\"{% url 'game_list' %}\" class=\"btn btn-primary mb-3\" tabindex=\"1\">Back to Games</a><a href=\"{% url 'game_create' %}\" class=\"btn btn-success mb-3\" tabindex=\"2\">Create a Connect</a></div>";
-            },
+            }
         );
         return false;
     }
