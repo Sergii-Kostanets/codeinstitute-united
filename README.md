@@ -82,6 +82,14 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
 * [**Features Left To Implement**](<#features-left-to-implement>)
 
+* [**Technologies Used**](<#technologies-used>)
+
+    * [Languages](<#languages>)
+
+    * [Frameworks & Software](<#frameworks--software>)
+
+    * [Libraries](<#libraries>)
+
 # **Project**
 
 ## Objective
@@ -553,5 +561,72 @@ The sites incorporates flash messages when an action has been performed (i.e. cr
 * Add likes functionality to the Blog view
 * Add more 3rd party social account providers (Facebook, Twitter, etc)
 * Add editing and deliting comments for comment authors
+
+[Back to top](<#contents>)
+
+# Technologies Used
+
+## Languages
+
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) - Provides the functionality for the site.
+* [HTML5](https://en.wikipedia.org/wiki/HTML) - Provides the content and structure for the website.
+* [CSS3](https://en.wikipedia.org/wiki/CSS) - Provides the styling for the website.
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript) - Provides interactive elements of the website
+
+## Frameworks & Software
+* [Bootstrap](https://getbootstrap.com/) - A CSS framework that helps building solid, responsive, mobile-first sites
+* [Django](https://www.djangoproject.com/) - A model-view-template framework used to create the Review | Alliance site
+* [GitHub](https://github.com/) - Used to control versions of the website.
+* [GitBash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) - Terminal used to push changes to the GitHub repository.
+* [Heroku](https://en.wikipedia.org/wiki/Heroku) - A cloud platform that the application is deployed to.
+* [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Used to test performance of site.
+* [Am I Responsive](https://ui.dev/amiresponsive/) - Used for responsiveness check.
+* [Graph Models](https://django-extensions.readthedocs.io/en/latest/graph_models.html) - Used to create a *.png file of all models in the project.
+* [Favicon](https://favicon.io/) - Used to create the favicon.
+* [VSCode](https://code.visualstudio.com/) - Used to create and edit the site.
+* [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Used to debug and test responsiveness.
+* [Cloudinary](https://cloudinary.com/) - A service that hosts all static files in the project.
+* [HTML Validation](https://validator.w3.org/) - Used to validate HTML code
+* [CSS Validation](https://jigsaw.w3.org/css-validator/) - Used to validate CSS code
+* [CI Python Linter](https://pep8ci.herokuapp.com/) - the PEP8 Online Validaton service form Codeinstitute.
+* [JSHint Validation](https://jshint.com/) - Used to validate JavaScript code
+
+[Back to top](<#contents>)
+
+## Libraries
+
+The libraries used in this project are located in the requirements.txt file and have been documented below
+
+* [asgiref](https://pypi.org/project/asgiref/) - ASGI is a standard for Python asynchronous web apps and servers to communicate with each other, and positioned as an asynchronous successor to WSGI.
+* [beautifulsoup4](https://pypi.org/project/beautifulsoup4/) - Beautiful Soup is a Python library for parsing HTML and XML documents. It provides easy methods for navigating, searching, and modifying the parsed data.
+* [bleach](https://pypi.org/project/bleach/) - Bleach is a Django module that sanitizes HTML input, making it safe to display on a website to prevent cross-site scripting (XSS) attacks.
+* [certifi](https://pypi.org/project/certifi/) - Certifi is a Python package that provides a curated collection of Root Certificates for validating the trustworthiness of SSL/TLS connections.
+* [cffi](https://pypi.org/project/cffi/) - CFFI (C Foreign Function Interface) is a library for calling C functions from Python. It provides a way to interface with C code and create Python bindings for C libraries.
+* [charset-normalizer](https://pypi.org/project/charset-normalizer/) - Charset Normalizer is a Python library that helps normalize and detect the character encoding of text. It provides functions to handle and convert text between different character encodings.
+* [cloudinary](https://pypi.org/project/cloudinary/) - The Cloudinary Python SDK allows you to quickly and easily integrate your application with Cloudinary. Effortlessly optimize, transform, upload and manage your cloud's assets.
+* [cryptography](https://pypi.org/project/cryptography/) - Cryptography is a Python library that provides cryptographic recipes and primitives. It includes support for various cryptographic algorithms, key generation, encryption, decryption, digital signatures, and more.
+* [defusedxml](https://pypi.org/project/defusedxml/) - DefusedXML is a library that provides modified versions of the standard Python XML libraries to mitigate various security vulnerabilities. It helps protect against XML attacks such as entity expansion, external entity injection, and other XML parsing vulnerabilities.
+* [dj-database-url](https://pypi.org/project/dj-database-url/) - Django Database URL is a Django module that allows you to utilize environment variables or a URL to configure your database settings. It provides a convenient way to manage and switch between different database configurations.
+* [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - Django Cloudinary Storage is a Django package that facilitates integration with Cloudinary by implementing Django Storage API.
+* [Django](https://pypi.org/project/Django/) - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
+* [django-allauth](https://pypi.org/project/django-allauth/) - Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+* [django-crispy-forms](https://pypi.org/project/django-crispy-forms/) - Used to integrate Django DRY forms in the project.
+* [django-extensions](https://pypi.org/project/django-extensions/) - Django Extensions is a collection of custom extensions for the Django Framework.
+* [django-summernote](https://pypi.org/project/django-summernote/) - Django Summernote is a WYSIWYG text editor for Django. It integrates the Summernote editor into Django forms and provides a convenient way to edit rich text content.
+* [gunicorn](https://pypi.org/project/gunicorn/) - Gunicorn ‘Green Unicorn’ is a Python WSGI HTTP Server for UNIX. It’s a pre-fork worker model ported from Ruby’s Unicorn project. The Gunicorn server is broadly compatible with various web frameworks, simply implemented, light on server resource usage, and fairly speedy.
+* [idna](https://pypi.org/project/idna/) - IDNA (Internationalized Domain Names in Applications) is a Python library that provides support for working with internationalized domain names. It helps encode and decode domain names to and from ASCII-compatible encoding.
+* [oauthlib](https://pypi.org/project/oauthlib/) - OAuthLib is a framework which implements the logic of OAuth1 or OAuth2 without assuming a specific HTTP request object or web framework.
+* [psycopg2-binary](https://pypi.org/project/psycopg2-binary/) - Psycopg2 Binary is a PostgreSQL adapter for Python. It is a binary distribution of the psycopg2 library, which provides efficient and easy-to-use access to PostgreSQL databases from Python.
+* [pycparser](https://pypi.org/project/pycparser/) - Pycparser is a pure Python parser for the C programming language. It allows parsing and analyzing C code from within Python, making it useful for various tasks such as code analysis, transformation, and generation.
+* [PyJWT](https://pypi.org/project/PyJWT/) - A Python implementation of RFC 7519.
+* [python3-openid](https://pypi.org/project/python3-openid/) - OpenID support for modern servers and consumers.
+* [pytz](https://pypi.org/project/pytz/) - This is a set of Python packages to support use of the OpenID decentralized identity system in your application, update to Python 3.
+* [requests](https://pypi.org/project/requests/) - Requests is a popular Python library for making HTTP requests. It provides a simple and intuitive interface for sending HTTP/1.1 requests, handling responses, and working with HTTP sessions.
+* [requests-oauhlib](https://pypi.org/project/requests-oauthlib/) - Provides first-class OAuth library support for Requests.
+* [six](https://pypi.org/project/six/) - Six is a Python module that provides a compatibility layer for bridging differences between Python 2 and Python 3. It allows developers to write code that works across both versions of Python.
+* [soupsieve](https://pypi.org/project/soupsieve/) - Soupsieve is a CSS selector library for Python, specifically designed for use with Beautiful Soup. It allows you to filter and extract elements from HTML or XML documents using CSS selectors.
+* [sqlparse](https://pypi.org/project/sqlparse/) - sqlparse is a non-validating SQL parser for Python. It provides support for parsing, splitting and formatting SQL statements.
+* [urllib3](https://pypi.org/project/urllib3/) - Urllib3 is a powerful HTTP client library for Python. It provides a high-level interface for making HTTP requests, handling headers, cookies, redirects, and other aspects of the HTTP protocol.
+* [webencodings](https://pypi.org/project/webencodings/) - Webencodings is a Python library that provides utilities for working with character encodings commonly used in web-related tasks. It includes functions for encoding and decoding HTML entities, URL encoding, and other web encoding formats.
 
 [Back to top](<#contents>)
