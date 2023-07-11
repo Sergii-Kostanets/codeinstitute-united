@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.views.generic import ListView
+from django.http import HttpResponseForbidden
 
 
 class GameList(generic.ListView):
@@ -89,6 +90,11 @@ class GamePublishList(ListView):
     model = Game
     template_name = 'connect/game_publish_list.html'
     paginate_by = 5
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated or not request.user.is_staff:
+            return HttpResponseForbidden()
+        return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         queryset = super().get_queryset()
