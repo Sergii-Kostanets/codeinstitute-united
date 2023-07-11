@@ -59,11 +59,15 @@ class GameCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class GameUpdate(LoginRequiredMixin, UpdateView):
+class GameUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Game
     form_class = GameForm
     template_name = 'connect/game_edit.html'
     success_url = reverse_lazy('game_list_of_user')
+
+    def test_func(self):
+        game = self.get_object()
+        return self.request.user.is_staff or self.request.user == game.author
 
     def form_valid(self, form):
         game = form.save(commit=False)
@@ -74,10 +78,14 @@ class GameUpdate(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class GameDelete(LoginRequiredMixin, DeleteView):
+class GameDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Game
     template_name = 'connect/game_delete.html'
     success_url = reverse_lazy('game_list')
+
+    def test_func(self):
+        game = self.get_object()
+        return self.request.user.is_staff or self.request.user == game.author
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Your game connect has been deleted \
