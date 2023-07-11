@@ -159,7 +159,11 @@ class PostCreate(View):
         )
 
 
-class PostEdit(View):
+class PostEdit(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        return self.request.user.is_staff or self.request.user == post.author
+
     def get(self, request, pk, *args, **kwargs):
         post = get_object_or_404(Post, pk=pk)
         form = PostForm(instance=post)
@@ -194,7 +198,11 @@ class PostEdit(View):
         )
 
 
-class PostDelete(LoginRequiredMixin, View):
+class PostDelete(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        return self.request.user.is_staff or self.request.user == post.author
+
     def post(self, request, pk, *args, **kwargs):
         post = get_object_or_404(Post, pk=pk)
 
@@ -216,6 +224,11 @@ class PostPublishList(LoginRequiredMixin, generic.ListView):
     model = Post
     template_name = 'blog/post_publish_list.html'
     paginate_by = 12
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated or not request.user.is_staff:
+            return render(request, '403.html', status=403)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -247,7 +260,11 @@ class PostPublishList(LoginRequiredMixin, generic.ListView):
             return super().render_to_response(context, **response_kwargs)
 
 
-class PostPublish(View):
+class PostPublish(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        return self.request.user.is_staff
+
     def get(self, request, pk, *args, **kwargs):
         post = get_object_or_404(Post, pk=pk)
         form = PostForm(instance=post)
