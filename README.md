@@ -93,6 +93,16 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
     * [Testing User Stories](<#testing-user-stories>)
 
     * [Code Validation](<#code-validation>)
+    
+    * [Additional Testing](<#additional-testing>)
+
+    * [Known Bugs](<#known-bugs>)
+    
+* [Deployment](<#deployment>)
+
+* [Credits](<#credits>)
+
+* [Acknowledgements](<#acknowledgements>)
 
 # **Project**
 
@@ -894,5 +904,196 @@ The [JS hint Validator](https://jshint.com/) results can be seen below. No error
 
 ![JSHint Validation](readme/images/js_hint_validation.png)
 </details><br/>
+
+[Back to top](<#contents>)
+
+## Additional Testing
+
+### Manual Testing
+
+In addition to tests stated above I have performed a series of manual tests. Below the list of tests that has been conducted can be found.
+
+| Status | **Main Website - User Signed Out**
+|:-------:|:--------|
+| &check; | Typing in a incorrect URL on the page loads the 404 error page
+| &check; | Pasting page that needs authentication loads a forbidden page or if this page accessable for sined in users - to the sign in page
+| &check; | Clicking the nav logo loads the main page of the section of the site (*Blog* or *Connect*)
+| &check; | Clicking the Home button on the nav bar loads the main page and lists all published posts for *Blog*, all published game connects for *Connect*
+| &check; | Clicking the Blog button on the nav bar lists all posts
+| &check; | Clicking the Connect button on the nav bar lists all game connects
+| &check; | Clicking the Sign In loads the sign in page
+| &check; | 12 posts are rendered for the user on *Blog* page before pagination kicks in
+| &check; | 5 game connects are rendered for the user on *Connect* page before pagination kicks in
+| &check; | Clicking the on the post card loads the post detail page
+| &check; | Clicking the on the game connect card header opens the connect detail section
+| &check; | In the post details view the user cannot create a comment
+| &check; | In the game connect full view the user cannot get to the connect form
+| &check; | The search input works at *Blog* and *Connect* pages
+| &check; | Clicking the LinkedIn link in the footer area opens LinkedIn in a new window
+| &check; | Clicking the GitHub link in the footer area opens GitHub in a new window
+| &check; | Clicking the Instagram link in the footer area opens Instagram in a new window
+| &check; | Clicking the Facebook link in the footer area opens Facebook in a new window
+
+| Status | **Main Website - User Signed In**
+|:-------:|:--------|
+| &check; | Typing in a incorrect URL on the page loads the 404 error page
+| &check; | Pasting page that needs staff member rights loads a forbidden page
+| &check; | Clicking the nav logo loads the main page of the section of the site (*Blog*, *Connect*, or *Account*)
+| &check; | Clicking the Home button on the nav bar loads the main page and lists all published posts for *Blog*, all published game connects for *Connect*
+| &check; | Clicking the Blog button on the nav bar lists all posts
+| &check; | Clicking the Connect button on the nav bar lists all game connects
+| &check; | Clicking the Add post button on the nav bar at *Blog* page opens create form for post
+| &check; | Clicking the Add game button on the nav bar at *Connect* page opens create form for connect
+| &check; | 12 posts are rendered for the user on all / albums / concert page before pagination kicks in
+| &check; | 5 game connects are rendered for the user on *Connect* page before pagination kicks in
+| &check; | Clicking the on the post card loads the post detail page
+| &check; | Clicking the on the game connect card header opens the connect detail section
+| &check; | In the post detail view the signed in user can comment a post
+| &check; | When user submits a comment a message with approval information is being showed on the page
+| &check; | In the post detail view the signed in user can update/delete the post created by themselves
+| &check; | Clicking the update button loads the update post page
+| &check; | Clicking the delete button shows the delete confirmation modal window
+| &check; | In the post detail view the signed in user can like/unlike posts
+| &check; | Clicking the My posts button at *Blog* section of the site the signed in user menu lists the signed in users posts
+| &check; | In the My posts view the information about the posts status is correct
+| &check; | Clicking the on the game connect card header opens the connect detail section
+| &check; | In the game connect full view the signed in user can update the post created by themselves
+| &check; | In the game connect full view the signed in user can click Connect button and get to the connect form if the game connect created by another user
+| &check; | Clicking the update button loads the update game connect page
+| &check; | Clicking the delete button at updade connect page shows the delete confirmation page
+| &check; | Clicking the My games button at *Connect* section of the site the signed in user menu lists the signed in users game connects
+| &check; | In the My games view the information about the game cinnect status is correct
+| &check; | In the signed in user menu the Publish links are not visible
+| &check; | Clicking the My account button in the signed in user menu loads the My Account section of the site
+| &check; | Clicking the LinkedIn link in the footer area opens LinkedIn in a new window
+| &check; | Clicking the GitHub link in the footer area opens GitHub in a new window
+| &check; | Clicking the Instagram link in the footer area opens Instagram in a new window
+| &check; | Clicking the Facebook link in the footer area opens Facebook in a new window
+
+| Status | **Main Website - Admin signed In**
+|:-------:|:--------|
+| &check; | Clicking the Publish comments button in the signed in user menu loads the Publish comments page and lists all draft comments
+| &check; | Clicking the Publish posts button in the signed in user menu loads the Publish posts page and lists all draft posts
+| &check; | Clicking the Publish games button in the signed in user menu loads the Publish game connects page and lists all draft game connects
+| &check; | The publish button is visible in post detail view and leads to publish confirmation editing
+| &check; | The publish button is visible in post publish confirmation editing view and leads to publishing the post
+| &check; | The publish button is visible in game connect full view and leads to publish confirmation editing
+| &check; | The publish button is visible in game connect publish confirmation editing view and leads to publishing the game connect
+| &check; | An the Publish comment page clicking the approve / delete toggles the apprpriate modal confirmation window
+
+ Status | **Create A Post - User signed In**
+|:-------:|:--------|
+| &check; | Title field is required
+| &check; | Title field does not accept empty field
+| &check; | Title field does not accept just spaces
+| &check; | Excerpt field is not required
+| &check; | Content field is required
+| &check; | Content field does not accept empty field
+| &check; | Content field does not accept just spaces
+| &check; | Featured Image is not required
+| &check; | Status field defaults to Draft
+| &check; | Author shows name of signed in user
+| &check; | Post Success Message is displayed when the user submits the review and the form validation is ok.
+
+ Status | **Create A Game Connect - User signed In**
+|:-------:|:--------|
+| &check; | Title field is required
+| &check; | Title field does not accept empty field
+| &check; | Title field does not accept just spaces
+| &check; | Slug field is required
+| &check; | Slug field does not accept empty field
+| &check; | Slug field does not accept just spaces
+| &check; | Platform field is required
+| &check; | Platform field does not accept empty field
+| &check; | Excerpt field is not required
+| &check; | Content field is required
+| &check; | Content field does not accept empty field
+| &check; | Content field does not accept just spaces
+| &check; | Featured Image is not required
+| &check; | Status field defaults to Draft
+| &check; | Author shows name of signed in user
+| &check; | Game connect Success Page is displayed when the user submits the game connect and the form validation is ok.
+
+Status | **Create A New User - User signed Out**
+|:-------:|:--------|
+| &check; | Email field is required
+| &check; | Email field does not accept empty field
+| &check; | Email field does not accept just spaces
+| &check; | Username field is required
+| &check; | Username field does not accept empty field
+| &check; | Username field does not accept just spaces
+| &check; | Password fields do not accept empty field
+| &check; | Password fields do not accept just spaces
+| &check; | Success flash message is displayed when the user submits a new user form
+
+[Back to top](<#contents>)
+
+### Responsiveness Test
+The responsive design tests were carried out manually with [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/) and [Am I Responsive](https://ui.dev/amiresponsive/).
+
+| Desktop    | Display <1280px       | Display >1280px    |
+|------------|-----------------------|--------------------|
+| Render     | pass                  | pass               |
+| Images     | pass                  | pass               |
+| Links      | pass                  | pass               |
+
+| Tablet     | Samsung Galaxy Tab 10 | Amazon Kindle Fire | iPad Mini | iPad Pro |
+|------------|-----------------------|--------------------|-----------|----------|
+| Render     | pass                  | pass               | pass      | pass     |
+| Images     | pass                  | pass               | pass      | pass     |
+| Links      | pass                  | pass               | pass      | pass     |
+
+| Phone      | Galaxy S5/S6/S7       | iPhone 6/7/8       | iPhone 12pro         |
+|------------|-----------------------|--------------------|----------------------|
+| Render     | pass                  | pass               | pass      | pass     |
+| Images     | pass                  | pass               | pass      | pass     |
+| Links      | pass                  | pass               | pass      | pass     |
+
+[Back to top](<#contents>)
+
+### Browser Compatibility
+* Google Chrome (version 114.0.5735.198)
+* Mozilla Firefox (version 114.0.1)
+* Opera (version 91.0.4516.20)
+* Apple Safari (version 16.5.1)
+* Microsoft Edge (version 114.0.1823.67)
+
+[Back to top](<#contents>)
+
+### Lighthouse
+Google Lighthouse in Chrome Developer Tools was used to test the application within the areas of *Performance*, *Accessibility*, *Best Practices* and *SEO*. I tested the *connect page*, *blog page*, and *post details page*. The testing showed the following:
+
+<details><summary><b>Lighthouse Connect Page Result</b></summary>
+
+![Lighthouse Connect Page Result](readme/images/lighthouse_connect.png)
+</details><br/>
+
+<details><summary><b>Lighthouse Blog Page Result</b></summary>
+
+![Lighthouse Blog Page Result](readme/images/lighthouse_blog.png)
+</details><br/>
+
+<details><summary><b>Lighthouse Post Detail Page Result</b></summary>
+
+![Lighthouse Post Detail Page Result](readme/images/lighthouse_post.png)
+</details><br/>
+
+### Peer Review
+Additional testing of the application was conducted by people outside of the software development field. Some smaller spelling and grammar errors were found and corrected. No issues connected to design or handling of the site.
+
+## Known bugs
+No known bugs besides those in the fixed / unfixed bugs section.
+
+### Fixed Bugs
+
+* Bug: When publishing a game connect as an admin or staff member featured image cannot be changed. This is now handled and fixed by adding ```enctype="multipart/form-data"``` to the ```form``` tag at the ```post_publish.html``` template.
+
+* Bug: HTML Validation shows errors about accordion card header ```div```. Fixed by adding ```role``` tag to this ```div```. <details><summary><b>HTML Validation Accordion</b></summary>![HTML Validation Accordion](readme/images/html_validation_error_accordion.png)</details><br/>
+
+[Back to top](<#contents>)
+
+### Unfixed Bugs
+
+* Bug: When the Summernote styles (color) applyed to the content field data HTML Validation shows errors about inline styles. <details><summary><b>HTML Validation Summernote</b></summary>![HTML Validation Summernote](readme/images/html_validation_error_summernote.png)</details><br/>
 
 [Back to top](<#contents>)
