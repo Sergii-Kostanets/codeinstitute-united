@@ -143,7 +143,7 @@ class GamePublish(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
 
-class GameConnect(View):
+class GameConnect(LoginRequiredMixin, View):
     template_name = 'connect/game_connect.html'
     success_message = 'Thank you for your message!'
 

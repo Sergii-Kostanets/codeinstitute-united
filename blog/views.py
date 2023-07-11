@@ -117,7 +117,7 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class PostCreate(View):
+class PostCreate(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         form = PostForm()
         return render(
