@@ -97,7 +97,7 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
     * [Additional Testing](<#additional-testing>)
 
     * [Known Bugs](<#known-bugs>)
-    
+
 * [Deployment](<#deployment>)
 
 * [Credits](<#credits>)
@@ -173,6 +173,8 @@ Below the user stories for the project are listed to clarify why particular feat
 | As a Site User | I can add draft connects for the website UI so that staff member can approve it | &check; |
 | As a Site User | I can see all my connects so that I knew which of them is published | &check; |
 | As a Site User | I can search for connects so that I can filter connects that match my interests | &check; |
+| As a Site User | I can flip paginated pages after the search so that I can find item from search result manually | &check; |
+| As a Site User | I can visit game connect form and submit it so that I can email game connect author | &check; |
 | As a Site User | I can sign out from the site so that I can be safe that nobody can access my information | &check; |
 | As a Site User | I can edit my login and email so that I can update up-to-date information about me | &check; |
 | As a Site User | I can sign in / sign up with social account so that I can get access to all advantages of authenticated user faster | &check; |
@@ -206,7 +208,7 @@ Below the user stories for the project are listed to clarify why particular feat
 
 The 'United' site is split up in two parts: **Blog** for **posts** and **Connect** for **game connects**.
 
-The functionality is alo different **when the user is logged out** and **when the user is logged in**. Depending on login status different pages is available for the user. When the user is logged out the pages: *Sign In*, *Blog*, and *Connect* are avaliable. When the user is logged in: dropdown menu with username (*My account*, *My games* or/and *My posts*, *Sign Out*), *Add game* or *Add post*, *Blog*, and *Connect* are available. If you are logged in as an administrator or staff member an *admin area* is available: *Publish connects* or *Publish comments* with *Publish posts*. The site has an minimalistic, clean and intuitive design that makes the site easy to navigate for the user.
+The functionality is alo different **when the user is signed out** and **when the user is signed in**. Depending on login status different pages is available for the user. When the user is signed out the pages: *Sign In*, *Blog*, and *Connect* are avaliable. When the user is signed in: dropdown menu with username (*My account*, *My games* or/and *My posts*, *Sign Out*), *Add game* or *Add post*, *Blog*, and *Connect* are available. If you are signed in as an administrator or staff member an *admin area* is available: *Publish connects* or *Publish comments* with *Publish posts*. The site has an minimalistic, clean and intuitive design that makes the site easy to navigate for the user.
 
 Read more about the different choices in the [Features](<#features>) section.
 
@@ -240,9 +242,9 @@ The features of the site are listed below.
 ## **Existing Features**
 
 ### **Navigation**
-The navigation bar is very clean and straight forward. Depending if you are logged in or not different menus are visible for the site user. An extra menu item is visible if you are logged in as an administrator / staff member.
+The navigation bar is very clean and straight forward. Depending if you are signed in or not different menus are visible for the site user. An extra menu item is visible if you are signed in as an administrator / staff member.
 
-*Links that are visible to logged out users*
+*Links that are visible to signed out users*
 
 * Sign In - Gives the user the opportunity to sign in or sign up if not ready a registered user at United.
 * Blog - Lists all posts.
@@ -262,7 +264,7 @@ The navigation bar is very clean and straight forward. Depending if you are logg
 
 * Username dropdown list:
     * My account - Shows signed in users profile page.
-    * My posts / My games - Lists all posts or game connects created by the logged in user depending on which section of the site the user is in.
+    * My posts / My games - Lists all posts or game connects created by the signed in user depending on which section of the site the user is in.
     * Sign out - Logs out the user.
 * Add post / Add game - Lets the user create a new post or game connect depending on which section of the site the user is in.
 * Blog - Lists all posts.
@@ -298,24 +300,24 @@ All of the links above plus the ones below.
 * Connect section:
     * Publish games - Lists all draft g ame connects to approve.
 
-<details><summary><b>Navigation Desktop Blog - Admin / Staff Logged In</b></summary>
+<details><summary><b>Navigation Desktop Blog - Admin / Staff signed In</b></summary>
 
-![Navigation Desktop Blog - Admin / Staff Logged In](readme/images/navbar_desktop_blog_admin_signed_in.png)
+![Navigation Desktop Blog - Admin / Staff signed In](readme/images/navbar_desktop_blog_admin_signed_in.png)
 </details><br/>
 
-<details><summary><b>Navigation Desktop Connect - Admin / Staff Logged In</b></summary>
+<details><summary><b>Navigation Desktop Connect - Admin / Staff signed In</b></summary>
 
-![Navigation Desktop Connect - Admin / Staff Logged In](readme/images/navbar_desktop_connect_admin_signed_in.png)
+![Navigation Desktop Connect - Admin / Staff signed In](readme/images/navbar_desktop_connect_admin_signed_in.png)
 </details><br/>
 
-<details><summary><b>Navigation Mobile Blog - Admin / Staff Logged In</b></summary>
+<details><summary><b>Navigation Mobile Blog - Admin / Staff signed In</b></summary>
 
-![Navigation Mobile Blog - Admin / Staff Logged In](readme/images/navbar_mobile_blog_admin_signed_in.png)
+![Navigation Mobile Blog - Admin / Staff signed In](readme/images/navbar_mobile_blog_admin_signed_in.png)
 </details><br/>
 
-<details><summary><b>Navigation Mobile Connect - Admin / Staff Logged In</b></summary>
+<details><summary><b>Navigation Mobile Connect - Admin / Staff signed In</b></summary>
 
-![Navigation Mobile Connect - Admin / Staff Logged In](readme/images/navbar_mobile_connect_admin_signed_in.png)
+![Navigation Mobile Connect - Admin / Staff signed In](readme/images/navbar_mobile_connect_admin_signed_in.png)
 </details><br/>
 
 ### **Search**
@@ -324,6 +326,14 @@ The heart of this project is the search. This is a convenient way to search for 
 <details><summary><b>Search</b></summary>
 
 ![Search](readme/images/search.png)
+</details><br/>
+
+### **Pagination**
+Pagination has buttons: *previous page*, *first page*, *page numbers (previous, current, and next)*, *last page*, and *next page*. Pagination takes into account search results and when turning pages, only the page corresponding to the search results is flipped.
+
+<details><summary><b>Search</b></summary>
+
+![Search](readme/images/pagination.png)
 </details><br/>
 
 ### **Blog**
@@ -349,19 +359,35 @@ If the user is not signed in there is a sign in button in each open accordeon ca
 ![Connect - User Signed Out](readme/images/connect_user_signed_out.png)
 </details><br/>
 
-If the user is logged in a *Connect* option gets visible on the game connect open accordeon card view.
+If the user is signed in a *Connect* option gets visible on the game connect open accordeon card view.
 
 <details><summary><b>Connect - User Signed In</b></summary>
 
 ![Connect - User Signed In](readme/images/connect_user_signed_in.png)
 </details><br/>
 
-If the user is logged in is a author of the game connect: an *Edit* option gets visible at open accordeon card view.
+If the user is signed in as an author of the game connect: an *Edit* option gets visible at open accordeon card view.
 
 <details><summary><b>Connect - Author Signed In</b></summary>
 
 ![Connect - Author Signed In](readme/images/connect_author_signed_in.png)
 </details><br/>
+
+### **Connect with Author**
+
+If the user is signed in a *Connect* button allows to get to the *Connect with Author* page. Submitting the form user is sending email to the game connect author.
+
+<details><summary><b>Connect with Author - Form</b></summary>
+
+![Connect with Author - Form](readme/images/connect_with_author_form.png)
+</details><br/>
+
+<details><summary><b>Connect with Author - Email example</b></summary>
+
+![Connect with Author - Email example](readme/images/connect_with_author_email.png)
+</details><br/>
+
+By clicking 'Reply' in the mail service game connect author can reply to the user.
 
 ### **Account**
 On this page the user can view and update their own username and email.
@@ -380,7 +406,7 @@ On this page the user can add or remove 3rd party accounts (Google and GitHub).
 </details><br/>
 
 ### **My Posts**
-This page lists all the posts that has been made at United by signed in user. If the user is not logged in this page is forbidden. Here the user can see which of the posts have already been published and which are still avaiting approval.
+This page lists all the posts that has been made at United by signed in user. If the user is not signed in this page is forbidden. Here the user can see which of the posts have already been published and which are still avaiting approval.
 
 <details><summary><b>My Posts</b></summary>
 
@@ -388,7 +414,7 @@ This page lists all the posts that has been made at United by signed in user. If
 </details><br/>
 
 ### **My Games**
-This page lists all the game connects that has been made at United by signed in user. If the user is not logged in this page is forbidden. Here the user can see which of the game connects have already been published and which are still avaiting approval.
+This page lists all the game connects that has been made at United by signed in user. If the user is not signed in this page is forbidden. Here the user can see which of the game connects have already been published and which are still avaiting approval.
 
 <details><summary><b>My Games</b></summary>
 
@@ -396,24 +422,24 @@ This page lists all the game connects that has been made at United by signed in 
 </details><br/>
 
 ### **Post Detail View**
-The post detail shows the details about the post that the user has chosen in the blog view. Depending on if the user is signed in and if the user is a post author the view looks a little bit different. If the user is logged in they get the possibility to like the post and also can see if it published and edit or delete it if they have written it. A signed in user can also leave a comment.
+The post detail shows the details about the post that the user has chosen in the blog view. Depending on if the user is signed in and if the user is a post author the view looks a little bit different. If the user is signed in they get the possibility to like the post and also can see if it published and edit or delete it if they have written it. A signed in user can also leave a comment.
 
-<details><summary><b>Post Detail View - User Logged Out</b></summary>
+<details><summary><b>Post Detail View - User signed Out</b></summary>
 
-![Post Detail View - User Logged Out](readme/images/post_detail_logged_out.png)
-![Post Detail View Comment - User Logged Out](readme/images/post_detail_comment_logged_out.png)
+![Post Detail View - User signed Out](readme/images/post_detail_signed_out.png)
+![Post Detail View Comment - User signed Out](readme/images/post_detail_comment_signed_out.png)
 </details><br/>
 
-<details><summary><b>Post Detail View - User Logged In</b></summary>
+<details><summary><b>Post Detail View - User signed In</b></summary>
 
-![Post Detail View - User Logged In](readme/images/post_detail_logged_in.png)
-![Post Detail View Comment - User Logged In](readme/images/post_detail_comment_logged_in.png)
+![Post Detail View - User signed In](readme/images/post_detail_signed_in.png)
+![Post Detail View Comment - User signed In](readme/images/post_detail_comment_signed_in.png)
 </details><br/>
 
-<details><summary><b>Post Detail View - Author Logged In</b></summary>
+<details><summary><b>Post Detail View - Author signed In</b></summary>
 
-![Post Detail View - Author Logged In](readme/images/post_detail_author_logged_in.png)
-![Post Detail View Comment - Author Logged In](readme/images/post_detail_author_comment_logged_in.png)
+![Post Detail View - Author signed In](readme/images/post_detail_author_signed_in.png)
+![Post Detail View Comment - Author signed In](readme/images/post_detail_author_comment_signed_in.png)
 </details><br/>
 
 ### **Create Post**
@@ -433,7 +459,7 @@ On this page the registered and signed in user can create their own game connect
 </details><br/>
 
 ### **Edit Post**
-On this page the registered and logged in user can edit their own post. When they have updated it in 'United' needs to re-approve it, until it's re-approved it will not be visible for the public.
+On this page the registered and signed in user can edit their own post. When they have updated it in 'United' needs to re-approve it, until it's re-approved it will not be visible for the public.
 
 <details><summary><b>Edit Post</b></summary>
 
@@ -441,7 +467,7 @@ On this page the registered and logged in user can edit their own post. When the
 </details><br/>
 
 ### **Edit Game Connect**
-On this page the registered and logged in user can edit their own game connect. When they have updated it in 'United' needs to re-approve it, until it's re-approved it will not be visible for the public.
+On this page the registered and signed in user can edit their own game connect. When they have updated it in 'United' needs to re-approve it, until it's re-approved it will not be visible for the public.
 
 <details><summary><b>Edit Game Connect</b></summary>
 
@@ -449,7 +475,7 @@ On this page the registered and logged in user can edit their own game connect. 
 </details><br/>
 
 ### **Publish Posts**
-This page lists all the draft posts avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not logged in this page is forbidden. Here the admin / staff member can choose the post to approve or delete.
+This page lists all the draft posts avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not signed in this page is forbidden. Here the admin / staff member can choose the post to approve or delete.
 
 <details><summary><b>Publish Posts</b></summary>
 
@@ -457,7 +483,7 @@ This page lists all the draft posts avaiting approval that has been made at 'Uni
 </details><br/>
 
 ### **Publish Connects**
-This page lists all the draft game connects avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not logged in this page is forbidden. Here the admin / staff member can choose the g ame connect to approve or delete.
+This page lists all the draft game connects avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not signed in this page is forbidden. Here the admin / staff member can choose the g ame connect to approve or delete.
 
 <details><summary><b>Publish Connects</b></summary>
 
@@ -507,7 +533,7 @@ On this page admin / staff member can edit draft game connect before publishing.
 </details><br/>
 
 ### **Publish Comments**
-This page lists all the draft comments avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not logged in this page is forbidden. Here the admin / staff member can approve or delete draft comments.
+This page lists all the draft comments avaiting approval that has been made at 'United' by signed in users. This page available only for administrator or staff member. If the user is not signed in this page is forbidden. Here the admin / staff member can approve or delete draft comments.
 
 <details><summary><b>Publish Comments</b></summary>
 
@@ -705,6 +731,12 @@ The libraries used in this project are located in the requirements.txt file and 
 | As a Site User | I can search for connects so that I can filter connects that match my interests | &check; |
 |  | The user can focus on search input at the top of the pages: *Connect*, *My games*. When entering characters, game connects will be filtered according to the user's request without the need to submit |  |
 |  |  |  |
+| As a Site User | I can flip paginated pages after the search so that I can find item from search result manually | &check; |
+|  | The user can flip pages after the search and they will see only the cards related to the search results |  |
+|  |  |  |
+| As a Site User | I can visit game connect form and submit it so that I can email game connect author | &check; |
+|  | The signed in user can click on 'Connect' button at the full game connect view and get to the *Connect with Author* page. Fill in the form, submit it and send an email to the author of the game connect |  |
+|  |  |  |
 | As a Site User | I can sign out from the site so that I can be safe that nobody can access my information | &check; |
 |  | When the user is signed in it is possible to choose the *Sign Out*-option in the navigation menu |  |
 |  |  |  |
@@ -749,19 +781,19 @@ The libraries used in this project are located in the requirements.txt file and 
 |  | At the top of the site at the *Blog* page there is a navigation bar with a *Publish comments* link in the dropdown menu that lists all draft comments when the admin clicks on it. The admin can then publish or delete each draft comment |  |
 |  |  |  |
 | As a Site Admin | I can create, read, update and delete posts so that I can manage my blog content | &check; |
-|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create, read, update and delete posts |  |
+|  | When the user is signed in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create, read, update and delete posts |  |
 |  |  |  |
 | As a Site Admin | I can create, read, update and delete connects so that I can manage my connect content | &check; |
-|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create, read, update and delete game connects |  |
+|  | When the user is signed in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create, read, update and delete game connects |  |
 |  |  |  |
 | As a Site Admin | I can create draft posts so that I can finish writing the content later | &check; |
-|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create draft posts |  |
+|  | When the user is signed in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create draft posts |  |
 |  |  |  |
 | As a Site Admin | I can create draft connects so that I can finish writing the content later | &check; |
-|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create draft game connects |  |
+|  | When the user is signed in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can create draft game connects |  |
 |  |  |  |
 | As a Site Admin | I can access an admin page so that I can get a general understanding of signed up users, number of likes and number of posts and game connects | &check; |
-|  | When the user is logged in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can get a general understanding of signed up users, number of likes and number of posts and game connects |  |
+|  | When the user is signed in as an administrator they can access url [/admin](https://www.uniteds.games/admin/) page there they can get a general understanding of signed up users, number of likes and number of posts and game connects |  |
 |  |  |  |
 
 [Back to top](<#contents>)
@@ -923,7 +955,7 @@ In addition to tests stated above I have performed a series of manual tests. Bel
 | &check; | Clicking the Connect button on the nav bar lists all game connects
 | &check; | Clicking the Sign In loads the sign in page
 | &check; | 12 posts are rendered for the user on *Blog* page before pagination kicks in
-| &check; | 5 game connects are rendered for the user on *Connect* page before pagination kicks in
+| &check; | 10 game connects are rendered for the user on *Connect* page before pagination kicks in
 | &check; | Clicking the on the post card loads the post detail page
 | &check; | Clicking the on the game connect card header opens the connect detail section
 | &check; | In the post details view the user cannot create a comment
@@ -945,7 +977,7 @@ In addition to tests stated above I have performed a series of manual tests. Bel
 | &check; | Clicking the Add post button on the nav bar at *Blog* page opens create form for post
 | &check; | Clicking the Add game button on the nav bar at *Connect* page opens create form for connect
 | &check; | 12 posts are rendered for the user on all / albums / concert page before pagination kicks in
-| &check; | 5 game connects are rendered for the user on *Connect* page before pagination kicks in
+| &check; | 10 game connects are rendered for the user on *Connect* page before pagination kicks in
 | &check; | Clicking the on the post card loads the post detail page
 | &check; | Clicking the on the game connect card header opens the connect detail section
 | &check; | In the post detail view the signed in user can comment a post

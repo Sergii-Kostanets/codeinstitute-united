@@ -15,7 +15,7 @@ from django.views.generic import ListView
 class GameList(generic.ListView):
     model = Game
     template_name = 'connect/game_list.html'
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -96,7 +96,7 @@ class GameDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class GamePublishList(ListView):
     model = Game
     template_name = 'connect/game_publish_list.html'
-    paginate_by = 5
+    paginate_by = 10
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated or not request.user.is_staff:
@@ -165,7 +165,7 @@ class GameConnect(LoginRequiredMixin, View):
 class GamesOfUser(LoginRequiredMixin, generic.ListView):
     template_name = 'connect/game_list_of_user.html'
     context_object_name = 'game_list'
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         search_query = self.request.GET.get('search')
