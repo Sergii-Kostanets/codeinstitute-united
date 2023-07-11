@@ -1384,3 +1384,20 @@ To clone and set up this project you need to follow the steps below.
 </details><br />
 
 [Back to top](<#contents>)
+
+# Credits
+
+* All text content written by Sergii Kostanets.
+
+* Images for website taken from [PlayStation Store](https://store.playstation.com/)
+
+* Logo and icons created with AI image generator [fotor](https://www.fotor.com/)
+
+* As an example of a readme file was taken from of author [Marcus Eriksson](https://github.com/worldofmarcus/project-portfolio-4/blob/main/README.md)
+
+# Acknowledgements
+This site was created for Portfolio Project #4 - Diploma in Full Stack Software Development Diploma at the [Code Institute](https://www.codeinstitute.net). I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/) for relevant feedback during the project.
+
+*Sergii Kostanets, 2023-07-17*
+
+[Back to top](<#contents>)
