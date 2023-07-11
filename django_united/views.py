@@ -18,6 +18,10 @@ def account_settings(request):
     return render(request, 'account_settings.html', {'form': form})
 
 
+def page_forbidden(request, *args, **kwargs):
+    return render(request, '403.html', status=403)
+
+
 def page_not_found_local(request, *args, **kwargs):
     return render(request, '404.html', status=404)
 

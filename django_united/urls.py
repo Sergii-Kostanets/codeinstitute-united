@@ -4,10 +4,10 @@ from django.views.generic import TemplateView
 from .views import account_settings
 from django.conf.urls import handler404, handler403, handler500
 from django.conf import settings
-from .views import page_not_found_local, server_error
+from .views import page_not_found_local, server_error, page_forbidden
 
+handler403 = 'django_united.urls.page_forbidden'
 handler404 = 'django_united.urls.page_not_found_local'
-handler403 = 'django_united.urls.page_not_found_local'
 handler500 = 'django_united.urls.server_error'
 
 
@@ -24,6 +24,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += [
+        path('403', page_forbidden, name='403'),
         path('404', page_not_found_local, name='404'),
         path('500', server_error, name='500'),
     ]
