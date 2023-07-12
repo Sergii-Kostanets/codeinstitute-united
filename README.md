@@ -1115,7 +1115,12 @@ No known bugs besides those in the fixed / unfixed bugs section.
 
 ### Unfixed Bugs
 
-* Bug: When the Summernote styles (color) applyed to the content field data HTML Validation shows errors about inline styles. <details><summary><b>HTML Validation Summernote</b></summary>![HTML Validation Summernote](readme/images/html_validation_error_summernote.png)</details><br/>
+* Bug: When the Summernote styles (color) applyed to the content field data HTML Validation shows errors about inline styles.
+
+<details><summary><b>HTML Validation Summernote</b></summary>
+
+![HTML Validation Summernote](readme/images/html_validation_error_summernote.png)
+</details><br/>
 
 [Back to top](<#contents>)
 
