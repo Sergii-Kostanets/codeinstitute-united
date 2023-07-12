@@ -677,7 +677,7 @@ The libraries used in this project are located in the requirements.txt file and 
 
 ### Site User
 
-|  |  |  |
+| Role | Test case / Result |  |
 |:-------:|:--------|:--------|
 | As a Site User | I can view a list of posts so that I can select one to read | &check; |
 |  | At the top of the site at the *Blog* page there is a navigation bar with a *Blog* link that lists all posts when the user clicks on it |  |
@@ -728,7 +728,7 @@ The libraries used in this project are located in the requirements.txt file and 
 
 ### Staff Member
 
-|  |  |  |
+| Role | Test case / Result |  |
 |:-------:|:--------|:--------|
 | As a Staff Member | I can view list of draft posts so that I can choose which post to publish | &check; |
 |  | At the top of the site at the *Blog* page there is a navigation bar with a *Publish posts* link in the dropdown menu that lists all draft posts when the staff member clicks on it |  |
@@ -745,7 +745,7 @@ The libraries used in this project are located in the requirements.txt file and 
 
 ### Site Admin
 
-|  |  |  |
+| Role | Test case / Result |  |
 |:-------:|:--------|:--------|
 | As a Site Admin | I can approve or disapprove post comments so that I can filter out objectionable comments | &check; |
 |  | At the top of the site at the *Blog* page there is a navigation bar with a *Publish comments* link in the dropdown menu that lists all draft comments when the admin clicks on it. The admin can then publish or delete each draft comment |  |
