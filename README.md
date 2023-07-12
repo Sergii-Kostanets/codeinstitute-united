@@ -1109,7 +1109,11 @@ No known bugs besides those in the fixed / unfixed bugs section.
 
 * Bug: When publishing a game connect as an admin or staff member featured image cannot be changed. This is now handled and fixed by adding ```enctype="multipart/form-data"``` to the ```form``` tag at the ```post_publish.html``` template.
 
-* Bug: HTML Validation shows errors about accordion card header ```div```. Fixed by adding ```role``` tag to this ```div```. <details><summary><b>HTML Validation Accordion</b></summary>![HTML Validation Accordion](readme/images/html_validation_error_accordion.png)</details><br/>
+* Bug: HTML Validation shows errors about accordion card header ```div```. Fixed by adding ```role``` tag to this ```div```.
+<details><summary><b>HTML Validation Accordion</b></summary>
+
+![HTML Validation Accordion](readme/images/html_validation_error_accordion.png)
+</details><br/>
 
 [Back to top](<#contents>)
 
