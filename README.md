@@ -1380,15 +1380,19 @@ To clone and set up this project you need to follow the steps below.
 
 * ```pip3 install -r requirements.txt``` - This command downloads and install all required dependencies that is stated in the requirements file.
 
-6. The next step is to set up the environment file so that the project knows what variables that needs to be used for it to work. Environment variables are usually hidden due to sensitive information. It's very important that you don't push the env.py file to Github (this can be secured by adding `env.py` to the `.gitignore-file`). The variables that are declared in the `env.py` file needs to be added to the Heroku config vars. Don't forget to do necessary migrations before trying to run the server.
-
-* ```python3 manage.py migrate``` - This will do the necessary migrations.
-* ```python3 manage.py runserver``` - If everything i setup correctly the project is now live locally.
-
-<details><summary><b>Setup env.py</b></summary>
-
+6. The next step is to set up the environment file so that the project knows what variables that needs to be used for it to work. Environment variables are usually hidden due to sensitive information. It's very important that you don't push the env.py file to Github (this can be secured by adding `env.py` to the `.gitignore-file`). The variables that are declared in the `env.py` file needs to be added to the Heroku config vars. Don't forget to do necessary migrations before trying to run the server.<details><summary><b>Setup env.py</b></summary>
 ![Clone](readme/images/github_clone_02.png)
 </details><br />
+
+* ```python3 manage.py migrate``` - This will do the necessary migrations.
+
+7. Create Super User. Create username and password. The password will not appear on the screen as you type. Press Enter when you have finished typing the password.
+
+* ```python3 manage.py createsuperuser```
+
+8. Run the local server.
+
+* ```python3 manage.py runserver``` - If everything i setup correctly the project is now live locally.
 
 [Back to top](<#contents>)
 
