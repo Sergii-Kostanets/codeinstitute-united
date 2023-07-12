@@ -10,6 +10,7 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 # Contents
 
 * [**Project**](<#project>)
+
     * [Objective](<#objective>)
     
     * [Site Users Goal](<#site-users-goal>)
@@ -94,7 +95,15 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
     * [Code Validation](<#code-validation>)
     
-    * [Additional Testing](<#additional-testing>)
+    * [Manual Testing](<#manual-testing>)
+    
+    * [Responsiveness Test](<#responsiveness-test>)
+    
+    * [Browser Compatibility](<#browser-compatibility>)
+    
+    * [Lighthouse](<#lighthouse>)
+    
+    * [Peer Review](<#peer-review>)
 
     * [Known Bugs](<#known-bugs>)
 
@@ -903,9 +912,7 @@ The [JS hint Validator](https://jshint.com/) results can be seen below. No error
 
 [Back to top](<#contents>)
 
-## Additional Testing
-
-### Manual Testing
+## Manual Testing
 
 In addition to tests stated above I have performed a series of manual tests. Below the list of tests that has been conducted can be found.
 
@@ -1026,7 +1033,7 @@ Status | **Create A New User - User signed Out**
 
 [Back to top](<#contents>)
 
-### Responsiveness Test
+## Responsiveness Test
 The responsive design tests were carried out manually with [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/) and [Am I Responsive](https://ui.dev/amiresponsive/).
 
 | Desktop    | Display <1280px       | Display >1280px    |
@@ -1049,7 +1056,7 @@ The responsive design tests were carried out manually with [Google Chrome DevToo
 
 [Back to top](<#contents>)
 
-### Browser Compatibility
+## Browser Compatibility
 * Google Chrome (version 114.0.5735.198)
 * Mozilla Firefox (version 114.0.1)
 * Opera (version 91.0.4516.20)
@@ -1058,7 +1065,7 @@ The responsive design tests were carried out manually with [Google Chrome DevToo
 
 [Back to top](<#contents>)
 
-### Lighthouse
+## Lighthouse
 Google Lighthouse in Chrome Developer Tools was used to test the application within the areas of *Performance*, *Accessibility*, *Best Practices* and *SEO*. I tested the *connect page*, *blog page*, and *post details page*. The testing showed the following:
 
 <details><summary><b>Lighthouse Connect Page Result</b></summary>
@@ -1076,8 +1083,10 @@ Google Lighthouse in Chrome Developer Tools was used to test the application wit
 ![Lighthouse Post Detail Page Result](readme/images/lighthouse_post.png)
 </details><br/>
 
-### Peer Review
+## Peer Review
 Additional testing of the application was conducted by people outside of the software development field. Some smaller spelling and grammar errors were found and corrected. No issues connected to design or handling of the site.
+
+[Back to top](<#contents>)
 
 ## Known bugs
 No known bugs besides those in the fixed / unfixed bugs section.
