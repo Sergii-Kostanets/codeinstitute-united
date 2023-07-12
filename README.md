@@ -424,22 +424,22 @@ This page lists all the game connects that has been made at United by signed in 
 ### **Post Detail View**
 The post detail shows the details about the post that the user has chosen in the blog view. Depending on if the user is signed in and if the user is a post author the view looks a little bit different. If the user is signed in they get the possibility to like the post and also can see if it published and edit or delete it if they have written it. A signed in user can also leave a comment.
 
-<details><summary><b>Post Detail View - User signed Out</b></summary>
+<details><summary><b>Post Detail View - User Signed Out</b></summary>
 
-![Post Detail View - User signed Out](readme/images/post_detail_signed_out.png)
-![Post Detail View Comment - User signed Out](readme/images/post_detail_comment_signed_out.png)
+![Post Detail View - User Signed Out](readme/images/post_detail_signed_out.png)
+![Post Detail View Comment - User Signed Out](readme/images/post_detail_comment_signed_out.png)
 </details><br/>
 
-<details><summary><b>Post Detail View - User signed In</b></summary>
+<details><summary><b>Post Detail View - User Signed In</b></summary>
 
-![Post Detail View - User signed In](readme/images/post_detail_signed_in.png)
-![Post Detail View Comment - User signed In](readme/images/post_detail_comment_signed_in.png)
+![Post Detail View - User Signed In](readme/images/post_detail_signed_in.png)
+![Post Detail View Comment - User Signed In](readme/images/post_detail_comment_signed_in.png)
 </details><br/>
 
-<details><summary><b>Post Detail View - Author signed In</b></summary>
+<details><summary><b>Post Detail View - Author Signed In</b></summary>
 
-![Post Detail View - Author signed In](readme/images/post_detail_author_signed_in.png)
-![Post Detail View Comment - Author signed In](readme/images/post_detail_author_comment_signed_in.png)
+![Post Detail View - Author Signed In](readme/images/post_detail_author_signed_in.png)
+![Post Detail View Comment - Author Signed In](readme/images/post_detail_author_comment_signed_in.png)
 </details><br/>
 
 ### **Create Post**
