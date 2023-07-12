@@ -791,6 +791,11 @@ With a simple content no errors were returned by [W3C HTML Validator](https://va
 ![HTML Validation Result Blog page](readme/images/html_validation_blog.png)
 </details><br/>
 
+<details><summary><b>HTML Validation Result Post Detail page</b></summary>
+
+![HTML Validation Result Blog page](readme/images/html_validation_post.png)
+</details><br/>
+
 <details><summary><b>HTML Validation Result Connect page</b></summary>
 
 ![HTML Validation Result Connect page](readme/images/html_validation_connect.png)
