@@ -109,6 +109,14 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
 * [Deployment](<#deployment>)
 
+    * [Deployment To Heroku](<#deployment-to-heroku>)
+
+    * [Domain connection](<#domain-connection>)
+
+    * [Forking The Repository On GitHub](<#forking-the-repository-on-github>)
+
+    * [Cloning And Setting Up This Project](<#cloning-and-setting-up-this-project>)
+
 * [Credits](<#credits>)
 
 * [Acknowledgements](<#acknowledgements>)
@@ -1349,7 +1357,71 @@ The Github repository can be found [here](https://github.com/Sergii-Kostanets/co
 
 [Back to top](<#contents>)
 
-## How To Fork The Repository On GitHub
+## Domain connection
+
+### Add a custom domain with a subdomain
+To add a custom domain with a subdomain, use the domains:add Heroku CLI command:
+
+`heroku domains:add www.example.com`
+
+### Configuring DNS for subdomains
+After you add a domain with the heroku domains:add command, you need to point your DNS provider at the DNS target provided by Heroku. You can view this DNS target with the heroku domains command (see View existing domains for details).
+
+You usually configure a new CNAME record with your DNS provider to point it at Heroku. The following table shows common CNAME record patterns:
+
+| Record | Name | Target                                |
+| ------ | ---- | ------------------------------------- |
+| CNAME  | www  | whispering-willow-5678.herokudns.com. |
+
+The trailing `.` on the target domain may or may not be required, depending on your DNS provider.
+
+Consult your DNS provider’s documentation for specific instructions on creating CNAME records.
+
+You can confirm that your DNS is configured correctly with the host command, assuming your DNS changes have propagated:
+
+`host www.example.com`
+
+### Add a custom root domain
+
+Root domains must be added in addition to any subdomains. The process for adding root domains is the same in the Heroku CLI:
+
+`heroku domains:add example.com`
+
+### Configuring DNS for root domains
+
+Configuring your DNS provider for a root domain is similar to configuring a DNS provider for a subdomain. However, whereas with subdomains the type of record to configure is always a CNAME, with root domains the type of record depends on the DNS provider.
+
+Whichever provider you have, point the ALIAS/ANAME/CNAME entry for your root domain to the DNS Target, just as you would with a CNAME record:
+
+| Record         | Name       | Target                            |
+| -------------- | ---------- | --------------------------------- |
+| ALIAS or ANAME | empty or @ | hidden-sierra-7936.herokudns.com. |
+
+Depending on the DNS provider, an empty or @ Name value identifies the root domain.
+
+### Add a wildcard domain
+
+Wildcard domains allow you to map any and all subdomains to your app with a single record. A common use of a wildcard domain is with applications that use a personalized subdomain for each user or account. You can add a wildcard domain if you own all existing apps already using the same top-level domain (TLD). For example, if an app is already using www.example.com, you must own it to add *.example.com.
+
+Add a wildcard domain to your app as you would with any other domain, but use the * wildcard subdomain notation.
+
+`heroku domains:add *.example.com`
+
+### View existing domains
+
+Use the `heroku domains` command to view an app’s current Heroku domain, custom domains, and DNS targets.
+
+### My domain connection case
+
+1. I visited Heroku apps dashboard. Chose my app. Clicked "Settings". Clicked "Add Domain" button. Added my domain with `www` subdomain: `www.uniteds.games`. Copied the returned "DNS target" value.
+
+2. Visited my name.com account. Found link text "Manage DNS Records" and visited link "ADD RECORD" row with the following content:
+
+| Type: | Host: | Answer:                         |
+| ----- | ----- | ------------------------------- |
+| CNAME | www   | DNS target value from clipboard |
+
+## Forking The Repository On GitHub
 
 It is possible to do a independent copy of a GitHub Repository by forking the GitHub account. The copy can then be viewed and it is also possible to do changes in the copy without affecting the original repository. To fork the repository, take these steps:
 
