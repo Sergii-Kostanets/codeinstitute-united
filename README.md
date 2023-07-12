@@ -206,7 +206,7 @@ Below the user stories for the project are listed to clarify why particular feat
 
 ## Site Structure
 
-The 'United' site is split up in two parts: **Blog** for **posts** and **Connect** for **game connects**.
+The 'United' site is split up in three parts: **Blog** for **posts**, **Connect** for **game connects**, and **Account** for **profile details**.
 
 The functionality is alo different **when the user is signed out** and **when the user is signed in**. Depending on login status different pages is available for the user. When the user is signed out the pages: *Sign In*, *Blog*, and *Connect* are avaliable. When the user is signed in: dropdown menu with username (*My account*, *My games* or/and *My posts*, *Sign Out*), *Add game* or *Add post*, *Blog*, and *Connect* are available. If you are signed in as an administrator or staff member an *admin area* is available: *Publish connects* or *Publish comments* with *Publish posts*. The site has an minimalistic, clean and intuitive design that makes the site easy to navigate for the user.
 
@@ -961,6 +961,7 @@ In addition to tests stated above I have performed a series of manual tests. Bel
 | &check; | In the post details view the user cannot create a comment
 | &check; | In the game connect full view the user cannot get to the connect form
 | &check; | The search input works at *Blog* and *Connect* pages
+| &check; | There is no access to the /admin page
 | &check; | Clicking the LinkedIn link in the footer area opens LinkedIn in a new window
 | &check; | Clicking the GitHub link in the footer area opens GitHub in a new window
 | &check; | Clicking the Instagram link in the footer area opens Instagram in a new window
@@ -997,6 +998,7 @@ In addition to tests stated above I have performed a series of manual tests. Bel
 | &check; | In the My games view the information about the game cinnect status is correct
 | &check; | In the signed in user menu the Publish links are not visible
 | &check; | Clicking the My account button in the signed in user menu loads the My Account section of the site
+| &check; | There is no access to the /admin page
 | &check; | Clicking the LinkedIn link in the footer area opens LinkedIn in a new window
 | &check; | Clicking the GitHub link in the footer area opens GitHub in a new window
 | &check; | Clicking the Instagram link in the footer area opens Instagram in a new window
@@ -1011,7 +1013,7 @@ In addition to tests stated above I have performed a series of manual tests. Bel
 | &check; | The publish button is visible in post publish confirmation editing view and leads to publishing the post
 | &check; | The publish button is visible in game connect full view and leads to publish confirmation editing
 | &check; | The publish button is visible in game connect publish confirmation editing view and leads to publishing the game connect
-| &check; | An the Publish comment page clicking the approve / delete toggles the apprpriate modal confirmation window
+| &check; | At the Publish comment page clicking the approve / delete toggles the apprpriate modal confirmation window
 
  Status | **Create A Post - User signed In**
 |:-------:|:--------|
