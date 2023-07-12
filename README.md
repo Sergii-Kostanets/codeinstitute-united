@@ -171,7 +171,8 @@ Models used (besides standard user model) in this project are:
 Below the user stories for the project are listed to clarify why particular feature matters. These will then be tested and confirmed in the [Testing](<#testing>) section.
 
 ### Site User
-|  | | |
+
+| Role | Case |  |
 |:-------:|:--------|:--------|
 | As a Site User | I can view a list of posts so that I can select one to read | &check; |
 | As a Site User | I can click on a post so that I can read the full text | &check; |
@@ -199,7 +200,7 @@ Below the user stories for the project are listed to clarify why particular feat
 
 ### Staff Member
 
-|  | | |
+| Role | Case |  |
 |:-------:|:--------|:--------|
 | As a Staff Member | I can view list of draft posts so that I can choose which post to publish | &check; |
 | As a Staff Member | I can view list of draft connects so that I can choose which connect to publish | &check; |
@@ -210,7 +211,7 @@ Below the user stories for the project are listed to clarify why particular feat
 
 ### Site Admin
 
-|  | | |
+| Role | Case |  |
 |:-------:|:--------|:--------|
 | As a Site Admin | I can approve or disapprove post comments so that I can filter out objectionable comments | &check; |
 | As a Site Admin | I can create, read, update and delete posts so that I can manage my blog content | &check; |
