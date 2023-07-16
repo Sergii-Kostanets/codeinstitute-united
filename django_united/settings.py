@@ -113,30 +113,10 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         },
     },
-    'github_local': {
+    'github': {
         'APP': {
-            'client_id': os.environ.get('GITHUB_CLIENT_ID_LOCAL'),
-            'secret': os.environ.get('GITHUB_CLIENT_SECRET_LOCAL'),
-            'key': ''
-        },
-        'SCOPE': ['user:email'],
-        'FIELDS': ['username', 'email'],
-        'VERIFIED_EMAIL': True,
-    },
-    'github_heroku': {
-        'APP': {
-            'client_id': os.environ.get('GITHUB_CLIENT_ID_HEROKU'),
-            'secret': os.environ.get('GITHUB_CLIENT_SECRET_HEROKU'),
-            'key': ''
-        },
-        'SCOPE': ['user:email'],
-        'FIELDS': ['username', 'email'],
-        'VERIFIED_EMAIL': True,
-    },
-    'github_uniteds': {
-        'APP': {
-            'client_id': os.environ.get('GITHUB_CLIENT_ID_UNITEDS'),
-            'secret': os.environ.get('GITHUB_CLIENT_SECRET_UNITEDS'),
+            'client_id': os.environ.get('GITHUB_CLIENT_ID'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET'),
             'key': ''
         },
         'SCOPE': ['user:email'],
