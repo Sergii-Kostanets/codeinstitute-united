@@ -118,10 +118,30 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         },
     },
-    'github': {
+    'github_local': {
         'APP': {
-            'client_id': os.environ.get('GITHUB_CLIENT_ID'),
-            'secret': os.environ.get('GITHUB_CLIENT_SECRET'),
+            'client_id': os.environ.get('GITHUB_CLIENT_ID_LOCAL'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET_LOCAL'),
+            'key': ''
+        },
+        'SCOPE': ['user:email'],
+        'FIELDS': ['username', 'email'],
+        'VERIFIED_EMAIL': True,
+    },
+    'github_heroku': {
+        'APP': {
+            'client_id': os.environ.get('GITHUB_CLIENT_ID_HEROKU'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET_HEROKU'),
+            'key': ''
+        },
+        'SCOPE': ['user:email'],
+        'FIELDS': ['username', 'email'],
+        'VERIFIED_EMAIL': True,
+    },
+    'github_uniteds': {
+        'APP': {
+            'client_id': os.environ.get('GITHUB_CLIENT_ID_UNITEDS'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET_UNITEDS'),
             'key': ''
         },
         'SCOPE': ['user:email'],
@@ -131,7 +151,6 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 MIDDLEWARE = [
-    'django_united.middleware.custom_middleware.GitHubAppMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
