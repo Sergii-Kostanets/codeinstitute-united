@@ -101,6 +101,11 @@ SUMMERNOTE_CONFIG = {
     }
 }
 
+if not os.environ.get('GITHUB_CLIENT_ID'):
+    raise ValueError("GitHub client ID is not set.")
+if not os.environ.get('GITHUB_CLIENT_SECRET'):
+    raise ValueError("GitHub client secret is not set.")
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
@@ -115,8 +120,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'github': {
         'APP': {
-            'client_id': '',
-            'secret': '',
+            'client_id': os.environ.get('GITHUB_CLIENT_ID'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET'),
             'key': ''
         },
         'SCOPE': ['user:email'],
@@ -126,6 +131,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 MIDDLEWARE = [
+    'django_united.middleware.custom_middleware.GitHubAppMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -246,16 +252,3 @@ GRAPH_MODELS = {
   'group_models': True,  # if you want to group models with a box around group
   'app_labels': ["blog", "connect", "auth"],  # the apps you want in the graph
 }
-
-if 'codeinstitute-united.herokuapp.com' in ALLOWED_HOSTS:
-    GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID_HEROKU')
-    GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET_HEROKU')
-elif 'www.uniteds.games' in ALLOWED_HOSTS:
-    GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID')
-    GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET')
-else:
-    GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID_LOCAL')
-    GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET_LOCAL')
-
-SOCIALACCOUNT_PROVIDERS['github']['APP']['client_id'] = GITHUB_CLIENT_ID
-SOCIALACCOUNT_PROVIDERS['github']['APP']['secret'] = GITHUB_CLIENT_SECRET
