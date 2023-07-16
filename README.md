@@ -1126,11 +1126,16 @@ No known bugs besides those in the fixed / unfixed bugs section.
 ![HTML Validation Summernote](readme/images/html_validation_error_summernote.png)
 </details><br/>
 
-* Bug: GitHub Social Account works as expected only at custom domain. If trying to sign in with GitHub at Heroku domain it will redirect to custom domain and show the error page. After that user can sign in with GitHub successfully.
+* Bug: GitHub Social Account works as expected only at custom domain. If trying to sign in with GitHub at Heroku domain it will redirect to custom domain and show the error page. After that user can sign in with GitHub successfully. If user were authenticated at www.uniteds.games they will see social account authentication error page with the massage about successfull authentication.
 
 <details><summary><b>GitHub Social Account Error</b></summary>
 
 ![GitHub Social Account Error](readme/images/github_social_account_error.png)
+</details><br/>
+
+<details><summary><b>GitHub Social Account Error (Authenticated)</b></summary>
+
+![GitHub Social Account Error (Authenticated)](readme/images/github_social_account_error_auth.png)
 </details><br/>
 
 [Back to top](<#contents>)
