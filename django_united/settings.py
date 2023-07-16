@@ -240,8 +240,6 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_UNIQUE_EMAIL = True
-SOCIAL_AUTH_ALLOWED_REDIRECT_HOSTS = [os.environ.get('HEROKU_HOSTNAME'),
-                                      os.environ.get('NAME_DOMAIN')]
 
 GRAPH_MODELS = {
   'all_applications': True,  # set to True if you want all models included
