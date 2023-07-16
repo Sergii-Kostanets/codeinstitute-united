@@ -123,6 +123,16 @@ SOCIALACCOUNT_PROVIDERS = {
         'FIELDS': ['username', 'email'],
         'VERIFIED_EMAIL': True,
     },
+    'github_heroku': {
+        'APP': {
+            'client_id': os.environ.get('GITHUB_CLIENT_ID_HEROKU'),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET_HEROKU'),
+            'key': ''
+        },
+        'SCOPE': ['user:email'],
+        'FIELDS': ['username', 'email'],
+        'VERIFIED_EMAIL': True,
+    },
 }
 
 MIDDLEWARE = [
