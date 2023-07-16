@@ -115,18 +115,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'github': {
         'APP': {
-            'client_id': os.environ.get('GITHUB_CLIENT_ID'),
-            'secret': os.environ.get('GITHUB_CLIENT_SECRET'),
-            'key': ''
-        },
-        'SCOPE': ['user:email'],
-        'FIELDS': ['username', 'email'],
-        'VERIFIED_EMAIL': True,
-    },
-    'github_heroku': {
-        'APP': {
-            'client_id': os.environ.get('GITHUB_CLIENT_ID_HEROKU'),
-            'secret': os.environ.get('GITHUB_CLIENT_SECRET_HEROKU'),
+            'client_id': '',
+            'secret': '',
             'key': ''
         },
         'SCOPE': ['user:email'],
@@ -256,3 +246,16 @@ GRAPH_MODELS = {
   'group_models': True,  # if you want to group models with a box around group
   'app_labels': ["blog", "connect", "auth"],  # the apps you want in the graph
 }
+
+if 'codeinstitute-united.herokuapp.com' in ALLOWED_HOSTS:
+    GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID_HEROKU')
+    GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET_HEROKU')
+elif 'www.uniteds.games' in ALLOWED_HOSTS:
+    GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID')
+    GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET')
+else:
+    GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID_LOCAL')
+    GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET_LOCAL')
+
+SOCIALACCOUNT_PROVIDERS['github']['APP']['client_id'] = GITHUB_CLIENT_ID
+SOCIALACCOUNT_PROVIDERS['github']['APP']['secret'] = GITHUB_CLIENT_SECRET
