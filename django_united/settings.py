@@ -101,11 +101,6 @@ SUMMERNOTE_CONFIG = {
     }
 }
 
-if not os.environ.get('GITHUB_CLIENT_ID'):
-    raise ValueError("GitHub client ID is not set.")
-if not os.environ.get('GITHUB_CLIENT_SECRET'):
-    raise ValueError("GitHub client secret is not set.")
-
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
