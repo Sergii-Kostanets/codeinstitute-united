@@ -1450,17 +1450,6 @@ Use the `heroku domains` command to view an app’s current Heroku domain, custo
 | ----- | ----- | ------------------------------- |
 | CNAME | www   | DNS target value from clipboard |
 
-## Forking The Repository On GitHub
-
-It is possible to do a independent copy of a GitHub Repository by forking the GitHub account. The copy can then be viewed and it is also possible to do changes in the copy without affecting the original repository. To fork the repository, take these steps:
-
-1. After logging in to GitHub, locate the repository. On the top right side of the page there is a 'Fork' button. Click on the button to create a copy of the original repository.
-
-<details><summary><b>Github Fork</b></summary>
-
-![Fork](readme/images/github_fork.png)
-</details><br />
-
 [Back to top](<#contents>)
 
 ## Update SSL certificate
@@ -1479,6 +1468,17 @@ Enable/Re-enable Automatic Certificate Management:
 
 You can turn off ACM by running the following command:
 ```heroku certs:auto:disable -a codeinstitute-united```
+
+## Forking The Repository On GitHub
+
+It is possible to do a independent copy of a GitHub Repository by forking the GitHub account. The copy can then be viewed and it is also possible to do changes in the copy without affecting the original repository. To fork the repository, take these steps:
+
+1. After logging in to GitHub, locate the repository. On the top right side of the page there is a 'Fork' button. Click on the button to create a copy of the original repository.
+
+<details><summary><b>Github Fork</b></summary>
+
+![Fork](readme/images/github_fork.png)
+</details><br />
 
 [Back to top](<#contents>)
 
