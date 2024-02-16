@@ -1455,19 +1455,29 @@ Use the `heroku domains` command to view an app’s current Heroku domain, custo
 ## Update SSL certificate
 
 Check if Herocu CLI installed:
-```heroku --version```
+```
+heroku --version
+```
 
 Login:
-```heroku login```
+```
+heroku login
+```
 
 View certificates:
-```heroku certs -a codeinstitute-united```
+```
+heroku certs -a codeinstitute-united
+```
 
 Enable/Re-enable Automatic Certificate Management:
-```heroku certs:auto -a codeinstitute-united```
+```
+heroku certs:auto -a codeinstitute-united
+```
 
 You can turn off ACM by running the following command:
-```heroku certs:auto:disable -a codeinstitute-united```
+```
+heroku certs:auto:disable -a codeinstitute-united
+```
 
 ## Forking The Repository On GitHub
 
