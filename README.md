@@ -113,6 +113,8 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
     * [Domain connection](<#domain-connection>)
 
+    * [Update SSL certificate](<#update-ssl>)
+
     * [Forking The Repository On GitHub](<#forking-the-repository-on-github>)
 
     * [Cloning And Setting Up This Project](<#cloning-and-setting-up-this-project>)
@@ -1458,6 +1460,25 @@ It is possible to do a independent copy of a GitHub Repository by forking the Gi
 
 ![Fork](readme/images/github_fork.png)
 </details><br />
+
+[Back to top](<#contents>)
+
+## Update SSL certificate
+
+Check if Herocu CLI installed:
+```heroku --version```
+
+Login:
+```heroku login```
+
+View certificates:
+```heroku certs -a codeinstitute-united```
+
+Enable/Re-enable Automatic Certificate Management:
+```heroku certs:auto -a codeinstitute-united```
+
+You can turn off ACM by running the following command:
+```heroku certs:auto:disable -a codeinstitute-united```
 
 [Back to top](<#contents>)
 
