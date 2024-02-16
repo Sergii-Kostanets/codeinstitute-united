@@ -113,7 +113,7 @@ This website was created for Portfolio Project #4 - Diploma in Full Stack Softwa
 
     * [Domain connection](<#domain-connection>)
 
-    * [Update SSL certificate](<#update-ssl>)
+    * [Update SSL certificate](<#update-ssl-certificate>)
 
     * [Forking The Repository On GitHub](<#forking-the-repository-on-github>)
 
